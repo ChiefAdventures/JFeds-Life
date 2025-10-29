@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Creation - JFed's Life</title>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --accent: #b8546d;
+            --accent-hover: #9a4158;
+            --accent-secondary: #d97742;
+            --border: #dee2e6;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #f8f9fa;
+            --text-secondary: #adb5bd;
+            --accent: #c97084;
+            --accent-hover: #d88798;
+            --accent-secondary: #e89560;
+            --border: #495057;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--bg-secondary);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-container {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            border: 4px solid #1a1a1a;
+            box-shadow: 
+                0 0 0 2px #444,
+                0 0 0 6px #1a1a1a,
+                0 2px 8px rgba(0,0,0,0.4);
+            position: relative;
+            display: block;
+        }
+
+        [data-theme="dark"] .logo-img {
+            border: 4px solid #2a2a2a;
+            box-shadow: 
+                0 0 0 2px #555,
+                0 0 0 6px #2a2a2a,
+                0 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-secondary);
+            min-width: 200px;
+            box-shadow: 0 4px 12px var(--shadow);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown > a::after {
+            content: ' ▾';
+            font-size: 0.8rem;
+        }
+
+        .theme-toggle {
+            display: flex;
+            gap: 0.5rem;
+            background-color: var(--bg-primary);
+            padding: 0.5rem;
+            border-radius: 25px;
+            border: 2px solid var(--border);
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            min-width: 40px;
+        }
+
+        .theme-btn:hover {
+            color: var(--accent);
+        }
+
+        .theme-btn.active {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        .page-hero {
+            background: linear-gradient(135deg, #b8546d 0%, #d97742 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .intro-text p {
+            margin-bottom: 1rem;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .platform-card {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .platform-card h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .platform-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .platform-link {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .platform-link:hover {
+            color: var(--accent-hover);
+        }
+
+        .recent-content {
+            background-color: var(--bg-secondary);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin: 4rem auto;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .journey-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .journey-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .contact-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem 0;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                margin-top: 0;
+                background-color: var(--bg-primary);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .page-hero p {
+                font-size: 1rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-container">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%231a1a1a'/%3E%3Ccircle cx='100' cy='100' r='80' fill='%23444'/%3E%3Ccircle cx='100' cy='100' r='75' fill='%23000'/%3E%3Ctext x='100' y='115' font-size='50' font-weight='bold' fill='white' text-anchor='middle' font-family='Arial'%3EJF%3C/text%3E%3C/svg%3E" alt="JFed's Life Logo" class="logo-img" id="logoImage">
+                </div>
+                <h1>JFed's Life</h1>
+            </a>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#business">Business</a>
+                    <div class="dropdown-content">
+                        <a href="weddings.html">Weddings</a>
+                        <a href="sports.html">Sports Photography</a>
+                        <a href="gear.html">Gear</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#personal">Personal</a>
+                    <div class="dropdown-content">
+                        <a href="content.html">Content Creation</a>
+                        <a href="faith.html">Faith & Life</a>
+                        <a href="sports-hobbies.html">Bowling & Ultimate Frisbee / Disc Golf</a>
+                    </div>
+                </li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li>
+                    <div class="theme-toggle">
+                        <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
+                            Light
+                        </button>
+                        <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
+                            Dark
+                        </button>
+                        <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
+                            System
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <h1>Content Creation</h1>
+            <p>Sharing my journey and experiences through video and social media</p>
+        </section>
+
+        <section class="content-section journey-section">
+            <h2 class="section-title">My Content Creation Journey</h2>
+            <div class="intro-text">
+                <p>Creating content has become an important part of how I share my experiences and connect with others. What started as a way to document my work has evolved into something I'm genuinely passionate about.</p>
+                <p>I create content across multiple platforms, each serving a different purpose. YouTube is where I share longer-form videos that dive deeper into projects, behind-the-scenes looks, and tutorials. Instagram and TikTok are perfect for shorter, more dynamic content that captures quick moments and highlights.</p>
+                <p>Whether it's sharing wedding footage, sports photography tips, insights from my bowling journey, or just everyday moments, I'm always looking for new ways to tell stories and engage with the community.</p>
+            </div>
+
+            <h3 style="font-size: 1.5rem; color: var(--accent); margin: 3rem 0 1.5rem;">Where I Create</h3>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <h3>YouTube</h3>
+                    <p>Long-form videos including behind-the-scenes content, tutorials, and project breakdowns. This is where I dive deep into topics and share more comprehensive content.</p>
+                    <a href="https://youtube.com/@1chiefadventures1" target="_blank" class="platform-link">Visit Channel →</a>
+                </div>
+                <div class="platform-card">
+                    <h3>Instagram</h3>
+                    <p>Shorter videos, reels, and photo content showcasing my work, daily moments, and quick tips. Great for staying connected and sharing highlights.</p>
+                    <a href="https://www.instagram.com/1chief_adventures1" target="_blank" class="platform-link">Follow on Instagram →</a>
+                </div>
+                <div class="platform-card">
+                    <h3>TikTok</h3>
+                    <p>Fast-paced, engaging short-form videos covering everything from photography tips to sports moments to creative content experiments.</p>
+                    <a href="https://www.tiktok.com/@chiefadventures" target="_blank" class="platform-link">Follow on TikTok →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section recent-content">
+            <h2 class="section-title">Recent Content</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Check out some of my latest videos and posts across platforms</p>
+            
+            <div class="content-grid">
+                <p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); font-size: 1.1rem; padding: 3rem;">No content featured yet. Follow me on YouTube, Instagram, and TikTok to see my latest posts!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
+                    Facebook
+                </a>
+                <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
+                    Instagram
+                </a>
+                <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
+                    TikTok
+                </a>
+                <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
+                    YouTube
+                </a>
+                <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
+                    Vimeo
+                </a>
+            </div>
+            
+            <a href="https://www.chiefadventures.org/contact" class="contact-btn">
+                Contact Me
+            </a>
+            
+            <div class="copyright">
+                <p>&copy; 2025 JFed's Life. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function setTheme(theme) {
+            const html = document.documentElement;
+            const lightBtn = document.getElementById('lightBtn');
+            const systemBtn = document.getElementById('systemBtn');
+            const darkBtn = document.getElementById('darkBtn');
+            
+            [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
+            
+            if (theme === 'system') {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+                systemBtn.classList.add('active');
+                localStorage.setItem('theme', 'system');
+            } else {
+                html.setAttribute('data-theme', theme);
+                if (theme === 'light') lightBtn.classList.add('active');
+                else darkBtn.classList.add('active');
+                localStorage.setItem('theme', theme);
+            }
+        }
+
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'system';
+            setTheme(savedTheme);
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (localStorage.getItem('theme') === 'system') {
+                setTheme('system');
+            }
+        });
+    </script>
+</body>
+</html>
