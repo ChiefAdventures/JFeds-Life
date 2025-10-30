@@ -512,22 +512,21 @@
                     </div>
                 </li>
                 <li><a href="faq.html">FAQ</a></li>
-                <li>
-                    <div class="theme-toggle">
-                        <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
-                            Light
-                        </button>
-                        <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
-                            Dark
-                        </button>
-                        <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
-                            System
-                        </button>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </header>
+                  </ul>
+
+    <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
+    <div class="theme-toggle">
+        <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
+            Light
+        </button>
+        <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
+            Dark
+        </button>
+        <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
+            System
+        </button>
+    </div>
+</nav>
 
     <main>
         <section class="page-hero">
