@@ -130,7 +130,7 @@
         }
 
         .dropdown-content {
-            display: none;
+            display: none=;
             position: absolute;
             top: 100%;
             left: 0;
@@ -148,8 +148,15 @@
             color: var(--text-primary);
             text-decoration: none;
             transition: background-color 0.3s ease;
+            opacity: 1;
+            pointer-events: auto;
+            cursor: pointer;
         }
-
+        .dropdown-content.active a {
+            opacity: 1;
+            pointer-events: auto;
+            color: var(--text-primary);
+        }
         .dropdown-content a:hover {
             background-color: var(--accent);
             color: white;
