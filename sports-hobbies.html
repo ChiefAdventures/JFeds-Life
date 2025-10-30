@@ -131,35 +131,39 @@
             position: relative;
         }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: var(--bg-secondary);
-            min-width: 200px;
-            box-shadow: 0 4px 12px var(--shadow);
-            border-radius: 8px;
-            margin-top: 0.5rem;
-            overflow: hidden;
-        }
+       .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--bg-secondary);
+    min-width: 200px;
+    box-shadow: 0 4px 12px var(--shadow);
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+    z-index: 1000;
+}
 
-        .dropdown-content a {
-            display: block;
-            padding: 0.75rem 1.5rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
+.dropdown-content.active {
+    display: block;
+}
 
-        .dropdown-content a:hover {
-            background-color: var(--accent);
-            color: white;
-        }
+.dropdown-content a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: var(--text-primary) !important;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+.dropdown-content a:hover {
+    background-color: var(--accent);
+    color: white !important;
+}
 
         .dropdown > a::after {
             content: ' ▾';
@@ -994,6 +998,32 @@
                 setTheme('system');
             }
         });
+        // Close dropdowns when clicking outside
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
+});
+
+// Toggle dropdowns on click
+document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+    dropdownLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Close other dropdowns
+        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+            if (dropdown !== this.nextElementSibling) {
+                dropdown.classList.remove('active');
+            }
+        });
+        
+        // Toggle this dropdown
+        const dropdownContent = this.nextElementSibling;
+        dropdownContent.classList.toggle('active');
+    });
+});
     </script>
 </body>
 </html>
