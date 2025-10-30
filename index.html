@@ -239,6 +239,31 @@
     color: white;
     margin-bottom: 2rem;
 }
+        .hero {
+    position: relative;
+    /* your existing styles */
+}
+
+.hero-about-btn {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    background-color: var(--accent);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 10;
+}
+
+.hero-about-btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+        <a href="about.html" class="hero-about-btn">About Me</a>
 
         /* Content Sections */
         .content-section {
