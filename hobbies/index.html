@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bowling & Ultimate Frisbee / Disc Golf - JFed's Life</title>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --accent: #b8546d;
+            --accent-hover: #9a4158;
+            --accent-secondary: #d97742;
+            --border: #dee2e6;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #f8f9fa;
+            --text-secondary: #adb5bd;
+            --accent: #c97084;
+            --accent-hover: #d88798;
+            --accent-secondary: #e89560;
+            --border: #495057;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--bg-secondary);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-container {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            border: 4px solid #1a1a1a;
+            box-shadow: 
+                0 0 0 2px #444,
+                0 0 0 6px #1a1a1a,
+                0 2px 8px rgba(0,0,0,0.4);
+            position: relative;
+            display: block;
+        }
+
+        [data-theme="dark"] .logo-img {
+            border: 4px solid #2a2a2a;
+            box-shadow: 
+                0 0 0 2px #555,
+                0 0 0 6px #2a2a2a,
+                0 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+       .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--bg-secondary);
+    min-width: 200px;
+    box-shadow: 0 4px 12px var(--shadow);
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.dropdown-content.active {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: var(--text-primary) !important;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--accent);
+    color: white !important;
+}
+
+        .dropdown > a::after {
+            content: ' ▾';
+            font-size: 0.8rem;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            display: flex;
+            gap: 0.5rem;
+            background-color: var(--bg-primary);
+            padding: 0.5rem;
+            border-radius: 25px;
+            border: 2px solid var(--border);
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            min-width: 40px;
+        }
+
+        .theme-btn:hover {
+            color: var(--accent);
+        }
+
+        .theme-btn.active {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, #b8546d 0%, #d97742 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Stats Box */
+        .stats-box {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--bg-primary);
+            border-radius: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .spare-percentages {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .spare-item {
+            text-align: center;
+            padding: 0.75rem;
+            background-color: var(--bg-primary);
+            border-radius: 8px;
+        }
+
+        .spare-item .pin-number {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .spare-item .percentage {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Tips Section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tip-card {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .tip-card h3 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .tip-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* In The Bag */
+        .disc-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .disc-item {
+            background-color: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .disc-item h4 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .disc-type {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .disc-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Tournament Section */
+        .tournament-section {
+            background-color: var(--bg-secondary);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin: 4rem auto;
+        }
+
+        .tournament-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tournament-card {
+            background-color: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .tournament-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tournament-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .tournament-result {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Tab Navigation */
+        .tab-navigation {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            bottom: -2px;
+        }
+
+        .tab-btn:hover {
+            color: var(--accent);
+        }
+
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .article-card {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #666 0%, #999 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .article-card h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .article-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Archive List */
+        .archive-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .archive-item {
+            background-color: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .archive-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .archive-item h3 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .archive-item p {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .contact-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem 0;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                margin-top: 0;
+                background-color: var(--bg-primary);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .page-hero p {
+                font-size: 1rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .spare-percentages {
+                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg" alt="JFed's Life Logo" class="logo-img" id="logoImage">
+                </div>
+                <h1>JFed's Life</h1>
+            </a>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+    <li><a href="/">Home</a></li>
+    <li><a href="/aboutme">About Me</a></li>
+    <li class="dropdown">
+        <a href="#business">Business</a>
+        <div class="dropdown-content">
+            <a href="/weddings">Weddings</a>
+            <a href="/sports">Sports Photography</a>
+            <a href="/gear">Gear</a>
+        </div>
+    </li>
+    <li class="dropdown">
+        <a href="#personal">Personal</a>
+        <div class="dropdown-content">
+            <a href="/content">Content Creation</a>
+            <a href="/faith">Faith & Life</a>
+            <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
+        </div>
+    </li>
+    <li><a href="/faq">FAQ</a></li>
+</ul>
+
+    <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
+    <div class="theme-toggle">
+        <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
+            Light
+        </button>
+        <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
+            Dark
+        </button>
+        <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
+            System
+        </button>
+    </div>
+</nav>
+    <main>
+        <section class="page-hero">
+            <h1>Bowling & Ultimate Frisbee / Disc Golf</h1>
+            <p>Competitive passion meets recreational fun in the sports I love</p>
+        </section>
+
+        <!-- Bowling Section -->
+        <section class="content-section">
+            <h2 class="section-title">Bowling</h2>
+            <p class="intro-text">Bowling has been a passion of mine for years. Whether it's competitive league play or casual games with friends, there's something special about the precision and strategy involved in the sport.</p>
+            
+            <div class="stats-box">
+                <h3 style="color: var(--accent); margin-bottom: 1rem;">Current League Stats 25-26</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-label">Average</div>
+                        <div class="stat-value">221</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">High Game</div>
+                        <div class="stat-value">259</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">High Series</div>
+                        <div class="stat-value">749</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Low Game</div>
+                        <div class="stat-value">170</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Low Series</div>
+                        <div class="stat-value">597</div>
+                    </div>
+                        <div class="stat-item">
+                        <div class="stat-label">All Time High Game</div>
+                        <div class="stat-value">290</div>
+                    </div>
+                        <div class="stat-item">
+                        <div class="stat-label">All Time High Series</div>
+                        <div class="stat-value">749</div>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--accent); margin-top: 2rem; margin-bottom: 1rem;">Spare Conversion by Pin</h4>
+                <div class="spare-percentages">
+                    <div class="spare-item">
+                        <div class="pin-number">1 Pin</div>
+                        <div class="percentage">100%</div>
+                    </div>
+                    <div class="spare-item">
+                        <div class="pin-number">2 Pin</div>
+                        <div class="percentage">100%</div>
+                    </div>
+                    <div class="spare-item">
+                        <div class="pin-number">3 Pin</div>
+                        <div class="percentage">100%</div>
+                    </div>
+                    <div class="spare-item">
+                        <div class="pin-number">4 Pin</div>
+                        <div class="percentage">88%</div>
+                    </div>
+                    <div class="spare-item">
+                        <div class="pin-number">5 Pin</div>
+                        <div class="percentage">100%</div>
+                    </div>
+                    <div class="spare-item">
+                        <div class="pin-number">6 Pin</div>
+                        <div class="percentage">100%</div>
+                    </div>
+                    <div class="spare-item">
+                        <div class="pin-number">7 Pin</div>
+                        <div class="percentage">100%</div>
+                    </div>
+                    <div class="spare-item">
+                        <div class="pin-number">8 Pin</div>
+                        <div class="percentage">100%</div>
+                    </div>
+                    <div class="spare-item">
+                        <div class="pin-number">9 Pin</div>
+                        <div class="percentage">100%</div>
+                    </div>
+                    <div class="spare-item">
+                        <div class="pin-number">10 Pin</div>
+                        <div class="percentage">75%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ultimate Frisbee Section -->
+        <section class="content-section">
+            <h2 class="section-title">Ultimate Frisbee</h2>
+            <p class="intro-text">Ultimate is the perfect blend of athleticism, strategy, and team spirit. It's fast-paced, demanding, and incredibly rewarding.</p>
+            
+            <h3 style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1.5rem; margin-top: 2rem;">Tips for Beginners</h3>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3>Master the Basics First</h3>
+                    <p>Focus on learning proper throwing technique and catching fundamentals before worrying about advanced moves. A solid foundation will serve you throughout your ultimate career.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>Communication is Key</h3>
+                    <p>Ultimate is a team sport that requires constant communication. Call for the disc, signal cuts, and talk on defense. Your voice is just as important as your physical skills.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>Understand Positioning</h3>
+                    <p>Learn how to create and use space on the field. Good positioning makes everything easier - from getting open to making throws to playing effective defense.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>Build Your Endurance</h3>
+                    <p>Ultimate demands sustained sprinting and quick recovery. Work on cardiovascular fitness and explosive speed to keep up with the pace of the game.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disc Golf Section -->
+        <section class="content-section" style="background-color: var(--bg-secondary); padding: 3rem 2rem; border-radius: 12px;">
+            <h2 class="section-title">Disc Golf</h2>
+            <p class="intro-text">Disc golf combines the precision of golf with the accessibility of frisbee. It's a great way to enjoy the outdoors while challenging yourself.</p>
+            
+            <h3 style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1.5rem; margin-top: 2rem;">In The Bag</h3>
+            <div class="disc-list">
+                <div class="disc-item">
+                    <h4>MVP Fission Dimension</h4>
+                    <div class="disc-type">Driver</div>
+                    <p>My go to distance bomber, because I have a noodle arm lol. 14 speed, but it's lightweight and the fission plastic makes it less stable. So it's perfect for amateur arms like me.</p>
+                </div>
+                <div class="disc-item">
+                    <h4>Axiom Hex</h4>
+                    <div class="disc-type">Midrange</div>
+                    <p>I love the versatility of this disc, perfect for forehands and backhands. Very reliable fade for me.</p>
+                </div>
+                <div class="disc-item">
+                    <h4>Simon Line Pixel</h4>
+                    <div class="disc-type">Putter</div>
+                    <p>Love the glide this putter has, feels good in my hand. I'm not the best putter, but love using this disc, even for short upshots as well.</p>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1.5rem; margin-top: 3rem;">Tips for Beginners</h3>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3>Start with Putters</h3>
+                    <p>Learn proper form with slower, more controllable putters before moving to drivers. Bad habits are harder to break once ingrained.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>Focus on Accuracy Over Distance</h3>
+                    <p>A disc in the fairway at 200 feet is better than one in the woods at 300 feet. Control comes before power.</p>
+                </div>
+                <div class="tip-card">
+                    <h3>Learn Course Etiquette</h3>
+                    <p>Respect other players, take care of the course, and understand the pace of play. Good etiquette makes the sport enjoyable for everyone.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tournament Section -->
+        <section class="content-section tournament-section">
+            <h2 class="section-title">Tournaments & Results</h2>
+            <p class="intro-text">Here are some recent tournaments and competitions I've participated in across bowling, ultimate frisbee, and disc golf.</p>
+            
+            <div class="tournament-grid">
+                <div class="tournament-card">
+                    <h3>Shot of the Week - Non Series</h3>
+                    <p class="tournament-date">November 8th</p>
+                    <p class="tournament-result">Result TBD</p>
+                </div>
+                <div class="tournament-card">
+                    <h3>Shot of the Week - Series 2</h3>
+                    <p class="tournament-date">November 29th</p>
+                    <p class="tournament-result">Result TBD</p>
+                </div>
+                <div class="tournament-card">
+                    <h3>Tournament Name</h3>
+                    <p class="tournament-date">Date TBD</p>
+                    <p class="tournament-result">Result TBD</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Section -->
+        <section class="content-section">
+            <h2 class="section-title">Articles</h2>
+            
+            <div class="tab-navigation">
+                <button class="tab-btn active" onclick="switchTab('recent')">Recent Posts</button>
+                <button class="tab-btn" onclick="switchTab('archive')">Archive</button>
+            </div>
+
+            <div id="recent" class="tab-content active">
+                <div class="articles-grid">
+                    <p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); font-size: 1.1rem; padding: 3rem;">No recent posts yet. Check back soon for new content!</p>
+                </div>
+            </div>
+
+            <div id="archive" class="tab-content">
+                <div class="archive-list">
+                    <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; padding: 3rem;">No archived posts yet.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
+                    Facebook
+                </a>
+                <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
+                    Instagram
+                </a>
+                <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
+                    TikTok
+                </a>
+                <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
+                    YouTube
+                </a>
+                <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
+                    Vimeo
+                </a>
+            </div>
+            
+            <a href="https://www.chiefadventures.org/contact" class="contact-btn">
+                Contact Me
+            </a>
+            
+            <div class="copyright">
+                <p>&copy; 2025 JFed's Life. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function setTheme(theme) {
+            const html = document.documentElement;
+            const lightBtn = document.getElementById('lightBtn');
+            const systemBtn = document.getElementById('systemBtn');
+            const darkBtn = document.getElementById('darkBtn');
+            
+            [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
+            
+            if (theme === 'system') {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+                systemBtn.classList.add('active');
+                localStorage.setItem('theme', 'system');
+            } else {
+                html.setAttribute('data-theme', theme);
+                if (theme === 'light') lightBtn.classList.add('active');
+                else darkBtn.classList.add('active');
+                localStorage.setItem('theme', theme);
+            }
+        }
+
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function switchTab(tabName) {
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'system';
+            setTheme(savedTheme);
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (localStorage.getItem('theme') === 'system') {
+                setTheme('system');
+            }
+        });
+        // Close dropdowns when clicking outside
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
+});
+
+// Toggle dropdowns on click
+document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+    dropdownLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Close other dropdowns
+        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+            if (dropdown !== this.nextElementSibling) {
+                dropdown.classList.remove('active');
+            }
+        });
+        
+        // Toggle this dropdown
+        const dropdownContent = this.nextElementSibling;
+        dropdownContent.classList.toggle('active');
+    });
+});
+    </script>
+</body>
+</html>
