@@ -685,34 +685,6 @@
             loadHeroImage();
         });
 
-        async function loadHeroImage() {
-            try {
-                let imageData;
-                const filenames = ['image (2).jpg', 'image (3).jpg', 'wedding-hero.jpg', 'hero.jpg'];
-                
-                for (const filename of filenames) {
-                    try {
-                        imageData = await window.fs.readFile(filename);
-                        break;
-                    } catch (e) {
-                        continue;
-                    }
-                }
-                
-                if (!imageData) {
-                    throw new Error('No image found');
-                }
-                
-                const blob = new Blob([imageData], { type: 'image/jpeg' });
-                const url = URL.createObjectURL(blob);
-                
-                const heroSection = document.querySelector('.page-hero');
-                heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${url}')`;
-            } catch (error) {
-                console.log('Could not load hero image, using gradient fallback', error);
-            }
-        }
-
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
             if (localStorage.getItem('theme') === 'system') {
                 setTheme('system');
