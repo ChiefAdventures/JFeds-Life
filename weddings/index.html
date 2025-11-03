@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Videography - JFed's Life</title>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --accent: #b8546d;
+            --accent-hover: #9a4158;
+            --accent-secondary: #d97742;
+            --border: #dee2e6;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #f8f9fa;
+            --text-secondary: #adb5bd;
+            --accent: #c97084;
+            --accent-hover: #d88798;
+            --accent-secondary: #e89560;
+            --border: #495057;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--bg-secondary);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-container {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            border: 4px solid #1a1a1a;
+            box-shadow: 
+                0 0 0 2px #444,
+                0 0 0 6px #1a1a1a,
+                0 2px 8px rgba(0,0,0,0.4);
+            position: relative;
+            display: block;
+        }
+
+        [data-theme="dark"] .logo-img {
+            border: 4px solid #2a2a2a;
+            box-shadow: 
+                0 0 0 2px #555,
+                0 0 0 6px #2a2a2a,
+                0 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-secondary);
+            min-width: 200px;
+            box-shadow: 0 4px 12px var(--shadow);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .dropdown-content.active {
+            display: block;
+        }
+
+.dropdown-content a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: var(--text-primary) !important;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--accent);
+    color: white !important;
+}
+
+        .dropdown > a::after {
+            content: ' ▾';
+            font-size: 0.8rem;
+        }
+
+        .theme-toggle {
+            display: flex;
+            gap: 0.5rem;
+            background-color: var(--bg-primary);
+            padding: 0.5rem;
+            border-radius: 25px;
+            border: 2px solid var(--border);
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            min-width: 40px;
+        }
+
+        .theme-btn:hover {
+            color: var(--accent);
+        }
+
+        .theme-btn.active {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+       .page-hero {
+    background: linear-gradient(135deg, #b8546d 0%, #d97742 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.page-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.page-hero p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+        .content-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .intro-text p {
+            margin-bottom: 1rem;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .approach-card {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .approach-card h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .approach-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow);
+            background-color: var(--bg-secondary);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+
+        .video-title {
+            margin-top: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .cta-section {
+            background-color: var(--bg-secondary);
+            padding: 3rem 2rem;
+            margin: 4rem auto;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 1200px;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .cta-button.secondary {
+            background-color: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .cta-button.secondary:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: scale(1.2);
+        }
+
+        .contact-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem 0;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                margin-top: 0;
+                background-color: var(--bg-primary);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .page-hero p {
+                font-size: 1rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg" alt="JFed's Life Logo" class="logo-img" id="logoImage">
+                </div>
+                <h1>JFed's Life</h1>
+            </a>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+    <li><a href="/">Home</a></li>
+    <li><a href="/aboutme">About Me</a></li>
+    <li class="dropdown">
+        <a href="#business">Business</a>
+        <div class="dropdown-content">
+            <a href="/weddings">Weddings</a>
+            <a href="/sports_photography">Sports Photography</a>
+            <a href="/gear">Gear</a>
+        </div>
+    </li>
+    <li class="dropdown">
+        <a href="#personal">Personal</a>
+        <div class="dropdown-content">
+            <a href="/content">Content Creation</a>
+            <a href="/faith">Faith & Life</a>
+            <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
+        </div>
+    </li>
+    <li><a href="/faq">FAQ</a></li>
+</ul>
+
+    <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
+    <div class="theme-toggle">
+        <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
+            Light
+        </button>
+        <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
+            Dark
+        </button>
+        <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
+            System
+        </button>
+    </div>
+</nav>
+
+    <main>
+        <section class="page-hero">
+            <h1>Wedding Videography</h1>
+            <p>Cinematic storytelling that captures the heart and soul of your special day</p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">My Approach</h2>
+            <div class="intro-text">
+                <p>Your wedding day is one of the most important moments of your life, filled with emotions, laughter, tears of joy, and unforgettable memories. My goal is to capture these authentic moments as they naturally unfold, creating a timeless film that tells your unique love story.</p>
+                <p>I blend documentary-style coverage with carefully crafted cinematic shots to create wedding films that feel both genuine and beautifully produced. From the intimate getting-ready moments to the grand celebration on the dance floor, every detail matters.</p>
+            </div>
+
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <h3>Authentic Storytelling</h3>
+                    <p>I focus on capturing real emotions and genuine moments that reflect who you are as a couple. No forced poses or awkward setups—just your day, document it as it happens.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Cinematic Quality</h3>
+                    <p>Using professional equipment and techniques, I film with smooth motion, lighting when needed, and audio to capture those laughs and precious moments.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Full-Day Coverage</h3>
+                    <p>From preparation to send-off, I'm there to capture every significant moment, ensuring nothing important is missed on your special day.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" style="background-color: var(--bg-secondary); padding: 3rem 2rem; border-radius: 12px; margin: 4rem auto;">
+            <h2 class="section-title">Recent Wedding Films</h2>
+            <p class="intro-text">Here are some of my recent projects that showcase the style and quality you can expect for your wedding day.</p>
+            
+            <div class="video-grid">
+                <div>
+                    <div class="video-container">
+                        <iframe src="https://player.vimeo.com/video/1116629684?badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Chloe + Carson / Nebraska Wedding Film / April 27th, 2024"></iframe>
+                    </div>
+                    <p class="video-title">Chloe + Carson | Nebraska Wedding Film</p>
+                </div>
+
+                <div>
+                    <div class="video-container">
+                        <iframe src="https://player.vimeo.com/video/1116629214?badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Lindsay + John / California Wedding Film / October 9th, 2021"></iframe>
+                    </div>
+                    <p class="video-title">Lindsay + John | California Wedding Film</p>
+                </div>
+
+                <div>
+                    <div class="video-container">
+                        <iframe src="https://player.vimeo.com/video/1116628883?badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Alyssa + Caleb / Wisconsin Wedding Film / October 2nd, 2021"></iframe>
+                    </div>
+                    <p class="video-title">Alyssa + Caleb | Wisconsin Wedding Film</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to Tell Your Story?</h2>
+            <p>Let's create a beautiful wedding film that you'll treasure for a lifetime. Visit Chief Adventures to learn more about packages, pricing, and availability.</p>
+            <div class="cta-buttons">
+                <a href="https://www.chiefadventures.org/portfolio/engagement" class="cta-button" target="_blank">
+                    View Full Portfolio
+                </a>
+                <a href="https://www.chiefadventures.org/contact" class="cta-button secondary">
+                    Book Your Date
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
+                    Facebook
+                </a>
+                <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
+                    Instagram
+                </a>
+                <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
+                    TikTok
+                </a>
+                <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
+                    YouTube
+                </a>
+                <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
+                    Vimeo
+                </a>
+            </div>
+            
+            <a href="https://www.chiefadventures.org/contact" class="contact-btn">
+                Contact Me
+            </a>
+            
+            <div class="copyright">
+                <p>&copy; 2025 JFed's Life. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+        function setTheme(theme) {
+            const html = document.documentElement;
+            const lightBtn = document.getElementById('lightBtn');
+            const systemBtn = document.getElementById('systemBtn');
+            const darkBtn = document.getElementById('darkBtn');
+            
+            [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
+            
+            if (theme === 'system') {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+                systemBtn.classList.add('active');
+                localStorage.setItem('theme', 'system');
+            } else {
+                html.setAttribute('data-theme', theme);
+                if (theme === 'light') lightBtn.classList.add('active');
+                else darkBtn.classList.add('active');
+                localStorage.setItem('theme', theme);
+            }
+        }
+
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'system';
+            setTheme(savedTheme);
+            loadHeroImage();
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (localStorage.getItem('theme') === 'system') {
+                setTheme('system');
+            }
+        });
+        // Close dropdowns when clicking outside
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
+});
+
+// Toggle dropdowns on click
+document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+    dropdownLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Close other dropdowns
+        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+            if (dropdown !== this.nextElementSibling) {
+                dropdown.classList.remove('active');
+            }
+        });
+        
+        // Toggle this dropdown
+        const dropdownContent = this.nextElementSibling;
+        dropdownContent.classList.toggle('active');
+    });
+});
+    </script>
+</body>
+</html>
