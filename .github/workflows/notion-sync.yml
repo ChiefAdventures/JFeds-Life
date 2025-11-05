@@ -6,30 +6,24 @@ on:
 jobs:
   sync-notion:
     runs-on: ubuntu-latest
+    
     permissions:
       contents: write
-
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
+      
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-
-      - name: Clean environment and install correct dependencies
+      
+      - name: Install dependencies
         run: |
-          rm -rf node_modules package-lock.json
-          npm cache clean --force
           npm init -y
-          echo '{"type": "commonjs"}' > package.json
-          npm install @notionhq/client@2.2.14 notion-to-md@3.1.1
-          npm uninstall notion || true
-          echo "Verifying correct Notion client..."
-          node -e "const pkg=require('@notionhq/client/package.json'); console.log('Loaded Notion SDK version:',pkg.version)"
-          node -e "const { Client } = require('@notionhq/client'); console.log(typeof Client === 'function' ? '✅ SDK verified' : '❌ Broken SDK')"
-
+          npm install @notionhq/client notion-to-md
+      
       - name: Create sync script
         run: |
           cat > sync-notion.js << 'EOFJS'
@@ -43,10 +37,6 @@ jobs:
 
           async function syncArticles() {
             try {
-              if (!notion.databases || typeof notion.databases.query !== 'function') {
-                throw new Error('Notion client missing databases.query(). Check SDK installation.');
-              }
-
               const response = await notion.databases.query({
                 database_id: process.env.NOTION_DATABASE_ID,
                 filter: {
@@ -57,10 +47,10 @@ jobs:
               });
 
               const articles = [];
-
+              
               for (const page of response.results) {
                 const title = page.properties.Name?.title?.[0]?.plain_text || 'Untitled';
-                const slug = page.properties.Slug?.rich_text?.[0]?.plain_text ||
+                const slug = page.properties.Slug?.rich_text?.[0]?.plain_text || 
                              title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
                 const date = page.properties.Date?.date?.start || new Date().toISOString().split('T')[0];
                 const excerpt = page.properties.Excerpt?.rich_text?.[0]?.plain_text || '';
@@ -78,7 +68,7 @@ jobs:
                   .replace(/\*(.*)\*/gim, '<em>$1</em>')
                   .replace(/\n\n/g, '</p><p>')
                   .replace(/\n/g, '<br>');
-
+                
                 htmlContent = '<p>' + htmlContent + '</p>';
 
                 articles.push({ title, slug, date, excerpt, category, content: htmlContent });
@@ -86,105 +76,102 @@ jobs:
               }
 
               updateFaithLifePage(articles);
-              console.log('✅ Successfully synced ' + articles.length + ' articles!');
+              console.log('Successfully synced ' + articles.length + ' articles!');
             } catch (error) {
-              console.error('❌ Error syncing articles:', error);
+              console.error('Error syncing articles:', error);
               process.exit(1);
             }
           }
 
           function createArticlePage(title, slug, date, excerpt, category, content) {
-            const formattedDate = new Date(date).toLocaleDateString('en-US', {
-              year: 'numeric', month: 'long', day: 'numeric'
+            const formattedDate = new Date(date).toLocaleDateString('en-US', { 
+              year: 'numeric', month: 'long', day: 'numeric' 
             });
-
-            const articleHTML = `<!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>${title} - JFed's Life</title>
-            <link rel="stylesheet" href="/article-styles.css">
-          </head>
-          <body>
-            <header><nav>
-              <a href="/" class="logo">JFed's Life</a>
-              <a href="/faith_life" class="back-link">← Back to Faith & Life</a>
-            </nav></header>
-            <main><article>
-              <div class="article-header">
-                <h1 class="article-title">${title}</h1>
-                <div class="article-meta">
-                  <span>${formattedDate}</span>
-                  <span> • ${category}</span>
-                </div>
-              </div>
-              <div class="article-content">${content}</div>
-            </article></main>
-            <footer><p>&copy; 2025 JFed's Life. All rights reserved.</p></footer>
-          </body></html>`;
+            
+            const articleHTML = '<!DOCTYPE html>\n<html lang="en">\n<head>\n' +
+              '<meta charset="UTF-8">\n' +
+              '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
+              '<title>' + title + ' - JFed\'s Life</title>\n' +
+              '<link rel="stylesheet" href="/article-styles.css">\n' +
+              '</head>\n<body>\n' +
+              '<header><nav>\n' +
+              '<a href="/" class="logo">JFed\'s Life</a>\n' +
+              '<a href="/faith_life" class="back-link">← Back to Faith & Life</a>\n' +
+              '</nav></header>\n' +
+              '<main><article>\n' +
+              '<div class="article-header">\n' +
+              '<h1 class="article-title">' + title + '</h1>\n' +
+              '<div class="article-meta">\n' +
+              '<span>' + formattedDate + '</span>\n' +
+              '<span> • ' + category + '</span>\n' +
+              '</div></div>\n' +
+              '<div class="article-content">' + content + '</div>\n' +
+              '</article></main>\n' +
+              '<footer><p>&copy; 2025 JFed\'s Life. All rights reserved.</p></footer>\n' +
+              '</body></html>';
 
             const dir = path.join(process.cwd(), 'faith_life');
-            if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+            if (!fs.existsSync(dir)) {
+              fs.mkdirSync(dir, { recursive: true });
+            }
             fs.writeFileSync(path.join(dir, slug + '.html'), articleHTML);
-            console.log('📝 Created article:', slug + '.html');
+            console.log('Created article: ' + slug + '.html');
           }
 
           function updateFaithLifePage(articles) {
             const articlesHTML = articles.map(article => {
-              const formattedDate = new Date(article.date).toLocaleDateString('en-US', {
-                year: 'numeric', month: 'long', day: 'numeric'
+              const formattedDate = new Date(article.date).toLocaleDateString('en-US', { 
+                year: 'numeric', month: 'long', day: 'numeric' 
               });
-              return `<div class="article-card">
-                <div class="article-date">${formattedDate}</div>
-                <h3>${article.title}</h3>
-                <p class="article-excerpt">${article.excerpt}</p>
-                <a href="/faith_life/${article.slug}" class="read-more">Read More →</a>
-              </div>`;
+              return '<div class="article-card">\n' +
+                '<div class="article-date">' + formattedDate + '</div>\n' +
+                '<h3>' + article.title + '</h3>\n' +
+                '<p class="article-excerpt">' + article.excerpt + '</p>\n' +
+                '<a href="/faith_life/' + article.slug + '" class="read-more">Read More →</a>\n' +
+                '</div>';
             }).join('\n');
 
-            const articlesSection = articles.length > 0
-              ? `<div class="articles-grid">${articlesHTML}</div>`
+            const articlesSection = articles.length > 0 
+              ? '<div class="articles-grid">' + articlesHTML + '</div>'
               : '<p class="no-articles">No articles published yet. Check back soon!</p>';
 
-            const indexHTML = `<!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Faith & Life - JFed's Life</title>
-            <link rel="stylesheet" href="/faith-life-styles.css">
-          </head>
-          <body>
-            <header><nav>
-              <a href="/" class="logo">JFed's Life</a>
-            </nav></header>
-            <section class="page-hero">
-              <h1>Faith & Life</h1>
-              <p>Reflections, insights, and stories about living with purpose and intention</p>
-            </section>
-            <main>
-              <h2 class="section-title">Recent Articles</h2>
-              ${articlesSection}
-            </main>
-            <footer><p>&copy; 2025 JFed's Life. All rights reserved.</p></footer>
-          </body></html>`;
+            const indexHTML = '<!DOCTYPE html>\n<html lang="en">\n<head>\n' +
+              '<meta charset="UTF-8">\n' +
+              '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
+              '<title>Faith & Life - JFed\'s Life</title>\n' +
+              '<link rel="stylesheet" href="/faith-life-styles.css">\n' +
+              '</head>\n<body>\n' +
+              '<header><nav>\n' +
+              '<a href="/" class="logo">JFed\'s Life</a>\n' +
+              '</nav></header>\n' +
+              '<section class="page-hero">\n' +
+              '<h1>Faith & Life</h1>\n' +
+              '<p>Reflections, insights, and stories about living with purpose and intention</p>\n' +
+              '</section>\n' +
+              '<main>\n' +
+              '<h2 class="section-title">Recent Articles</h2>\n' +
+              articlesSection + '\n' +
+              '</main>\n' +
+              '<footer><p>&copy; 2025 JFed\'s Life. All rights reserved.</p></footer>\n' +
+              '</body></html>';
 
             const dir = path.join(process.cwd(), 'faith_life');
-            if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+            if (!fs.existsSync(dir)) {
+              fs.mkdirSync(dir, { recursive: true });
+            }
             fs.writeFileSync(path.join(dir, 'index.html'), indexHTML);
-            console.log('📄 Updated faith_life/index.html');
+            console.log('Updated faith_life/index.html');
           }
 
           syncArticles();
           EOFJS
-
+      
       - name: Run sync
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
         run: node sync-notion.js
-
+      
       - name: Commit and push changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
