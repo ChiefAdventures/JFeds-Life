@@ -6,7 +6,6 @@ on:
 jobs:
   sync-notion:
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
 
@@ -22,13 +21,14 @@ jobs:
       - name: Clean environment and install correct dependencies
         run: |
           rm -rf node_modules package-lock.json
+          npm cache clean --force
           npm init -y
           echo '{"type": "commonjs"}' > package.json
-          npm install @notionhq/client@latest notion-to-md@latest
+          npm install @notionhq/client@2.2.14 notion-to-md@3.1.1
           npm uninstall notion || true
-          npm list @notionhq/client
-          node -p "require('@notionhq/client').Client ? '✅ Notion SDK OK' : '❌ Broken SDK'"
-
+          echo "Verifying correct Notion client..."
+          node -e "const pkg=require('@notionhq/client/package.json'); console.log('Loaded Notion SDK version:',pkg.version)"
+          node -e "const { Client } = require('@notionhq/client'); console.log(typeof Client === 'function' ? '✅ SDK verified' : '❌ Broken SDK')"
 
       - name: Create sync script
         run: |
@@ -43,7 +43,6 @@ jobs:
 
           async function syncArticles() {
             try {
-              // Confirm that query function exists before running
               if (!notion.databases || typeof notion.databases.query !== 'function') {
                 throw new Error('Notion client missing databases.query(). Check SDK installation.');
               }
@@ -126,9 +125,7 @@ jobs:
           </body></html>`;
 
             const dir = path.join(process.cwd(), 'faith_life');
-            if (!fs.existsSync(dir)) {
-              fs.mkdirSync(dir, { recursive: true });
-            }
+            if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
             fs.writeFileSync(path.join(dir, slug + '.html'), articleHTML);
             console.log('📝 Created article:', slug + '.html');
           }
@@ -174,9 +171,7 @@ jobs:
           </body></html>`;
 
             const dir = path.join(process.cwd(), 'faith_life');
-            if (!fs.existsSync(dir)) {
-              fs.mkdirSync(dir, { recursive: true });
-            }
+            if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
             fs.writeFileSync(path.join(dir, 'index.html'), indexHTML);
             console.log('📄 Updated faith_life/index.html');
           }
