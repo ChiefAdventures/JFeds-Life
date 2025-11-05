@@ -1,11 +1,14 @@
 name: Sync Notion to Website
 
 on:
-  workflow_dispatch:  # Manually trigger this workflow
+  workflow_dispatch:
 
 jobs:
   sync-notion:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
     
     steps:
       - name: Checkout repository
@@ -19,14 +22,11 @@ jobs:
       - name: Install dependencies
         run: |
           npm init -y
-          npm install @notionhq/client @notionhq/client notion-to-md
+          npm install @notionhq/client notion-to-md
       
-      - name: Sync Notion articles
-        env:
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+      - name: Create sync script
         run: |
-          cat > sync-notion.js << 'EOF'
+          cat > sync-notion.js << 'EOFJS'
           const { Client } = require('@notionhq/client');
           const { NotionToMarkdown } = require('notion-to-md');
           const fs = require('fs');
@@ -37,26 +37,17 @@ jobs:
 
           async function syncArticles() {
             try {
-              // Query published articles from Notion
               const response = await notion.databases.query({
                 database_id: process.env.NOTION_DATABASE_ID,
                 filter: {
                   property: 'Published',
-                  checkbox: {
-                    equals: true
-                  }
+                  checkbox: { equals: true }
                 },
-                sorts: [
-                  {
-                    property: 'Date',
-                    direction: 'descending'
-                  }
-                ]
+                sorts: [{ property: 'Date', direction: 'descending' }]
               });
 
               const articles = [];
               
-              // Process each article
               for (const page of response.results) {
                 const title = page.properties.Name?.title?.[0]?.plain_text || 'Untitled';
                 const slug = page.properties.Slug?.rich_text?.[0]?.plain_text || 
@@ -65,12 +56,10 @@ jobs:
                 const excerpt = page.properties.Excerpt?.rich_text?.[0]?.plain_text || '';
                 const category = page.properties.Category?.select?.name || 'General';
 
-                // Get article content
                 const mdblocks = await n2m.pageToMarkdown(page.id);
                 const mdString = n2m.toMarkdownString(mdblocks);
                 const content = mdString.parent || '';
 
-                // Convert markdown to HTML (simple conversion)
                 let htmlContent = content
                   .replace(/^# (.*$)/gim, '<h1>$1</h1>')
                   .replace(/^## (.*$)/gim, '<h2>$1</h2>')
@@ -82,23 +71,12 @@ jobs:
                 
                 htmlContent = '<p>' + htmlContent + '</p>';
 
-                articles.push({
-                  title,
-                  slug,
-                  date,
-                  excerpt,
-                  category,
-                  content: htmlContent
-                });
-
-                // Create individual article page
+                articles.push({ title, slug, date, excerpt, category, content: htmlContent });
                 createArticlePage(title, slug, date, excerpt, category, htmlContent);
               }
 
-              // Update faith_life index page with article list
               updateFaithLifePage(articles);
-
-              console.log(`Successfully synced ${articles.length} articles!`);
+              console.log('Successfully synced ' + articles.length + ' articles!');
             } catch (error) {
               console.error('Error syncing articles:', error);
               process.exit(1);
@@ -106,373 +84,93 @@ jobs:
           }
 
           function createArticlePage(title, slug, date, excerpt, category, content) {
-            const articleHTML = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${title} - JFed's Life</title>
-    <style>
-        :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --text-primary: #212529;
-            --text-secondary: #6c757d;
-            --accent: #b8546d;
-            --accent-hover: #9a4158;
-            --border: #dee2e6;
-            --shadow: rgba(0, 0, 0, 0.1);
-        }
+            const formattedDate = new Date(date).toLocaleDateString('en-US', { 
+              year: 'numeric', month: 'long', day: 'numeric' 
+            });
+            
+            const articleHTML = '<!DOCTYPE html>\n<html lang="en">\n<head>\n' +
+              '<meta charset="UTF-8">\n' +
+              '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
+              '<title>' + title + ' - JFed\'s Life</title>\n' +
+              '<link rel="stylesheet" href="/article-styles.css">\n' +
+              '</head>\n<body>\n' +
+              '<header><nav>\n' +
+              '<a href="/" class="logo">JFed\'s Life</a>\n' +
+              '<a href="/faith_life" class="back-link">← Back to Faith & Life</a>\n' +
+              '</nav></header>\n' +
+              '<main><article>\n' +
+              '<div class="article-header">\n' +
+              '<h1 class="article-title">' + title + '</h1>\n' +
+              '<div class="article-meta">\n' +
+              '<span>' + formattedDate + '</span>\n' +
+              '<span> • ' + category + '</span>\n' +
+              '</div></div>\n' +
+              '<div class="article-content">' + content + '</div>\n' +
+              '</article></main>\n' +
+              '<footer><p>&copy; 2025 JFed\'s Life. All rights reserved.</p></footer>\n' +
+              '</body></html>';
 
-        [data-theme="dark"] {
-            --bg-primary: #1a1a1a;
-            --bg-secondary: #2d2d2d;
-            --text-primary: #f8f9fa;
-            --text-secondary: #adb5bd;
-            --accent: #c97084;
-            --accent-hover: #d88798;
-            --border: #495057;
-            --shadow: rgba(0, 0, 0, 0.3);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--bg-secondary);
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px var(--shadow);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .back-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .back-link:hover {
-            color: var(--accent-hover);
-        }
-
-        main {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 2rem;
-        }
-
-        .article-header {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .article-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .article-meta {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .article-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .article-content h1,
-        .article-content h2,
-        .article-content h3 {
-            margin: 2rem 0 1rem;
-            color: var(--text-primary);
-        }
-
-        .article-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        footer {
-            background-color: var(--bg-secondary);
-            padding: 2rem;
-            margin-top: 4rem;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="/" class="logo">JFed's Life</a>
-            <a href="/faith_life" class="back-link">← Back to Faith & Life</a>
-        </nav>
-    </header>
-
-    <main>
-        <article>
-            <div class="article-header">
-                <h1 class="article-title">${title}</h1>
-                <div class="article-meta">
-                    <span>${new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                    <span> • ${category}</span>
-                </div>
-            </div>
-            <div class="article-content">
-                ${content}
-            </div>
-        </article>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 JFed's Life. All rights reserved.</p>
-    </footer>
-</body>
-</html>`;
-
-            // Create faith_life directory if it doesn't exist
             const dir = path.join(process.cwd(), 'faith_life');
             if (!fs.existsSync(dir)) {
               fs.mkdirSync(dir, { recursive: true });
             }
-
-            // Write article file
-            fs.writeFileSync(path.join(dir, `${slug}.html`), articleHTML);
-            console.log(`Created article: ${slug}.html`);
+            fs.writeFileSync(path.join(dir, slug + '.html'), articleHTML);
+            console.log('Created article: ' + slug + '.html');
           }
 
           function updateFaithLifePage(articles) {
-            const articlesHTML = articles.map(article => `
-                <div class="article-card">
-                    <div class="article-date">${new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-                    <h3>${article.title}</h3>
-                    <p class="article-excerpt">${article.excerpt}</p>
-                    <a href="/faith_life/${article.slug}" class="read-more">Read More →</a>
-                </div>
-            `).join('\n');
+            const articlesHTML = articles.map(article => {
+              const formattedDate = new Date(article.date).toLocaleDateString('en-US', { 
+                year: 'numeric', month: 'long', day: 'numeric' 
+              });
+              return '<div class="article-card">\n' +
+                '<div class="article-date">' + formattedDate + '</div>\n' +
+                '<h3>' + article.title + '</h3>\n' +
+                '<p class="article-excerpt">' + article.excerpt + '</p>\n' +
+                '<a href="/faith_life/' + article.slug + '" class="read-more">Read More →</a>\n' +
+                '</div>';
+            }).join('\n');
 
-            const indexHTML = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faith & Life - JFed's Life</title>
-    <style>
-        :root {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --text-primary: #212529;
-            --text-secondary: #6c757d;
-            --accent: #b8546d;
-            --accent-hover: #9a4158;
-            --accent-secondary: #d97742;
-            --border: #dee2e6;
-            --shadow: rgba(0, 0, 0, 0.1);
-        }
+            const articlesSection = articles.length > 0 
+              ? '<div class="articles-grid">' + articlesHTML + '</div>'
+              : '<p class="no-articles">No articles published yet. Check back soon!</p>';
 
-        [data-theme="dark"] {
-            --bg-primary: #1a1a1a;
-            --bg-secondary: #2d2d2d;
-            --text-primary: #f8f9fa;
-            --text-secondary: #adb5bd;
-            --accent: #c97084;
-            --accent-hover: #d88798;
-            --accent-secondary: #e89560;
-            --border: #495057;
-            --shadow: rgba(0, 0, 0, 0.3);
-        }
+            const indexHTML = '<!DOCTYPE html>\n<html lang="en">\n<head>\n' +
+              '<meta charset="UTF-8">\n' +
+              '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n' +
+              '<title>Faith & Life - JFed\'s Life</title>\n' +
+              '<link rel="stylesheet" href="/faith-life-styles.css">\n' +
+              '</head>\n<body>\n' +
+              '<header><nav>\n' +
+              '<a href="/" class="logo">JFed\'s Life</a>\n' +
+              '</nav></header>\n' +
+              '<section class="page-hero">\n' +
+              '<h1>Faith & Life</h1>\n' +
+              '<p>Reflections, insights, and stories about living with purpose and intention</p>\n' +
+              '</section>\n' +
+              '<main>\n' +
+              '<h2 class="section-title">Recent Articles</h2>\n' +
+              articlesSection + '\n' +
+              '</main>\n' +
+              '<footer><p>&copy; 2025 JFed\'s Life. All rights reserved.</p></footer>\n' +
+              '</body></html>';
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--bg-secondary);
-            box-shadow: 0 2px 10px var(--shadow);
-            padding: 1rem 2rem;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .page-hero {
-            background: linear-gradient(135deg, #b8546d 0%, #d97742 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .page-hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .page-hero p {
-            font-size: 1.25rem;
-            opacity: 0.95;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 2rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: var(--accent);
-            border-bottom: 3px solid var(--accent);
-            padding-bottom: 0.5rem;
-        }
-
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .article-card {
-            background-color: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px var(--shadow);
-        }
-
-        .article-date {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .article-card h3 {
-            font-size: 1.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .article-excerpt {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .read-more {
-            color: var(--accent);
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .read-more:hover {
-            color: var(--accent-hover);
-        }
-
-        footer {
-            background-color: var(--bg-secondary);
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-            text-align: center;
-        }
-
-        .no-articles {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="/" class="logo">JFed's Life</a>
-        </nav>
-    </header>
-
-    <section class="page-hero">
-        <h1>Faith & Life</h1>
-        <p>Reflections, insights, and stories about living with purpose and intention</p>
-    </section>
-
-    <main>
-        <h2 class="section-title">Recent Articles</h2>
-        ${articles.length > 0 ? `<div class="articles-grid">${articlesHTML}</div>` : '<p class="no-articles">No articles published yet. Check back soon!</p>'}
-    </main>
-
-    <footer>
-        <p>&copy; 2025 JFed's Life. All rights reserved.</p>
-    </footer>
-</body>
-</html>`;
-
-            // Create faith_life directory if it doesn't exist
             const dir = path.join(process.cwd(), 'faith_life');
             if (!fs.existsSync(dir)) {
               fs.mkdirSync(dir, { recursive: true });
             }
-
-            // Write index file
             fs.writeFileSync(path.join(dir, 'index.html'), indexHTML);
             console.log('Updated faith_life/index.html');
           }
 
           syncArticles();
-          EOF
-
-          node sync-notion.js
+          EOFJS
+      
+      - name: Run sync
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+        run: node sync-notion.js
       
       - name: Commit and push changes
         run: |
