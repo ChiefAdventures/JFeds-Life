@@ -19,12 +19,16 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Clean environment and install dependencies
+      - name: Clean environment and install correct dependencies
         run: |
           rm -rf node_modules package-lock.json
           npm init -y
           echo '{"type": "commonjs"}' > package.json
           npm install @notionhq/client@latest notion-to-md@latest
+          npm uninstall notion || true
+          npm list @notionhq/client
+          node -p "require('@notionhq/client').Client ? '✅ Notion SDK OK' : '❌ Broken SDK'"
+
 
       - name: Create sync script
         run: |
