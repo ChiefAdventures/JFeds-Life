@@ -1,13 +1,14 @@
-name: Sync Notion to GitHub
+name: Sync Notion to Website
 
 on:
-  schedule:
-    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
     
     steps:
       - name: Checkout repository
@@ -46,9 +47,11 @@ jobs:
                 let data = '';
                 res.on('data', (chunk) => { data += chunk; });
                 res.on('end', () => {
+                  console.log(`Response status: ${res.statusCode}`);
                   if (res.statusCode >= 200 && res.statusCode < 300) {
                     resolve(JSON.parse(data));
                   } else {
+                    console.error('Error response:', data);
                     reject(new Error(`HTTP ${res.statusCode}: ${data}`));
                   }
                 });
@@ -64,42 +67,53 @@ jobs:
             });
           }
 
-          async function getBlocks(blockId) {
-            return notionRequest(`/v1/blocks/${blockId}/children`);
-          }
-
           async function queryDatabase(databaseId) {
-            return notionRequest(`/v1/databases/${databaseId}/query`, 'POST', {});
+            // Format the database ID with dashes
+            let formattedId = databaseId.replace(/-/g, '');
+            formattedId = formattedId.replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/, '$1-$2-$3-$4-$5');
+            console.log('Using database ID:', formattedId);
+            
+            return notionRequest(`/v1/databases/${formattedId}/query`, 'POST', {
+              filter: {
+                property: 'Published',
+                checkbox: {
+                  equals: true
+                }
+              }
+            });
           }
 
-          function blocksToMarkdown(blocks) {
-            let markdown = '';
+          async function getBlocks(blockId) {
+            let formattedId = blockId.replace(/-/g, '');
+            formattedId = formattedId.replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/, '$1-$2-$3-$4-$5');
+            return notionRequest(`/v1/blocks/${formattedId}/children`);
+          }
+
+          function blocksToHtml(blocks) {
+            let html = '';
             
             for (const block of blocks) {
               const type = block.type;
               
               if (type === 'paragraph' && block.paragraph.rich_text) {
                 const text = block.paragraph.rich_text.map(t => t.plain_text).join('');
-                markdown += text + '\n\n';
+                if (text.trim()) html += '<p>' + text + '</p>\n';
               } else if (type === 'heading_1' && block.heading_1.rich_text) {
                 const text = block.heading_1.rich_text.map(t => t.plain_text).join('');
-                markdown += '# ' + text + '\n\n';
+                html += '<h1>' + text + '</h1>\n';
               } else if (type === 'heading_2' && block.heading_2.rich_text) {
                 const text = block.heading_2.rich_text.map(t => t.plain_text).join('');
-                markdown += '## ' + text + '\n\n';
+                html += '<h2>' + text + '</h2>\n';
               } else if (type === 'heading_3' && block.heading_3.rich_text) {
                 const text = block.heading_3.rich_text.map(t => t.plain_text).join('');
-                markdown += '### ' + text + '\n\n';
+                html += '<h3>' + text + '</h3>\n';
               } else if (type === 'bulleted_list_item' && block.bulleted_list_item.rich_text) {
                 const text = block.bulleted_list_item.rich_text.map(t => t.plain_text).join('');
-                markdown += '- ' + text + '\n';
-              } else if (type === 'numbered_list_item' && block.numbered_list_item.rich_text) {
-                const text = block.numbered_list_item.rich_text.map(t => t.plain_text).join('');
-                markdown += '1. ' + text + '\n';
+                html += '<li>' + text + '</li>\n';
               }
             }
             
-            return markdown;
+            return html;
           }
 
           async function sync() {
@@ -107,49 +121,300 @@ jobs:
               console.log('Querying database...');
               const response = await queryDatabase(DATABASE_ID);
               
-              console.log('Found', response.results.length, 'pages');
+              console.log('Found', response.results.length, 'published pages');
+
+              const articles = [];
 
               for (const page of response.results) {
                 const props = page.properties;
                 
-                const title = props.Title?.title?.[0]?.plain_text || 
-                              props.Name?.title?.[0]?.plain_text || 
-                              'Untitled';
-                
-                const folder = props.Folder?.select?.name || 
-                               props.Folder?.rich_text?.[0]?.plain_text ||
-                               'faith_life';
-                
-                const date = props.Date?.date?.start || page.created_time;
+                const title = props.Name?.title?.[0]?.plain_text || 'Untitled';
+                const slug = props.Slug?.rich_text?.[0]?.plain_text || 
+                             title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                const date = props.Date?.date?.start || page.created_time.split('T')[0];
+                const excerpt = props.Excerpt?.rich_text?.[0]?.plain_text || '';
+                const category = props.Category?.select?.name || 'General';
 
                 console.log('Processing:', title);
 
                 const blocksResponse = await getBlocks(page.id);
-                const content = blocksToMarkdown(blocksResponse.results);
+                const content = blocksToHtml(blocksResponse.results);
 
-                const frontmatterLines = [
-                  '---',
-                  'title: "' + title.replace(/"/g, '\\"') + '"',
-                  'date: ' + date,
-                  '---',
-                  ''
-                ];
-                const frontmatter = frontmatterLines.join('\n');
-                const fullContent = frontmatter + '\n' + content;
+                articles.push({ title, slug, date, excerpt, category, content });
 
-                const dirPath = path.join(folder);
-                if (!fs.existsSync(dirPath)) {
-                  fs.mkdirSync(dirPath, { recursive: true });
-                }
+                // Create article page
+                const articleHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title} - JFed's Life</title>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --accent: #b8546d;
+            --accent-hover: #9a4158;
+            --border: #dee2e6;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--bg-secondary);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        main {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .article-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        .article-meta {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .article-content h1, .article-content h2, .article-content h3 {
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+        .article-content p { margin-bottom: 1.5rem; }
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">JFed's Life</a>
+            <a href="/faith_life" class="back-link">← Back to Faith & Life</a>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <div class="article-header">
+                <h1 class="article-title">${title}</h1>
+                <div class="article-meta">
+                    <span>${new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                    <span> • ${category}</span>
+                </div>
+            </div>
+            <div class="article-content">
+                ${content}
+            </div>
+        </article>
+    </main>
+    <footer>
+        <p>&copy; 2025 JFed's Life. All rights reserved.</p>
+    </footer>
+</body>
+</html>`;
 
-                const filename = title.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-                const filepath = path.join(dirPath, filename + '.md');
-
-                fs.writeFileSync(filepath, fullContent);
-                console.log('Created:', filepath);
+                const dir = 'faith_life';
+                if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+                fs.writeFileSync(path.join(dir, `${slug}.html`), articleHtml);
+                console.log('Created:', `${slug}.html`);
               }
 
-              console.log('Sync complete!');
+              // Create index page
+              const articlesHtml = articles.length > 0 
+                ? '<div class="articles-grid">' + articles.map(a => `
+                    <div class="article-card">
+                        <div class="article-date">${new Date(a.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                        <h3>${a.title}</h3>
+                        <p class="article-excerpt">${a.excerpt}</p>
+                        <a href="/faith_life/${a.slug}" class="read-more">Read More →</a>
+                    </div>`).join('') + '</div>'
+                : '<p class="no-articles">No articles published yet. Check back soon!</p>';
+
+              const indexHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faith & Life - JFed's Life</title>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --accent: #b8546d;
+            --accent-hover: #9a4158;
+            --accent-secondary: #d97742;
+            --border: #dee2e6;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--bg-secondary);
+            box-shadow: 0 2px 10px var(--shadow);
+            padding: 1rem 2rem;
+        }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .page-hero {
+            background: linear-gradient(135deg, #b8546d 0%, #d97742 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .page-hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+        }
+        main {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .article-card {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+        .article-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .article-card h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .article-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .read-more {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .read-more:hover { color: var(--accent-hover); }
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        .no-articles {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">JFed's Life</a>
+        </nav>
+    </header>
+    <section class="page-hero">
+        <h1>Faith & Life</h1>
+        <p>Reflections, insights, and stories about living with purpose and intention</p>
+    </section>
+    <main>
+        <h2 class="section-title">Recent Articles</h2>
+        ${articlesHtml}
+    </main>
+    <footer>
+        <p>&copy; 2025 JFed's Life. All rights reserved.</p>
+    </footer>
+</body>
+</html>`;
+
+              fs.writeFileSync('faith_life/index.html', indexHtml);
+              console.log('Updated faith_life/index.html');
+              
+              console.log('Sync complete! Synced', articles.length, 'articles.');
             } catch (error) {
               console.error('Error:', error.message);
               process.exit(1);
@@ -169,5 +434,5 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add .
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Sync from Notion" && git push)
+          git add faith_life/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Sync from Notion [skip ci]" && git push)
