@@ -2,9 +2,8 @@ name: Sync Notion to GitHub
 
 on:
   schedule:
-    # Runs every 30 minutes
     - cron: '*/30 * * * *'
-  workflow_dispatch: # Allows manual trigger
+  workflow_dispatch:
 
 jobs:
   sync:
@@ -13,8 +12,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -22,16 +19,14 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: |
-          npm init -y
-          npm install @notionhq/client
+        run: npm install @notionhq/client
 
-      - name: Sync Notion to GitHub
+      - name: Create and run sync script
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
         run: |
-          cat > sync.js << 'EOF'
+          node -e "
           const { Client } = require('@notionhq/client');
           const fs = require('fs');
           const path = require('path');
@@ -46,22 +41,22 @@ jobs:
             for (const block of blocks.results) {
               if (block.type === 'paragraph') {
                 const text = block.paragraph.rich_text.map(t => t.plain_text).join('');
-                markdown += text + '\n\n';
+                markdown += text + '\\n\\n';
               } else if (block.type === 'heading_1') {
                 const text = block.heading_1.rich_text.map(t => t.plain_text).join('');
-                markdown += '# ' + text + '\n\n';
+                markdown += '# ' + text + '\\n\\n';
               } else if (block.type === 'heading_2') {
                 const text = block.heading_2.rich_text.map(t => t.plain_text).join('');
-                markdown += '## ' + text + '\n\n';
+                markdown += '## ' + text + '\\n\\n';
               } else if (block.type === 'heading_3') {
                 const text = block.heading_3.rich_text.map(t => t.plain_text).join('');
-                markdown += '### ' + text + '\n\n';
+                markdown += '### ' + text + '\\n\\n';
               } else if (block.type === 'bulleted_list_item') {
                 const text = block.bulleted_list_item.rich_text.map(t => t.plain_text).join('');
-                markdown += '- ' + text + '\n';
+                markdown += '- ' + text + '\\n';
               } else if (block.type === 'numbered_list_item') {
                 const text = block.numbered_list_item.rich_text.map(t => t.plain_text).join('');
-                markdown += '1. ' + text + '\n';
+                markdown += '1. ' + text + '\\n';
               }
             }
             
@@ -75,10 +70,9 @@ jobs:
                 database_id: databaseId,
               });
 
-              console.log(`Found ${response.results.length} pages`);
+              console.log('Found', response.results.length, 'pages');
 
               for (const page of response.results) {
-                // Get properties
                 const title = page.properties.Title?.title?.[0]?.plain_text || 
                               page.properties.Name?.title?.[0]?.plain_text || 
                               'Untitled';
@@ -87,37 +81,31 @@ jobs:
                                page.properties.Folder?.rich_text?.[0]?.plain_text ||
                                'faith_life';
                 
-                const date = page.properties.Date?.date?.start ||
-                            page.created_time;
+                const date = page.properties.Date?.date?.start || page.created_time;
 
-                console.log(`Processing: ${title}`);
+                console.log('Processing:', title);
 
-                // Get content from page blocks
                 const content = await getMarkdownFromBlocks(page.id);
 
-                // Create frontmatter
-                const frontmatter = `---
-title: "${title}"
-date: ${date}
+                const frontmatter = \`---
+title: \\\"\${title}\\\"
+date: \${date}
 ---
 
-`;
+\`;
 
                 const fullContent = frontmatter + content;
 
-                // Create directory if it doesn't exist
                 const dirPath = path.join(folder);
                 if (!fs.existsSync(dirPath)) {
                   fs.mkdirSync(dirPath, { recursive: true });
                 }
 
-                // Clean filename
                 const filename = title.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-                const filepath = path.join(dirPath, `${filename}.md`);
+                const filepath = path.join(dirPath, filename + '.md');
 
-                // Write file
                 fs.writeFileSync(filepath, fullContent);
-                console.log(`✓ Created: ${filepath}`);
+                console.log('Created:', filepath);
               }
 
               console.log('Sync complete!');
@@ -128,9 +116,7 @@ date: ${date}
           }
 
           syncNotion();
-          EOF
-
-          node sync.js
+          "
 
       - name: Commit and push changes
         run: |
