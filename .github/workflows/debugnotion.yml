@@ -1,0 +1,43 @@
+name: Debug Notion Connection
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Test Notion API
+        run: |
+          echo "Testing Notion API connection..."
+          echo "Database ID: $NOTION_DATABASE_ID"
+          echo "Database ID length: ${#NOTION_DATABASE_ID}"
+          
+          # Try the database ID as-is
+          echo "Attempt 1: Using database ID as-is"
+          curl -s -X POST "https://api.notion.com/v1/databases/${NOTION_DATABASE_ID}/query" \
+            -H "Authorization: Bearer ${NOTION_TOKEN}" \
+            -H "Notion-Version: 2022-06-28" \
+            -H "Content-Type: application/json" \
+            -d '{"page_size": 1}' | jq .
+          
+          echo ""
+          echo "Attempt 2: Using database ID with dashes"
+          FORMATTED_ID=$(echo $NOTION_DATABASE_ID | sed 's/^\(.\{8\}\)\(.\{4\}\)\(.\{4\}\)\(.\{4\}\)\(.\{12\}\)$/\1-\2-\3-\4-\5/')
+          echo "Formatted ID: $FORMATTED_ID"
+          curl -s -X POST "https://api.notion.com/v1/databases/${FORMATTED_ID}/query" \
+            -H "Authorization: Bearer ${NOTION_TOKEN}" \
+            -H "Notion-Version: 2022-06-28" \
+            -H "Content-Type: application/json" \
+            -d '{"page_size": 1}' | jq .
+            
+          echo ""
+          echo "Attempt 3: Try to retrieve the database directly"
+          curl -s -X GET "https://api.notion.com/v1/databases/${NOTION_DATABASE_ID}" \
+            -H "Authorization: Bearer ${NOTION_TOKEN}" \
+            -H "Notion-Version: 2022-06-28" | jq .
+            
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
