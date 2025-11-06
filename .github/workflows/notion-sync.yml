@@ -21,12 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install @notionhq/client
 
-      - name: Create and run sync script
-        env:
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+      - name: Create sync script
         run: |
-          node -e "
+          cat > sync.js << 'EOF'
           const { Client } = require('@notionhq/client');
           const fs = require('fs');
           const path = require('path');
@@ -41,22 +38,22 @@ jobs:
             for (const block of blocks.results) {
               if (block.type === 'paragraph') {
                 const text = block.paragraph.rich_text.map(t => t.plain_text).join('');
-                markdown += text + '\\n\\n';
+                markdown += text + '\n\n';
               } else if (block.type === 'heading_1') {
                 const text = block.heading_1.rich_text.map(t => t.plain_text).join('');
-                markdown += '# ' + text + '\\n\\n';
+                markdown += '# ' + text + '\n\n';
               } else if (block.type === 'heading_2') {
                 const text = block.heading_2.rich_text.map(t => t.plain_text).join('');
-                markdown += '## ' + text + '\\n\\n';
+                markdown += '## ' + text + '\n\n';
               } else if (block.type === 'heading_3') {
                 const text = block.heading_3.rich_text.map(t => t.plain_text).join('');
-                markdown += '### ' + text + '\\n\\n';
+                markdown += '### ' + text + '\n\n';
               } else if (block.type === 'bulleted_list_item') {
                 const text = block.bulleted_list_item.rich_text.map(t => t.plain_text).join('');
-                markdown += '- ' + text + '\\n';
+                markdown += '- ' + text + '\n';
               } else if (block.type === 'numbered_list_item') {
                 const text = block.numbered_list_item.rich_text.map(t => t.plain_text).join('');
-                markdown += '1. ' + text + '\\n';
+                markdown += '1. ' + text + '\n';
               }
             }
             
@@ -87,14 +84,16 @@ jobs:
 
                 const content = await getMarkdownFromBlocks(page.id);
 
-                const frontmatter = \`---
-title: \\\"\${title}\\\"
-date: \${date}
----
+                const frontmatterLines = [
+                  '---',
+                  'title: "' + title.replace(/"/g, '\\"') + '"',
+                  'date: ' + date,
+                  '---',
+                  ''
+                ];
+                const frontmatter = frontmatterLines.join('\n');
 
-\`;
-
-                const fullContent = frontmatter + content;
+                const fullContent = frontmatter + '\n' + content;
 
                 const dirPath = path.join(folder);
                 if (!fs.existsSync(dirPath)) {
@@ -116,7 +115,13 @@ date: \${date}
           }
 
           syncNotion();
-          "
+          EOF
+
+      - name: Run sync script
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+        run: node sync.js
 
       - name: Commit and push changes
         run: |
