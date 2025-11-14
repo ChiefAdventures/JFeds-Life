@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JFed's Life - Personal Portfolio</title>
+    <title>Contact - JFed's Life</title>
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -132,38 +132,38 @@
         }
 
         .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--bg-secondary);
-    min-width: 200px;
-    box-shadow: 0 4px 12px var(--shadow);
-    border-radius: 8px;
-    margin-top: 0.5rem;
-    overflow: hidden;
-    z-index: 1000;
-}
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-secondary);
+            min-width: 200px;
+            box-shadow: 0 4px 12px var(--shadow);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+            z-index: 1000;
+        }
 
-.dropdown-content.active {
-    display: block;
-}
+        .dropdown-content.active {
+            display: block;
+        }
 
-.dropdown-content a {
-    display: block;
-    padding: 0.75rem 1.5rem;
-    color: var(--text-primary) !important;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-primary) !important;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
 
-.dropdown-content a:hover {
-    background-color: var(--accent);
-    color: white !important;
-}
+        .dropdown-content a:hover {
+            background-color: var(--accent);
+            color: white !important;
+        }
 
         .dropdown > a::after {
             content: ' ▾';
@@ -211,86 +211,109 @@
             cursor: pointer;
         }
 
-      /* Hero Section */
-.hero {
-    max-width: 1200px;
-    margin: 4rem auto;
-    padding: 4rem 2rem;
-    text-align: center;
-   background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), 
-            url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4789.jpg') center 20%/cover no-repeat;
-    border-radius: 12px;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-.hero h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: white;
-}
-.hero p {
-    font-size: 1.25rem;
-    color: white;
-    margin-bottom: 2rem;
-}
+        /* Hero section - NO BACKGROUND IMAGE */
+        .hero {
+            background: linear-gradient(135deg, #b8546d 0%, #d97742 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
 
-        /* Content Sections */
-        .content-section {
-            max-width: 1200px;
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Form container */
+        .form-container {
+            max-width: 900px;
             margin: 4rem auto;
             padding: 2rem;
         }
 
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: var(--accent);
-            border-bottom: 3px solid var(--accent);
-            padding-bottom: 0.5rem;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .card {
+        .contact-form {
             background-color: var(--bg-secondary);
-            padding: 2rem;
+            padding: 3rem;
             border-radius: 12px;
             box-shadow: 0 4px 12px var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px var(--shadow);
+        .form-group {
+            margin-bottom: 2rem;
         }
 
-        .card h3 {
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .required {
             color: var(--accent);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
         }
 
-        .card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .name-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
         }
 
         /* Footer */
         footer {
             background-color: var(--bg-secondary);
-            padding: 3rem 2rem 2rem;
+            padding: 3rem 2rem;
             margin-top: 4rem;
         }
 
@@ -305,39 +328,22 @@
 
         .social-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .social-links a {
             color: var(--text-primary);
+            text-decoration: none;
             font-size: 1.1rem;
             font-weight: 500;
-            text-decoration: none;
             transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .social-links a:hover {
             color: var(--accent);
             transform: scale(1.2);
-        }
-
-        .contact-btn {
-            background-color: var(--accent);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            display: inline-block;
-        }
-
-        .contact-btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
         }
 
         .copyright {
@@ -378,12 +384,20 @@
                 display: block;
             }
 
-            .hero h2 {
+            .name-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
                 font-size: 2rem;
             }
 
             .hero p {
                 font-size: 1rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
             }
 
             nav {
@@ -407,27 +421,41 @@
             </button>
 
             <ul class="nav-links" id="navLinks">
-    <li><a href="/">Home</a></li>
-    <li><a href="/aboutme">About Me</a></li>
-    <li class="dropdown">
-        <a href="#business">Business</a>
-        <div class="dropdown-content">
-            <a href="/weddings">Weddings</a>
-            <a href="/sports_photography">Sports Photography</a>
-            <a href="/gear">Gear</a>
-        </div>
-    </li>
-    <li class="dropdown">
-        <a href="#personal">Personal</a>
-        <div class="dropdown-content">
-            <a href="/content">Content Creation</a>
-            <a href="/faith_life">Faith & Life</a>
-            <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
-        </div>
-    </li>
-    <li><a href="/faq">FAQ</a></li>
-    <li><a href="/contact">Contact</a></li>
-</ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutme">About Me</a></li>
+                <li class="dropdown">
+                    <a href="#business">Business</a>
+                    <div class="dropdown-content">
+                        <a href="/weddings">Weddings</a>
+                        <a href="/sports_photography">Sports Photography</a>
+                        <a href="/gear">Gear</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#personal">Personal</a>
+                    <div class="dropdown-content">
+                        <a href="/content">Content Creation</a>
+                        <a href="/faith_life">Faith & Life</a>
+                        <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
+                    </div>
+                </li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+
+            <div class="theme-toggle">
+                <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
+                    Light
+                </button>
+                <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
+                    Dark
+                </button>
+                <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
+                    System
+                </button>
+            </div>
+        </nav>
+    </header>
 
     <section class="hero">
         <h1>Ready to start planning??</h1>
@@ -436,7 +464,7 @@
 
     <div class="form-container">
         <div class="contact-form">
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <form action="https://formspree.io/f/xyzlkdza" method="POST">
                 
                 <!-- Name -->
                 <div class="form-group">
@@ -540,7 +568,7 @@
         </div>
     </div>
 
-   <footer>
+    <footer>
         <div class="footer-content">
             <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
@@ -552,17 +580,10 @@
                 <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
                     TikTok
                 </a>
-                <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
+                <a href="https://www.youtube.com/@ChiefAdventures" target="_blank" aria-label="YouTube">
                     YouTube
                 </a>
-                <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
-                    Vimeo
-                </a>
             </div>
-            
-            <a href="https://www.chiefadventures.org/contact" class="contact-btn">
-                Contact Me
-            </a>
             
             <div class="copyright">
                 <p>&copy; 2025 JFed's Life. All rights reserved.</p>
@@ -597,36 +618,9 @@
             navLinks.classList.toggle('active');
         }
 
-        // Load logo image
-        async function loadLogoImage() {
-            try {
-                let imageData;
-                const filenames = ['image (2).jpg', 'image.jpg', 'logo.jpg'];
-                
-                for (const filename of filenames) {
-                    try {
-                        imageData = await window.fs.readFile(filename);
-                        break;
-                    } catch (e) {
-                        continue;
-                    }
-                }
-                
-                if (imageData) {
-                    const blob = new Blob([imageData], { type: 'image/jpeg' });
-                    const url = URL.createObjectURL(blob);
-                    document.getElementById('logoImage').src = url;
-                }
-            } catch (error) {
-                console.log('Using default logo');
-            }
-        }
-
-        // Initialize theme on page load
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'system';
             setTheme(savedTheme);
-            loadLogoImage();
         });
 
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
@@ -634,32 +628,33 @@
                 setTheme('system');
             }
         });
-        // Close dropdowns when clicking outside
-document.addEventListener('click', function(event) {
-    if (!event.target.closest('.dropdown')) {
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            dropdown.classList.remove('active');
-        });
-    }
-});
 
-// Toggle dropdowns on click
-document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
-    dropdownLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Close other dropdowns
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            if (dropdown !== this.nextElementSibling) {
-                dropdown.classList.remove('active');
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
             }
         });
-        
-        // Toggle this dropdown
-        const dropdownContent = this.nextElementSibling;
-        dropdownContent.classList.toggle('active');
-    });
-});
+
+        // Toggle dropdowns on click
+        document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+            dropdownLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close other dropdowns
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    if (dropdown !== this.nextElementSibling) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+                
+                // Toggle this dropdown
+                const dropdownContent = this.nextElementSibling;
+                dropdownContent.classList.toggle('active');
+            });
+        });
     </script>
 </body>
 </html>
