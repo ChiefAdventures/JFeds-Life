@@ -41,7 +41,6 @@
             color: var(--text-primary);
             transition: background-color 0.3s ease, color 0.3s ease;
             line-height: 1.6;
-            cursor: url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor64.png'), auto;
         }
 
         /* Header & Navigation */
@@ -530,6 +529,7 @@
             
             <div class="copyright">
                 <p>&copy; 2025 JFed's Life. All rights reserved.</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner</p>
             </div>
         </div>
     </footer>
@@ -624,6 +624,56 @@ document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
         dropdownContent.classList.toggle('active');
     });
 });
+
+// Seasonal Cursor Script
+function setSeasonalCursor() {
+    const today = new Date();
+    const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
+    const day = today.getDate();
+    
+    let cursorUrl;
+    
+    // New Year (January 1-15)
+    if (month === 0 && day <= 15) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor.png';
+    }
+    // Valentine's Day (February 1-14)
+    else if (month === 1 && day <= 14) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor.png';
+    }
+    // St. Patrick's Day (March 10-17)
+    else if (month === 2 && day >= 10 && day <= 17) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor.png';
+    }
+    // Easter (March 20 - April 20) - adjust dates yearly
+    else if ((month === 2 && day >= 22) || (month === 3 && day <= 11)) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor.png';
+    }
+    // 4th of July (July 1-7)
+    else if (month === 6 && day <= 7) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor.png';
+    }
+    // Halloween (October 20-31)
+    else if (month === 9 && day >= 20) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor.png';
+    }
+    // Thanksgiving (November 1-30)
+    else if (month === 10) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor64.png';
+    }
+    // Christmas (December 1-31)
+    else if (month === 11) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor.png';
+    }
+    // Default - no custom cursor for rest of year
+    else {
+        return;
+    }
+    
+    document.body.style.cursor = `url('${cursorUrl}'), auto`;
+}
+
+window.addEventListener('DOMContentLoaded', setSeasonalCursor);
     </script>
 </body>
 </html>
