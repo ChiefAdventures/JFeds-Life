@@ -569,7 +569,7 @@
                 <!-- Review Card 1 -->
                 <div class="review-card">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/65638274_2364562433761428_7410253521288691712_n copy.jpg" alt="Customer Photo" class="reviewer-photo">
+                    <img src="https://via.placeholder.com/80/b8546d/ffffff?text=JS" alt="Customer Photo" class="reviewer-photo">
                     <p class="review-quote">"Jason made our wedding video for us which allowed us to share our special day with family who weren't able to make it to the wedding. We weren't initially planning on filming our wedding, but I'm glad we did so we can look back and remember the day. We definitely recommend Jason to be your wedding videographer!"</p>
                     <div class="reviewer-name">- Rachel S.</div>
                     <div class="review-date">Wedding • June 2018</div>
@@ -741,6 +741,56 @@ document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
         dropdownContent.classList.toggle('active');
     });
 });
+
+// Seasonal Cursor Script
+function setSeasonalCursor() {
+    const today = new Date();
+    const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
+    const day = today.getDate();
+    
+    let cursorUrl;
+    
+    // New Year (January 1-7)
+    if (month === 0 && day <= 7) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
+    }
+    // Valentine's Day (February 7-14)
+    else if (month === 1 && day >= 7 && day <= 14) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
+    }
+    // St. Patrick's Day (March 10-17)
+    else if (month === 2 && day >= 10 && day <= 17) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
+    }
+    // Easter (March 29 - April 7) - adjust dates yearly
+    else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
+    }
+    // 4th of July (July 1-7)
+    else if (month === 6 && day <= 7) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
+    }
+    // Halloween (October 24-31)
+    else if (month === 9 && day >= 24) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
+    }
+    // Thanksgiving (November 15-30)
+    else if (month === 10 && day >= 15) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
+    }
+    // Christmas (December 10-26)
+    else if (month === 11 && day >= 10 && day <= 26) {
+        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
+    }
+    // Default - no custom cursor for rest of year
+    else {
+        return;
+    }
+    
+    document.body.style.cursor = `url('${cursorUrl}'), auto`;
+}
+
+window.addEventListener('DOMContentLoaded', setSeasonalCursor);
     </script>
 </body>
 </html>
