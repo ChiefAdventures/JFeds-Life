@@ -357,6 +357,84 @@
             width: 100%;
         }
 
+        /* Reviews Section */
+        .reviews-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .reviews-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .reviews-section .subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .reviewer-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid var(--accent);
+        }
+
+        .review-quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .review-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -392,6 +470,10 @@
 
             .hero p {
                 font-size: 1rem;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
             }
 
             nav {
@@ -484,6 +566,41 @@
                         <p>Passionate about bowling, ultimate frisbee, and disc golf. Join me as I explore the competitive and recreational sides of these sports.</p>
                     </div>
                 </a>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews-section">
+            <h2>What People Are Saying</h2>
+            <p class="subtitle">Hear from couples, athletes, and clients I've had the honor of working with</p>
+            
+            <div class="reviews-grid">
+                <!-- Review Card 1 -->
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/65638274_2364562433761428_7410253521288691712_n copy.jpg" alt="Customer Photo" class="reviewer-photo">
+                    <p class="review-quote">"Jason made our wedding video for us which allowed us to share our special day with family who weren't able to make it to the wedding. We weren't initially planning on filming our wedding, but I'm glad we did so we can look back and remember the day. We definitely recommend Jason to be your wedding videographer!"</p>
+                    <div class="reviewer-name">- Rachel S.</div>
+                    <div class="review-date">Wedding • June 2018</div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <img src="https://via.placeholder.com/80/d97742/ffffff?text=AL" alt="Customer Photo" class="reviewer-photo">
+                    <p class="review-quote"></p>
+                    <div class="reviewer-name"></div>
+                    <div class="review-date"></div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <img src="https://via.placeholder.com/80/b8546d/ffffff?text=EM" alt="Customer Photo" class="reviewer-photo">
+                    <p class="review-quote"></p>
+                    <div class="reviewer-name"></div>
+                    <div class="review-date"></div>
+                </div>
             </div>
         </section>
 
@@ -642,7 +759,7 @@ function setSeasonalCursor() {
     
     let cursorUrl;
     
-    // New Year (January 1-15)
+    // New Year (January 1-7)
     if (month === 0 && day <= 7) {
         cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
     }
