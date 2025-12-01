@@ -435,6 +435,46 @@
             flex-shrink: 0;
         }
 
+        /* Add-Ons Section */
+        .addons-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border);
+        }
+
+        .addons-section h4 {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .addons-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .addon-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background-color: var(--bg-secondary);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .addon-name {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .addon-price {
+            font-weight: 700;
+            color: var(--accent);
+        }
+
         /* Contact Button Section */
         .contact-section {
             text-align: center;
@@ -758,6 +798,37 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Available Add-Ons -->
+                    <div class="addons-section">
+                        <h4>Available Enhancements</h4>
+                        <div class="addons-list">
+                            <div class="addon-item">
+                                <span class="addon-name">Additional Hour</span>
+                                <span class="addon-price">+$150/hr</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Engagement Session</span>
+                                <span class="addon-price">+$400</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Drone Footage</span>
+                                <span class="addon-price">+$300</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Second Videographer</span>
+                                <span class="addon-price">+$600</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Same-Day Edit</span>
+                                <span class="addon-price">+$500</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Extra Album Copy</span>
+                                <span class="addon-price">+$200</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -803,7 +874,7 @@
 
                     <!-- Package 2 -->
                     <div class="pricing-package">
-                        <div class="package-header" onclick="togglePackage('sports', 0)">
+                        <div class="package-header" onclick="togglePackage('sports', 1)">
                             <div class="package-title">
                                 <div class="radio-circle"></div>
                                 <h3>Single Event Video</h3>
@@ -827,7 +898,7 @@
 
                     <!-- Package 3 -->
                     <div class="pricing-package">
-                        <div class="package-header" onclick="togglePackage('sports', 1)">
+                        <div class="package-header" onclick="togglePackage('sports', 2)">
                             <div class="package-title">
                                 <div class="radio-circle"></div>
                                 <h3>Tournament Coverage</h3>
@@ -853,7 +924,7 @@
 
                     <!-- Package 4 -->
                     <div class="pricing-package">
-                        <div class="package-header" onclick="togglePackage('sports', 2)">
+                        <div class="package-header" onclick="togglePackage('sports', 3)">
                             <div class="package-title">
                                 <div class="radio-circle"></div>
                                 <h3>Season Package</h3>
@@ -874,6 +945,37 @@
                                     <div class="feature-item">Online Gallery with Unlimited Downloads</div>
                                     <div class="feature-item">Photos delivered 3 days after event, Highlight Video delievered 2 days after event, Season Recap Video delievered 5 days after 5th event.</div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Available Add-Ons -->
+                    <div class="addons-section">
+                        <h4>Available Enhancements</h4>
+                        <div class="addons-list">
+                            <div class="addon-item">
+                                <span class="addon-name">Additional Event</span>
+                                <span class="addon-price">+$350</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Rush Delivery (24 hours)</span>
+                                <span class="addon-price">+$200</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">4K Video Upgrade</span>
+                                <span class="addon-price">+$150</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Drone Coverage</span>
+                                <span class="addon-price">+$250</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Second Photographer</span>
+                                <span class="addon-price">+$400</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Social Media Clips (5-10 clips)</span>
+                                <span class="addon-price">+$100</span>
                             </div>
                         </div>
                     </div>
@@ -944,6 +1046,42 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Available Add-Ons -->
+                    <div class="addons-section">
+                        <h4>Available Enhancements</h4>
+                        <div class="addons-list">
+                            <div class="addon-item">
+                                <span class="addon-name">Additional Revisions</span>
+                                <span class="addon-price">+$150/round</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Social Media Cuts (10 clips)</span>
+                                <span class="addon-price">+$250</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Raw Footage Delivery</span>
+                                <span class="addon-price">+$300</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Expedited Delivery (3 days)</span>
+                                <span class="addon-price">+$400</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Professional Talent/Models</span>
+                                <span class="addon-price">Contact for pricing</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Additional Location</span>
+                                <span class="addon-price">+$200</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <!-- Contact Button Section -->
     <div class="contact-section">
