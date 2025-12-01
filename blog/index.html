@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - JFed's Life</title>
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --accent: #b8546d;
+            --accent-hover: #9a4158;
+            --accent-secondary: #d97742;
+            --border: #dee2e6;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #f8f9fa;
+            --text-secondary: #adb5bd;
+            --accent: #c97084;
+            --accent-hover: #d88798;
+            --accent-secondary: #e89560;
+            --border: #495057;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--bg-secondary);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-container {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            border: 4px solid #1a1a1a;
+            box-shadow: 
+                0 0 0 2px #444,
+                0 0 0 6px #1a1a1a,
+                0 2px 8px rgba(0,0,0,0.4);
+            position: relative;
+            display: block;
+        }
+
+        [data-theme="dark"] .logo-img {
+            border: 4px solid #2a2a2a;
+            box-shadow: 
+                0 0 0 2px #555,
+                0 0 0 6px #2a2a2a,
+                0 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-secondary);
+            min-width: 200px;
+            box-shadow: 0 4px 12px var(--shadow);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .dropdown-content.active {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-primary) !important;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--accent);
+            color: white !important;
+        }
+
+        .dropdown > a::after {
+            content: ' ▾';
+            font-size: 0.8rem;
+        }
+
+        .theme-toggle {
+            display: flex;
+            gap: 0.5rem;
+            background-color: var(--bg-primary);
+            padding: 0.5rem;
+            border-radius: 25px;
+            border: 2px solid var(--border);
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            min-width: 40px;
+        }
+
+        .theme-btn:hover {
+            color: var(--accent);
+        }
+
+        .theme-btn.active {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #b8546d 0%, #d97742 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Blog Container */
+        .blog-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        /* Category Filters */
+        .category-filters {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .filter-btn.active {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-card {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .blog-card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+
+        .blog-category {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .blog-date {
+            display: flex;
+            align-items: center;
+        }
+
+        .blog-card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .blog-card-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card-title a:hover {
+            color: var(--accent);
+        }
+
+        .blog-card-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 1rem;
+        }
+
+        .read-more::after {
+            content: '→';
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .page-btn {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .page-btn.active {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-links a:hover .social-icon {
+            opacity: 0.8;
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: 0.5rem 0;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                margin-top: 0;
+                background-color: var(--bg-primary);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <div class="logo-container">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg" alt="JFed's Life Logo" class="logo-img">
+                </div>
+                <h1>JFed's Life</h1>
+            </a>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutme">About Me</a></li>
+                <li class="dropdown">
+                    <a href="#business">Business</a>
+                    <div class="dropdown-content">
+                        <a href="/weddings">Weddings</a>
+                        <a href="/sports_photography">Sports Photography</a>
+                        <a href="/gear">Gear</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#personal">Personal</a>
+                    <div class="dropdown-content">
+                        <a href="/content">Content Creation</a>
+                        <a href="/faith_life">Faith & Life</a>
+                        <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
+                    </div>
+                </li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/pricing">Pricing</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+
+            <div class="theme-toggle">
+                <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
+                    Light
+                </button>
+                <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
+                    Dark
+                </button>
+                <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
+                    System
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Blog</h1>
+        <p>Thoughts on business, faith, sports, and life</p>
+    </section>
+
+    <div class="blog-container">
+        <!-- Category Filters -->
+        <div class="category-filters">
+            <button class="filter-btn active" onclick="filterPosts('all')">All</button>
+            <button class="filter-btn" onclick="filterPosts('business')">Business</button>
+            <button class="filter-btn" onclick="filterPosts('faith')">Faith/Life</button>
+            <button class="filter-btn" onclick="filterPosts('sports')">Sports</button>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="blog-grid" id="blogGrid">
+            <!-- Blog posts will be inserted here by JavaScript -->
+        </div>
+
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <h3>No posts found</h3>
+            <p>Try selecting a different category</p>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <!-- Pagination will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/FB_Icon.png" alt="Facebook" class="social-icon">
+                </a>
+                <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/IG_Icon.png" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/TikTok_Icon.png" alt="TikTok" class="social-icon">
+                </a>
+                <a href="https://www.youtube.com/@ChiefAdventures" target="_blank" aria-label="YouTube">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/YT_Icon.png" alt="YouTube" class="social-icon">
+                </a>
+                <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/Vimeo_Icon.png" alt="Vimeo" class="social-icon">
+                </a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 JFed's Life. All rights reserved.</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Blog posts data - ADD YOUR ARTICLES HERE
+        const blogPosts = [
+            {
+                id: 1,
+                title: "Seasons",
+                category: "faith",
+                date: "November 14, 2025",
+                excerpt: "I never thought I'd get into journaling or blogging. This piece is inspired by NF's new album and his song Fear. NF talks about how darkness can become routine and we can feel like we lose our sense of choice.",
+                url: "/articles/seasons"
+            }
+            // Add more posts here as you create them
+            // Example:
+            // {
+            //     id: 2,
+            //     title: "Starting Your Photography Business",
+            //     category: "business",
+            //     date: "December 1, 2025",
+            //     excerpt: "Here's what I learned in my first year as a professional photographer. From pricing to client management, these tips will help you get started.",
+            //     url: "/articles/photography-business"
+            // }
+        ];
+
+        let currentCategory = 'all';
+        let currentPage = 1;
+        const postsPerPage = 10;
+
+        function filterPosts(category) {
+            currentCategory = category;
+            currentPage = 1;
+            
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            renderPosts();
+        }
+
+        function getCategoryDisplayName(category) {
+            const names = {
+                'faith': 'Faith',
+                'business': 'Business',
+                'sports': 'Sports'
+            };
+            return names[category] || category;
+        }
+
+        function renderPosts() {
+            const grid = document.getElementById('blogGrid');
+            const noResults = document.getElementById('noResults');
+            
+            // Filter posts by category
+            let filteredPosts = currentCategory === 'all' 
+                ? blogPosts 
+                : blogPosts.filter(post => post.category === currentCategory);
+            
+            // Sort by date (most recent first)
+            filteredPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Calculate pagination
+            const startIndex = (currentPage - 1) * postsPerPage;
+            const endIndex = startIndex + postsPerPage;
+            const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
+            
+            // Show/hide no results message
+            if (filteredPosts.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                document.getElementById('pagination').style.display = 'none';
+                return;
+            } else {
+                grid.style.display = 'grid';
+                noResults.style.display = 'none';
+            }
+            
+            // Render posts
+            grid.innerHTML = paginatedPosts.map(post => `
+                <div class="blog-card">
+                    <div class="blog-card-image">Article Image</div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="blog-category">${getCategoryDisplayName(post.category)}</span>
+                            <span class="blog-date">${post.date}</span>
+                        </div>
+                        <h2 class="blog-card-title">
+                            <a href="${post.url}">${post.title}</a>
+                        </h2>
+                        <p class="blog-card-excerpt">${post.excerpt}</p>
+                        <a href="${post.url}" class="read-more">Read More</a>
+                    </div>
+                </div>
+            `).join('');
+            
+            renderPagination(filteredPosts.length);
+        }
+
+        function renderPagination(totalPosts) {
+            const pagination = document.getElementById('pagination');
+            const totalPages = Math.ceil(totalPosts / postsPerPage);
+            
+            if (totalPages <= 1) {
+                pagination.style.display = 'none';
+                return;
+            }
+            
+            pagination.style.display = 'flex';
+            
+            let paginationHTML = '';
+            
+            // Previous button
+            paginationHTML += `
+                <button class="page-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                    ‹ Prev
+                </button>
+            `;
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                    paginationHTML += `
+                        <button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">
+                            ${i}
+                        </button>
+                    `;
+                } else if (i === currentPage - 2 || i === currentPage + 2) {
+                    paginationHTML += `<span style="padding: 0.75rem 0.5rem;">...</span>`;
+                }
+            }
+            
+            // Next button
+            paginationHTML += `
+                <button class="page-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                    Next ›
+                </button>
+            `;
+            
+            pagination.innerHTML = paginationHTML;
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            renderPosts();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Theme functions
+        function setTheme(theme) {
+            const html = document.documentElement;
+            const lightBtn = document.getElementById('lightBtn');
+            const systemBtn = document.getElementById('systemBtn');
+            const darkBtn = document.getElementById('darkBtn');
+            
+            [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
+            
+            if (theme === 'system') {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+                systemBtn.classList.add('active');
+                localStorage.setItem('theme', 'system');
+            } else {
+                html.setAttribute('data-theme', theme);
+                if (theme === 'light') lightBtn.classList.add('active');
+                else darkBtn.classList.add('active');
+                localStorage.setItem('theme', theme);
+            }
+        }
+
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'system';
+            setTheme(savedTheme);
+            renderPosts();
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (localStorage.getItem('theme') === 'system') {
+                setTheme('system');
+            }
+        });
+
+        // Dropdown functionality
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+
+        document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+            dropdownLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    if (dropdown !== this.nextElementSibling) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+                const dropdownContent = this.nextElementSibling;
+                dropdownContent.classList.toggle('active');
+            });
+        });
+
+        // Seasonal Cursor Script
+        function setSeasonalCursor() {
+            const today = new Date();
+            const month = today.getMonth();
+            const day = today.getDate();
+            
+            let cursorUrl;
+            
+            if (month === 0 && day <= 15) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor.png';
+            }
+            else if (month === 1 && day <= 14) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor.png';
+            }
+            else if (month === 2 && day >= 10 && day <= 17) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor.png';
+            }
+            else if ((month === 2 && day >= 20) || (month === 3 && day <= 20)) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor.png';
+            }
+            else if (month === 6 && day <= 7) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor.png';
+            }
+            else if (month === 9 && day >= 20) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor.png';
+            }
+            else if (month === 10) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor2.png';
+            }
+            else if (month === 11) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor.png';
+            }
+            else {
+                return;
+            }
+            
+            document.body.style.cursor = `url('${cursorUrl}'), auto`;
+        }
+
+        window.addEventListener('DOMContentLoaded', setSeasonalCursor);
+    </script>
+</body>
+</html>
