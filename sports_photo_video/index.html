@@ -405,6 +405,93 @@
             font-size: 0.9rem;
         }
 
+        /* Sports Galleries Section */
+        .galleries-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .galleries-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-card {
+            position: relative;
+            height: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .gallery-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+            pointer-events: none;
+        }
+
+        .gallery-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .gallery-card h3 {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .gallery-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, gap 0.3s ease;
+        }
+
+        .gallery-btn:hover {
+            background-color: var(--accent-hover);
+            gap: 1rem;
+        }
+
+        .gallery-btn::after {
+            content: '→';
+        }
+
         /* Footer */
         footer {
             background-color: var(--bg-secondary);
@@ -429,16 +516,23 @@
         }
 
         .social-links a {
-            color: var(--text-primary);
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--accent);
             transform: scale(1.2);
+        }
+
+        .social-links a:hover .social-icon {
+            opacity: 0.8;
         }
 
         .copyright {
@@ -628,23 +722,46 @@
         </div>
     </div>
 
+    <!-- Sports Galleries Section -->
+    <section class="galleries-section">
+        <h2>Sports Galleries</h2>
+        <div class="gallery-grid">
+            <div class="gallery-card" style="background-image: url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/DSC06715.jpg');">
+                <div class="gallery-content">
+                    <h3>Trinity Bible College Athletics</h3>
+                    <a href="https://chiefadventures.pic-time.com/-trinitybiblecollegeathletics" target="_blank" class="gallery-btn">View Gallery</a>
+                </div>
+            </div>
+            
+            <!-- Add more gallery cards here as you create them -->
+            <!-- Example:
+            <div class="gallery-card" style="background-image: url('YOUR_IMAGE_URL_HERE');">
+                <div class="gallery-content">
+                    <h3>[Your Gallery Name]</h3>
+                    <a href="[Your PicTime URL]" target="_blank" class="gallery-btn">View Gallery</a>
+                </div>
+            </div>
+            -->
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
-                    Facebook
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/FB_Icon.png" alt="Facebook" class="social-icon">
                 </a>
                 <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
-                    Instagram
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/IG_Icon.png" alt="Instagram" class="social-icon">
                 </a>
                 <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
-                    TikTok
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/TikTok_Icon.png" alt="TikTok" class="social-icon">
                 </a>
                 <a href="https://www.youtube.com/@ChiefAdventures" target="_blank" aria-label="YouTube">
-                    YouTube
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/YT_Icon.png" alt="YouTube" class="social-icon">
                 </a>
                 <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
-                    Vimeo
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/Vimeo_Icon.png" alt="Vimeo" class="social-icon">
                 </a>
             </div>
             
