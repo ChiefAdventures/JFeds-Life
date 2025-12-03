@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing - JFed's Life</title>
+    <title>Wedding, Sports, Advertising & Website Pricing | Nebraska | JFed's Life</title>
+    <meta name="description" content="Transparent pricing for wedding videography, sports photography, advertising content, and website design services in North Dakota. Packages from $300-$9,995. Free consultations available.">
+    <meta name="keywords" content="wedding videography pricing, sports photography rates, North Dakota photographer prices, website design pricing, photography packages">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -537,16 +539,23 @@
         }
 
         .social-links a {
-            color: var(--text-primary);
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--accent);
             transform: scale(1.2);
+        }
+
+        .social-links a:hover .social-icon {
+            opacity: 0.8;
         }
 
         .copyright {
@@ -1072,6 +1081,94 @@
             </div>
         </div>
 
+        <!-- WEBSITE DESIGN & MAINTENANCE Service Box (REVERSED) -->
+        <div class="service-box reverse">
+            <div class="service-content">
+                <div class="service-image" style="background-image: url('https://via.placeholder.com/400x600/d97742/ffffff?text=Website+Design');">
+                    <!-- Placeholder for website design photo -->
+                </div>
+                
+                <div class="service-info">
+                    <div class="service-header">
+                        <h2>Website Design & Maintenance</h2>
+                        <span class="price-range">$750 - $1,500</span>
+                    </div>
+                    
+                    <p class="service-description">Professional website design and ongoing maintenance to keep your online presence fresh and functional.</p>
+                    
+                    <!-- Package 1 -->
+                    <div class="pricing-package">
+                        <div class="package-header" onclick="togglePackage('websites', 0)">
+                            <div class="package-title">
+                                <div class="radio-circle"></div>
+                                <h3>Basic Website</h3>
+                            </div>
+                            <div class="package-price">$750</div>
+                            <div class="package-icon">▼</div>
+                        </div>
+                        <div class="package-details">
+                            <div class="package-content">
+                                <div class="features-list">
+                                    <div class="feature-item">3-5 Pages (Home, About, Services, Contact)</div>
+                                    <div class="feature-item">Mobile Responsive Design</div>
+                                    <div class="feature-item">Contact Form Integration</div>
+                                    <div class="feature-item">Basic SEO Setup</div>
+                                    <div class="feature-item">3 Rounds of Revisions</div>
+                                    <div class="feature-item">30 Days Free Support After Launch</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Package 2 -->
+                    <div class="pricing-package">
+                        <div class="package-header" onclick="togglePackage('websites', 1)">
+                            <div class="package-title">
+                                <div class="radio-circle"></div>
+                                <h3>Professional Website</h3>
+                            </div>
+                            <div class="package-price">$1,500</div>
+                            <div class="package-icon">▼</div>
+                        </div>
+                        <div class="package-details">
+                            <div class="package-content">
+                                <div class="features-list">
+                                    <div class="feature-item">6-10 Pages</div>
+                                    <div class="feature-item">Custom Design</div>
+                                    <div class="feature-item">Blog Setup</div>
+                                    <div class="feature-item">Photo Galleries</div>
+                                    <div class="feature-item">Advanced SEO</div>
+                                    <div class="feature-item">Social Media Integration</div>
+                                    <div class="feature-item">4 Rounds of Revisions</div>
+                                    <div class="feature-item">Training Session Included</div>
+                                    <div class="feature-item">30 Days Free Support After Launch</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Available Add-Ons -->
+                    <div class="addons-section">
+                        <h4>Website Upkeep Options</h4>
+                        <div class="addons-list">
+                            <div class="addon-item">
+                                <span class="addon-name">Monthly Maintenance (2 hrs updates/month)</span>
+                                <span class="addon-price">$70/month</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Annual Maintenance (Save $140/year)</span>
+                                <span class="addon-price">$700/year</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Extra Hours Beyond Plan</span>
+                                <span class="addon-price">$50/hour</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Contact Button Section -->
@@ -1084,11 +1181,21 @@
     <footer>
         <div class="footer-content">
             <div class="social-links">
-                <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank">Facebook</a>
-                <a href="https://www.instagram.com/1chief_adventures1" target="_blank">Instagram</a>
-                <a href="https://www.tiktok.com/@chiefadventures" target="_blank">TikTok</a>
-                <a href="https://www.youtube.com/@ChiefAdventures" target="_blank">YouTube</a>
-                <a href="https://vimeo.com/user242698607" target="_blank">Vimeo</a>
+                <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/FB_Icon.png" alt="Facebook" class="social-icon">
+                </a>
+                <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/IG_Icon.png" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/TikTok_Icon.png" alt="TikTok" class="social-icon">
+                </a>
+                <a href="https://www.youtube.com/@ChiefAdventures" target="_blank" aria-label="YouTube">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/YT_Icon.png" alt="YouTube" class="social-icon">
+                </a>
+                <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/Vimeo_Icon.png" alt="Vimeo" class="social-icon">
+                </a>
             </div>
             
             <div class="copyright">
@@ -1103,12 +1210,13 @@
         const currentPackages = {
             wedding: null,
             sports: null,
-            advertising: null
+            advertising: null,
+            websites: null
         };
 
         function togglePackage(serviceType, index) {
             const serviceBox = document.querySelectorAll('.service-box')[
-                serviceType === 'wedding' ? 0 : serviceType === 'sports' ? 1 : 2
+                serviceType === 'wedding' ? 0 : serviceType === 'sports' ? 1 : serviceType === 'advertising' ? 2 : 3
             ];
             const packages = serviceBox.querySelectorAll('.pricing-package');
             const clickedPackage = packages[index];
