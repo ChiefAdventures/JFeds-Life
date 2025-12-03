@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding, Sports, Advertising & Website Pricing | Nebraska | JFed's Life</title>
-    <meta name="description" content="Transparent pricing for wedding videography, sports photography, advertising content, and website design services in North Dakota. Packages from $300-$9,995. Free consultations available.">
-    <meta name="keywords" content="wedding videography pricing, sports photography rates, North Dakota photographer prices, website design pricing, photography packages">
+    <meta name="description" content="Transparent pricing for wedding videography, sports photography, advertising content, and website design services in Nebraska. Packages from $300-$4,250. Free consultations available.">
+    <meta name="keywords" content="wedding videography pricing, sports photography rates, Nebraska photographer prices, website design pricing, photography packages">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -26,7 +26,7 @@
             --text-secondary: #adb5bd;
             --accent: #c97084;
             --accent-hover: #d88798;
-            --accent-secondary: #e89560;
+            --accent-secondary: #e89661;
             --border: #495057;
             --shadow: rgba(0, 0, 0, 0.3);
         }
@@ -48,22 +48,19 @@
         /* Header & Navigation */
         header {
             background-color: var(--bg-secondary);
+            padding: 1rem 2rem;
             box-shadow: 0 2px 10px var(--shadow);
             position: sticky;
             top: 0;
-            z-index: 1000;
-            transition: background-color 0.3s ease;
+            z-index: 100;
         }
 
         nav {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
         }
 
         .logo {
@@ -75,38 +72,30 @@
         }
 
         .logo-container {
-            position: relative;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
         }
 
         .logo-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            object-position: center;
-            border: 4px solid #1a1a1a;
-            box-shadow: 
-                0 0 0 2px #444,
-                0 0 0 6px #1a1a1a,
-                0 2px 8px rgba(0,0,0,0.4);
-            position: relative;
-            display: block;
-        }
-
-        [data-theme="dark"] .logo-img {
-            border: 4px solid #2a2a2a;
-            box-shadow: 
-                0 0 0 2px #555,
-                0 0 0 6px #2a2a2a,
-                0 2px 8px rgba(0,0,0,0.6);
         }
 
         .logo h1 {
             font-size: 1.5rem;
-            font-weight: 700;
             color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
         }
 
         .nav-links {
@@ -117,11 +106,10 @@
         }
 
         .nav-links a {
-            text-decoration: none;
             color: var(--text-primary);
+            text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
-            padding: 0.5rem 0;
         }
 
         .nav-links a:hover {
@@ -141,33 +129,28 @@
             min-width: 200px;
             box-shadow: 0 4px 12px var(--shadow);
             border-radius: 8px;
+            padding: 0.5rem 0;
             margin-top: 0.5rem;
-            overflow: hidden;
-            z-index: 1000;
         }
 
-        .dropdown-content.active {
+        .dropdown:hover .dropdown-content {
             display: block;
         }
 
         .dropdown-content a {
             display: block;
             padding: 0.75rem 1.5rem;
-            color: var(--text-primary) !important;
+            color: var(--text-primary);
             text-decoration: none;
             transition: background-color 0.3s ease;
         }
 
         .dropdown-content a:hover {
-            background-color: var(--accent);
-            color: white !important;
+            background-color: var(--bg-primary);
+            color: var(--accent);
         }
 
-        .dropdown > a::after {
-            content: ' ▾';
-            font-size: 0.8rem;
-        }
-
+        /* Theme Toggle */
         .theme-toggle {
             display: flex;
             gap: 0.5rem;
@@ -178,33 +161,19 @@
         }
 
         .theme-btn {
-            background: none;
+            padding: 0.5rem 1rem;
             border: none;
-            padding: 0.4rem 0.8rem;
-            cursor: pointer;
             border-radius: 20px;
+            background: none;
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            cursor: pointer;
             transition: all 0.3s ease;
-            min-width: 40px;
-        }
-
-        .theme-btn:hover {
-            color: var(--accent);
+            font-weight: 500;
         }
 
         .theme-btn.active {
             background-color: var(--accent);
             color: white;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            cursor: pointer;
         }
 
         /* Hero Section */
@@ -227,7 +196,7 @@
             opacity: 0.95;
         }
 
-        /* Main Container */
+        /* Pricing Container */
         .pricing-container {
             max-width: 1200px;
             margin: 4rem auto;
@@ -249,7 +218,6 @@
             min-height: 500px;
         }
 
-        /* Reverse layout for alternating boxes */
         .service-box.reverse .service-content {
             grid-template-columns: 1fr 400px;
         }
@@ -266,7 +234,6 @@
             background-position: center;
         }
 
-        /* Reverse image order */
         .service-box.reverse .service-image {
             order: 2;
         }
@@ -283,22 +250,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--border);
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .service-header h2 {
             font-size: 2rem;
-            color: var(--text-primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--accent);
         }
 
         .service-price-range {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
+            font-size: 1.25rem;
             font-weight: 600;
+            color: var(--accent);
         }
 
         .service-description {
@@ -307,35 +272,30 @@
             line-height: 1.6;
         }
 
-        /* Pricing Packages within Service Box */
+        /* Pricing Packages */
         .pricing-package {
-            border: 2px solid var(--border);
-            border-radius: 8px;
             margin-bottom: 1rem;
-            overflow: hidden;
-            transition: border-color 0.3s ease;
-        }
-
-        .pricing-package:hover {
-            border-color: var(--accent);
         }
 
         .package-header {
-            padding: 1.25rem 1.5rem;
-            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background-color 0.3s ease;
+            padding: 1.25rem;
             background-color: var(--bg-primary);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .package-header:hover {
-            background-color: var(--bg-secondary);
+            border-color: var(--accent);
         }
 
         .package-header.active {
             background-color: var(--accent);
+            border-color: var(--accent);
             color: white;
         }
 
@@ -343,43 +303,14 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            flex: 1;
         }
 
-        .package-title h3 {
-            font-size: 1.2rem;
-            margin: 0;
-        }
-
-        .package-price {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-right: 1rem;
-        }
-
-        .package-header.active .package-price {
-            color: white;
-        }
-
-        .package-icon {
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .package-header.active .package-icon {
-            transform: rotate(180deg);
-        }
-
-        /* Radio button styling */
         .radio-circle {
             width: 20px;
             height: 20px;
-            border: 2px solid var(--accent);
+            border: 2px solid var(--border);
             border-radius: 50%;
-            position: relative;
             transition: all 0.3s ease;
-            flex-shrink: 0;
         }
 
         .package-header.active .radio-circle {
@@ -387,57 +318,75 @@
             background-color: white;
         }
 
-        .package-header.active .radio-circle::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 10px;
-            height: 10px;
-            background-color: var(--accent);
-            border-radius: 50%;
+        .package-title h3 {
+            font-size: 1.25rem;
         }
 
-        /* Package Details */
+        .package-header.active .package-title h3 {
+            color: white;
+        }
+
+        .package-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .package-header.active .package-price {
+            color: white;
+        }
+
+        .package-icon {
+            font-size: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+
+        .package-header.active .package-icon {
+            transform: rotate(180deg);
+            color: white;
+        }
+
         .package-details {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease;
+            transition: max-height 0.3s ease;
         }
 
         .package-details.active {
-            max-height: 800px;
+            max-height: 1000px;
         }
 
         .package-content {
             padding: 1.5rem;
             background-color: var(--bg-primary);
-            border-top: 1px solid var(--border);
+            border: 2px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
         }
 
         .features-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 0.75rem;
+            gap: 1rem;
         }
 
         .feature-item {
+            padding: 0.75rem;
+            background-color: var(--bg-secondary);
+            border-radius: 6px;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 0.5rem;
-            font-size: 0.95rem;
         }
 
         .feature-item::before {
-            content: '✓';
+            content: "✓";
             color: var(--accent);
             font-weight: bold;
-            font-size: 1.1rem;
-            flex-shrink: 0;
+            font-size: 1.25rem;
         }
 
-        /* Add-Ons Section */
+        /* Add-ons Section */
         .addons-section {
             margin-top: 2rem;
             padding-top: 2rem;
@@ -445,7 +394,7 @@
         }
 
         .addons-section h4 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: var(--accent);
             margin-bottom: 1rem;
             text-align: center;
@@ -461,15 +410,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 1rem;
-            background-color: var(--bg-secondary);
-            border-radius: 6px;
+            padding: 1rem;
+            background-color: var(--bg-primary);
             border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .addon-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
         }
 
         .addon-name {
             font-weight: 500;
-            color: var(--text-primary);
         }
 
         .addon-price {
@@ -477,48 +431,46 @@
             color: var(--accent);
         }
 
-        /* Contact Button Section */
+        /* Contact Section */
         .contact-section {
             text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 2rem;
+            padding: 4rem 2rem;
+            background-color: var(--bg-secondary);
         }
 
         .contact-section h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--accent);
             margin-bottom: 1rem;
         }
 
         .contact-section p {
+            font-size: 1.25rem;
             color: var(--text-secondary);
-            font-size: 1.1rem;
             margin-bottom: 2rem;
         }
 
         .contact-btn {
             display: inline-block;
+            padding: 1rem 3rem;
             background-color: var(--accent);
             color: white;
-            padding: 1rem 3rem;
-            border-radius: 8px;
             text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
             font-weight: 600;
-            font-size: 1.2rem;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 12px var(--shadow);
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .contact-btn:hover {
             background-color: var(--accent-hover);
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px var(--shadow);
         }
 
         /* Footer */
         footer {
             background-color: var(--bg-secondary);
-            padding: 3rem 2rem;
+            padding: 3rem 2rem 2rem;
             margin-top: 4rem;
         }
 
@@ -534,8 +486,7 @@
         .social-links {
             display: flex;
             gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
+            align-items: center;
         }
 
         .social-links a {
@@ -568,7 +519,31 @@
         }
 
         /* Mobile Responsive */
-        @media (max-width: 568px) {
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--bg-secondary);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 12px var(--shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .theme-toggle {
+                margin-top: 1rem;
+            }
+
             .service-content,
             .service-box.reverse .service-content {
                 grid-template-columns: 1fr;
@@ -592,36 +567,6 @@
             .features-list {
                 grid-template-columns: 1fr;
             }
-        }
-
-        @media (max-width: 968px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                gap: 0;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-                padding: 0.5rem 0;
-            }
-
-            .dropdown-content {
-                position: static;
-                box-shadow: none;
-                margin-top: 0;
-                background-color: var(--bg-primary);
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
 
             .hero h1 {
                 font-size: 2rem;
@@ -629,20 +574,6 @@
 
             .hero p {
                 font-size: 1rem;
-            }
-
-            .package-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.75rem;
-            }
-
-            .package-price {
-                margin-right: 0;
-            }
-
-            nav {
-                padding: 1rem;
             }
 
             .pricing-container {
@@ -676,7 +607,7 @@
                     <a href="#business">Business</a>
                     <div class="dropdown-content">
                         <a href="/weddings">Weddings</a>
-                        <a href="/sports_photography">Sports Photography</a>
+                        <a href="/sports_photo_video">Sports Photo & Video</a>
                         <a href="/gear">Gear</a>
                     </div>
                 </li>
@@ -694,14 +625,15 @@
                 <li><a href="/contact">Contact</a></li>
             </ul>
 
+            <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
             <div class="theme-toggle">
-                <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
+                <button class="theme-btn" onclick="setTheme('light')" id="lightBtn">
                     Light
                 </button>
-                <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
+                <button class="theme-btn active" onclick="setTheme('dark')" id="darkBtn">
                     Dark
                 </button>
-                <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
+                <button class="theme-btn" onclick="setTheme('system')" id="systemBtn">
                     System
                 </button>
             </div>
@@ -718,18 +650,16 @@
         <!-- WEDDINGS Service Box -->
         <div class="service-box">
             <div class="service-content">
-                <div class="service-image" style="background-image: url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/65638274_2364562433761428_7410253521288691712_n copy.jpg');">
-                    <!-- Placeholder for wedding photo -->
-                </div>
+                <div class="service-image" style="background-image: url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/65638274_2364562433761428_7410253521288691712_n copy.jpg');"></div>
+                
                 <div class="service-details">
                     <div class="service-header">
                         <h2>Weddings</h2>
                         <div class="service-price-range">USD $1,500 - USD $4,250</div>
                     </div>
-                    <p class="service-description">
-                        Looking forward to caputre all the joy of your wedding day! Fully booked with deposit & contract. Payment plans available. 3 free revisions.
-                    </p>
-
+                    
+                    <p class="service-description">Looking forward to capture all the joy of your wedding day! Fully booked with deposit & contract. Payment plans available. 3 free revisions.</p>
+                    
                     <!-- Package 1 -->
                     <div class="pricing-package">
                         <div class="package-header" onclick="togglePackage('wedding', 0)">
@@ -743,13 +673,12 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">8 Hours of Coverage</div>
-                                    <div class="feature-item">Highlight Film (6 minutes)</div>
-                                    <div class="feature-item">Ceremony Film (Full Length)</div>
-                                    <div class="feature-item">45-60 Second Teaser Video (Your choice of horizontal, vertical, or square)</div>
+                                    <div class="feature-item">Up to 8 Hours Coverage</div>
                                     <div class="feature-item">1 Videographer</div>
-                                    <div class="feature-item">Professional Editing</div>
-                                    <div class="feature-item">Online Delivery</div>
+                                    <div class="feature-item">Highlight Video (3-5 minutes)</div>
+                                    <div class="feature-item">Full Ceremony Edit</div>
+                                    <div class="feature-item">Online Gallery</div>
+                                    <div class="feature-item">Music Licensing</div>
                                 </div>
                             </div>
                         </div>
@@ -768,14 +697,14 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">10 Hours of Coverage</div>
-                                    <div class="feature-item">Highlight Film (8 minutes)</div>
-                                    <div class="feature-item">Ceremony Film (Full Length)</div>
-                                    <div class="feature-item">Toasts Film (Full Length)</div>
-                                    <div class="feature-item">45-60 Second Teaser Video (Your choice of horizontal, vertical, or square)</div>
-                                    <div class="feature-item">1 Videographer</div>
-                                    <div class="feature-item">Professional Editing</div>
-                                    <div class="feature-item">Custom USB + Online Delivery</div>
+                                    <div class="feature-item">Up to 10 Hours Coverage</div>
+                                    <div class="feature-item">2 Videographers</div>
+                                    <div class="feature-item">Highlight Video (5-7 minutes)</div>
+                                    <div class="feature-item">Full Ceremony & Reception Edit</div>
+                                    <div class="feature-item">Wedding Trailer (60 seconds)</div>
+                                    <div class="feature-item">Online Gallery</div>
+                                    <div class="feature-item">Music Licensing</div>
+                                    <div class="feature-item">USB Drive with All Footage</div>
                                 </div>
                             </div>
                         </div>
@@ -794,16 +723,18 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">10 Hours of Coverage</div>
-                                    <div class="feature-item">Highlight Film (10 minutes)</div>
-                                    <div class="feature-item">Ceremony Film (Full Length)</div>
-                                    <div class="feature-item">Toasts Film (Full Length)</div>
-                                    <div class="feature-item">45-60 Second Teaser Video x2 (Your choice of horizontal, vertical, or square)</div>
-                                    <div class="feature-item">Love Story Video</div>
-                                    <div class="feature-item">2 Videographers</div>
-                                    <div class="feature-item">Professional Editing</div>
-                                    <div class="feature-item">Custom USB + Online Delivery</div>
-                                    <div class="feature-item">Raw Footage Delivery</div>
+                                    <div class="feature-item">Unlimited Hours Coverage</div>
+                                    <div class="feature-item">2 Videographers + Drone Pilot</div>
+                                    <div class="feature-item">Cinematic Highlight Film (8-10 minutes)</div>
+                                    <div class="feature-item">Full Ceremony & Reception Edit</div>
+                                    <div class="feature-item">Wedding Trailer (90 seconds)</div>
+                                    <div class="feature-item">Drone Footage</div>
+                                    <div class="feature-item">Engagement Session Video</div>
+                                    <div class="feature-item">Same-Day Edit Preview</div>
+                                    <div class="feature-item">Online Gallery</div>
+                                    <div class="feature-item">Music Licensing</div>
+                                    <div class="feature-item">Custom USB Drive & Box</div>
+                                    <div class="feature-item">All Raw Footage Included</div>
                                 </div>
                             </div>
                         </div>
@@ -818,25 +749,24 @@
                                 <span class="addon-price">+$150/hr</span>
                             </div>
                             <div class="addon-item">
-                                <span class="addon-name">Priority Turnaround (4 weeks)</span>
-                                <span class="addon-price">+$750</span>
+                                <span class="addon-name">Engagement Session</span>
+                                <span class="addon-price">+$400</span>
                             </div>
                             <div class="addon-item">
-                                <span class="addon-name">Raw Footage</span>
-                                <span class="addon-price">+$500</span>
+                                <span class="addon-name">Drone Footage</span>
+                                <span class="addon-price">+$300</span>
                             </div>
                             <div class="addon-item">
-                                <span class="addon-name">Love Story Video</span>
-                                <span class="addon-price">$1,500</span>
+                                <span class="addon-name">Second Videographer</span>
+                                <span class="addon-price">+$600</span>
                             </div>
                             <div class="addon-item">
                                 <span class="addon-name">Same-Day Edit</span>
-                                <span class="addon-price">+$1500</span>
+                                <span class="addon-price">+$500</span>
                             </div>
                             <div class="addon-item">
-                                <span class="addon-name">Additional Revisions</span>
-                                <span class="addon-price">+$150/round</span>
-                            </div>
+                                <span class="addon-name">Extra Album Copy</span>
+                                <span class="addon-price">+$200</span>
                             </div>
                         </div>
                     </div>
@@ -847,18 +777,16 @@
         <!-- SPORTS PHOTOGRAPHY/VIDEOGRAPHY Service Box (REVERSED) -->
         <div class="service-box reverse">
             <div class="service-content">
-                <div class="service-image" style="background-image: url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/DSC04884.jpg');">
-                    <!-- Placeholder for sports photo -->
-                </div>
+                <div class="service-image" style="background-image: url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/DSC04884.jpg');"></div>
+                
                 <div class="service-details">
                     <div class="service-header">
                         <h2>Sports Photography/Videography</h2>
                         <div class="service-price-range">USD $300 - USD $2,500</div>
                     </div>
-                    <p class="service-description">
-                        Sports coverage for tournaments, games, and athletic events. Fully booked with deposit and contract. Payment plans available for larger projects. 3 free revisions. (10% off for teams booking multiple events)
-                    </p>
-
+                    
+                    <p class="service-description">Sports coverage for tournaments, games, and athletic events. Fully booked with deposit and contract. Payment plans available for larger projects. 3 free revisions. (10% off for teams booking multiple events)</p>
+                    
                     <!-- Package 1 -->
                     <div class="pricing-package">
                         <div class="package-header" onclick="togglePackage('sports', 0)">
@@ -872,12 +800,12 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">Up to 3 Hours Coverage</div>
-                                    <div class="feature-item">30-40 Edited Photos</div>
+                                    <div class="feature-item">Up to 2 Hours Coverage</div>
                                     <div class="feature-item">1 Photographer</div>
+                                    <div class="feature-item">Minimum 100 Edited Photos</div>
                                     <div class="feature-item">Online Gallery</div>
-                                    <div class="feature-item">High-Resolution Downloads</div>
-                                    <div class="feature-item">2-Day Delivery</div>
+                                    <div class="feature-item">Digital Download</div>
+                                    <div class="feature-item">2-Week Delivery</div>
                                 </div>
                             </div>
                         </div>
@@ -896,12 +824,12 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">Up to 3 Hours Coverage</div>
-                                    <div class="feature-item">Recap Video (1-2 minutes)</div>
-                                    <div class="feature-item">Highlight Video (30 seconds or less)</div>
+                                    <div class="feature-item">Up to 2 Hours Coverage</div>
                                     <div class="feature-item">1 Videographer</div>
-                                    <div class="feature-item">Online Gallery with Downloads</div>
-                                    <div class="feature-item">2-Day Delivery</div>
+                                    <div class="feature-item">Highlight Video (3-5 minutes)</div>
+                                    <div class="feature-item">Full Game Recording Available</div>
+                                    <div class="feature-item">Online Delivery</div>
+                                    <div class="feature-item">2-Week Delivery</div>
                                 </div>
                             </div>
                         </div>
@@ -920,14 +848,14 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">8 Hours of Coverage</div>
-                                    <div class="feature-item">200+ Edited Photos</div>
-                                    <div class="feature-item">Recap Video (3-5 minutes)</div>
-                                    <div class="feature-item">Highlight Video (30 seconds or less)</div>
-                                    <div class="feature-item">Team & Individual Shots</div>
-                                    <div class="feature-item">Online Gallery with Download</div>
-                                    <div class="feature-item">Social Media Optimized Files</div>
-                                    <div class="feature-item">5-Day Delivery</div>
+                                    <div class="feature-item">Full Tournament Coverage (Multi-Day)</div>
+                                    <div class="feature-item">Photo & Video Combo</div>
+                                    <div class="feature-item">Minimum 300 Edited Photos</div>
+                                    <div class="feature-item">Tournament Highlight Video (5-8 minutes)</div>
+                                    <div class="feature-item">Individual Team/Player Highlights</div>
+                                    <div class="feature-item">Online Gallery</div>
+                                    <div class="feature-item">Digital Download</div>
+                                    <div class="feature-item">3-Week Delivery</div>
                                 </div>
                             </div>
                         </div>
@@ -946,15 +874,16 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">5 Events Coverage</div>
-                                    <div class="feature-item">600+ Photos Total, 125+ roughly per event</div>
-                                    <div class="feature-item">Season Recap Video (5-8 minutes)</div>
-                                    <div class="feature-item">Highlight Video per event (30 seconds or less)</div>
-                                    <div class="feature-item">Team Photos & Portraits</div>
-                                    <div class="feature-item">Action Shots from All Events</div>
+                                    <div class="feature-item">Full Season Coverage (8-12 Events)</div>
+                                    <div class="feature-item">Photo & Video at Each Event</div>
+                                    <div class="feature-item">500+ Edited Photos</div>
+                                    <div class="feature-item">Season Highlight Video (8-12 minutes)</div>
+                                    <div class="feature-item">Individual Player Highlight Reels</div>
+                                    <div class="feature-item">Team Photo Shoot</div>
+                                    <div class="feature-item">Social Media Content Package</div>
+                                    <div class="feature-item">Online Gallery (Updated Weekly)</div>
                                     <div class="feature-item">Priority Scheduling</div>
-                                    <div class="feature-item">Online Gallery with Downloads</div>
-                                    <div class="feature-item">Photos delivered 3 days after event, Highlight Video delievered 2 days after event, Season Recap Video delievered 5 days after 5th event.</div>
+                                    <div class="feature-item">End of Season Recap Video</div>
                                 </div>
                             </div>
                         </div>
@@ -969,20 +898,24 @@
                                 <span class="addon-price">+$350</span>
                             </div>
                             <div class="addon-item">
-                                <span class="addon-name">Rush Delivery (24 hours)</span>
-                                <span class="addon-price">+$200 per deliverable (ex: photos, highlight video, recap video)</span>
+                                <span class="addon-name">Rush Delivery (24hrs)</span>
+                                <span class="addon-price">+$200</span>
                             </div>
                             <div class="addon-item">
                                 <span class="addon-name">4K Video Upgrade</span>
                                 <span class="addon-price">+$150</span>
                             </div>
                             <div class="addon-item">
-                                <span class="addon-name">Social Media Clips (8-10 clips)</span>
-                                <span class="addon-price">+$100</span>
+                                <span class="addon-name">Drone Coverage</span>
+                                <span class="addon-price">+$250</span>
                             </div>
                             <div class="addon-item">
-                                <span class="addon-name">Additional Revisions</span>
-                                <span class="addon-price">+$150/round</span>
+                                <span class="addon-name">Second Photographer</span>
+                                <span class="addon-price">+$400</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Social Media Clips (10 clips)</span>
+                                <span class="addon-price">+$100</span>
                             </div>
                         </div>
                     </div>
@@ -993,18 +926,16 @@
         <!-- ADVERTISING Service Box -->
         <div class="service-box">
             <div class="service-content">
-                <div class="service-image" style="background-image: url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4810.jpg');">
-                    <!-- Placeholder for advertising photo -->
-                </div>
+                <div class="service-image" style="background-image: url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4810.jpg');"></div>
+                
                 <div class="service-details">
                     <div class="service-header">
                         <h2>Advertising</h2>
                         <div class="service-price-range">USD $500 - USD $900</div>
                     </div>
-                    <p class="service-description">
-                        Commercial content for businesses, brands, and marketing campaigns. Fully booked with deposit and contract. Payment plans available for larger projects. 3 free revisions.
-                    </p>
-
+                    
+                    <p class="service-description">Commercial content for businesses, brands, and marketing campaigns. Fully booked with deposit and contract. Payment plans available for larger projects. 3 free revisions.</p>
+                    
                     <!-- Package 1 -->
                     <div class="pricing-package">
                         <div class="package-header" onclick="togglePackage('advertising', 0)">
@@ -1018,12 +949,12 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">4 Hours On-Site</div>
-                                    <div class="feature-item">2 Minute Video</div>
-                                    <div class="feature-item">30 Second Commercial Video x2 (your choice of vertical, horizontal, or square)</div>
-                                    <div class="feature-item">Online Delivery</div>
-                                    <div class="feature-item">Commercial Use License</div>
-                                    <div class="feature-item">5-Day Delivery</div>
+                                    <div class="feature-item">Half Day Shoot (4 hours)</div>
+                                    <div class="feature-item">1 Videographer</div>
+                                    <div class="feature-item">1 Promotional Video (30-60 seconds)</div>
+                                    <div class="feature-item">Music Licensing</div>
+                                    <div class="feature-item">Color Grading</div>
+                                    <div class="feature-item">2-Week Turnaround</div>
                                 </div>
                             </div>
                         </div>
@@ -1042,13 +973,14 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">6 Hours On-Site</div>
-                                    <div class="feature-item">4 Minute Video</div>
-                                    <div class="feature-item">30 Second Commercial Video x5 (your choice of vertical, horizontal, or square)</div>
-                                    <div class="feature-item">Brand Strategy Consultation</div>
-                                    <div class="feature-item">Multiple Location Shoots</div>
-                                    <div class="feature-item">Full Commercial Use Rights</div>
-                                    <div class="feature-item">10-Day Delivery</div>
+                                    <div class="feature-item">Full Day Shoot (8 hours)</div>
+                                    <div class="feature-item">2 Videographers</div>
+                                    <div class="feature-item">2 Promotional Videos (30-90 seconds each)</div>
+                                    <div class="feature-item">Behind-the-Scenes Content</div>
+                                    <div class="feature-item">Music Licensing</div>
+                                    <div class="feature-item">Professional Color Grading</div>
+                                    <div class="feature-item">Motion Graphics & Text Overlays</div>
+                                    <div class="feature-item">2-Week Turnaround</div>
                                 </div>
                             </div>
                         </div>
@@ -1068,12 +1000,19 @@
                             </div>
                             <div class="addon-item">
                                 <span class="addon-name">Raw Footage Delivery</span>
-                                <span class="addon-price">+$500</span>
+                                <span class="addon-price">+$300</span>
                             </div>
                             <div class="addon-item">
                                 <span class="addon-name">Expedited Delivery (3 days)</span>
                                 <span class="addon-price">+$600</span>
                             </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Professional Talent</span>
+                                <span class="addon-price">Contact for pricing</span>
+                            </div>
+                            <div class="addon-item">
+                                <span class="addon-name">Additional Location</span>
+                                <span class="addon-price">+$200</span>
                             </div>
                         </div>
                     </div>
@@ -1081,12 +1020,10 @@
             </div>
         </div>
 
-        <!-- WEBSITE DESIGN & MAINTENANCE Service Box (REVERSED) -->
+        <!-- WEBSITE DESIGN & UPKEEP Service Box (REVERSED) -->
         <div class="service-box reverse">
             <div class="service-content">
-                <div class="service-image" style="background-image: url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4778.jpg');">
-                    <!-- Placeholder for website design photo -->
-                </div>
+                <div class="service-image" style="background-image: url('https://via.placeholder.com/400x600/d97742/ffffff?text=Website+Design');"></div>
                 
                 <div class="service-details">
                     <div class="service-header">
@@ -1147,7 +1084,7 @@
                         </div>
                     </div>
 
-                    <!-- Available Add-Ons -->
+                    <!-- Website Upkeep Options -->
                     <div class="addons-section">
                         <h4>Website Upkeep Options</h4>
                         <div class="addons-list">
@@ -1215,9 +1152,15 @@
         };
 
         function togglePackage(serviceType, index) {
-            const serviceBox = document.querySelectorAll('.service-box')[
-                serviceType === 'wedding' ? 0 : serviceType === 'sports' ? 1 : serviceType === 'advertising' ? 2 : 3
-            ];
+            const serviceBoxes = document.querySelectorAll('.service-box');
+            let serviceBox;
+            
+            // Find the correct service box based on type
+            if (serviceType === 'wedding') serviceBox = serviceBoxes[0];
+            else if (serviceType === 'sports') serviceBox = serviceBoxes[1];
+            else if (serviceType === 'advertising') serviceBox = serviceBoxes[2];
+            else if (serviceType === 'websites') serviceBox = serviceBoxes[3];
+            
             const packages = serviceBox.querySelectorAll('.pricing-package');
             const clickedPackage = packages[index];
             const header = clickedPackage.querySelector('.package-header');
@@ -1231,13 +1174,12 @@
                 return;
             }
 
-            // Close all packages in this service
-            packages.forEach((pkg, i) => {
-                const pkgHeader = pkg.querySelector('.package-header');
-                const pkgDetails = pkg.querySelector('.package-details');
-                pkgHeader.classList.remove('active');
-                pkgDetails.classList.remove('active');
-            });
+            // Close previously open package in this service
+            if (currentPackages[serviceType] !== null) {
+                const prevPackage = packages[currentPackages[serviceType]];
+                prevPackage.querySelector('.package-header').classList.remove('active');
+                prevPackage.querySelector('.package-details').classList.remove('active');
+            }
 
             // Open clicked package
             header.classList.add('active');
@@ -1245,105 +1187,70 @@
             currentPackages[serviceType] = index;
         }
 
+        // Theme System
         function setTheme(theme) {
             const html = document.documentElement;
             const lightBtn = document.getElementById('lightBtn');
-            const systemBtn = document.getElementById('systemBtn');
             const darkBtn = document.getElementById('darkBtn');
-            
-            [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
-            
+            const systemBtn = document.getElementById('systemBtn');
+
+            // Remove active class from all buttons
+            lightBtn.classList.remove('active');
+            darkBtn.classList.remove('active');
+            systemBtn.classList.remove('active');
+
             if (theme === 'system') {
                 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
                 systemBtn.classList.add('active');
-                localStorage.setItem('theme', 'system');
             } else {
                 html.setAttribute('data-theme', theme);
                 if (theme === 'light') lightBtn.classList.add('active');
                 else darkBtn.classList.add('active');
-                localStorage.setItem('theme', theme);
             }
+
+            localStorage.setItem('theme', theme);
         }
 
+        // Mobile Menu Toggle
         function toggleMobileMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
 
+        // Initialize theme on page load
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'system';
             setTheme(savedTheme);
         });
 
+        // Listen for system theme changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
             if (localStorage.getItem('theme') === 'system') {
-                setTheme('system');
+                const html = document.documentElement;
+                html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
             }
         });
 
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.dropdown')) {
-                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-        });
-
-        document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
-            dropdownLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-                    if (dropdown !== this.nextElementSibling) {
-                        dropdown.classList.remove('active');
-                    }
-                });
-                const dropdownContent = this.nextElementSibling;
-                dropdownContent.classList.toggle('active');
-            });
-        });
-
-        // Seasonal Cursor Script
+        // Seasonal Cursor
         function setSeasonalCursor() {
-            const today = new Date();
-            const month = today.getMonth();
-            const day = today.getDate();
+            const now = new Date();
+            const month = now.getMonth();
+            const day = now.getDate();
             
-            let cursorUrl;
+            let cursorUrl = '';
             
-            if (month === 0 && day <= 7) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
-    }
-    // Valentine's Day (February 7-14)
-    else if (month === 1 && day >= 7 && day <= 14) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
-    }
-    // St. Patrick's Day (March 10-17)
-    else if (month === 2 && day >= 10 && day <= 17) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
-    }
-    // Easter (March 29 - April 7) - adjust dates yearly
-    else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
-    }
-    // 4th of July (July 1-7)
-    else if (month === 6 && day <= 7) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
-    }
-    // Halloween (October 24-31)
-    else if (month === 9 && day >= 24) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
-    }
-    // Thanksgiving (November 15-30)
-    else if (month === 10 && day >= 15) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
-    }
-    // Christmas (December 10-26)
-    else if (month === 11 && day >= 10 && day <= 26) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
-    }
+            // Christmas Season (December 1 - January 6)
+            if ((month === 11) || (month === 0 && day <= 6)) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor.png';
+            }
             
-            document.body.style.cursor = `url('${cursorUrl}'), auto`;
+            if (cursorUrl) {
+                document.body.style.cursor = `url('${cursorUrl}'), auto`;
+                document.querySelectorAll('a, button').forEach(el => {
+                    el.style.cursor = `url('${cursorUrl}'), pointer`;
+                });
+            }
         }
 
         window.addEventListener('DOMContentLoaded', setSeasonalCursor);
