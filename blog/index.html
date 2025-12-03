@@ -795,6 +795,22 @@
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'system';
             setTheme(savedTheme);
+            
+            // Check for category parameter in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryParam = urlParams.get('category');
+            
+            if (categoryParam && ['business', 'faith', 'sports'].includes(categoryParam)) {
+                currentCategory = categoryParam;
+                // Update active filter button
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.textContent.toLowerCase() === categoryParam) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+            
             renderPosts();
         });
 
