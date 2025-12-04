@@ -71,6 +71,7 @@
             color: var(--text-primary);
         }
 
+        /* --- UPDATED LOGO STYLES TO MATCH OTHER PAGES --- */
         .logo-container {
             position: relative;
             width: 60px;
@@ -99,6 +100,7 @@
                 0 0 0 6px #2a2a2a,
                 0 2px 8px rgba(0,0,0,0.6);
         }
+        /* ----------------------------------------------- */
 
         .logo h1 {
             font-size: 1.5rem;
@@ -147,6 +149,7 @@
             border-radius: 8px;
             padding: 0.5rem 0;
             margin-top: 0.5rem;
+            z-index: 1000; /* Added z-index to match index 8 */
         }
 
         .dropdown:hover .dropdown-content {
@@ -165,6 +168,13 @@
             background-color: var(--bg-primary);
             color: var(--accent);
         }
+        
+        /* --- ADDED DROPDOWN ARROW CSS --- */
+        .dropdown > a::after {
+            content: ' ▾';
+            font-size: 0.8rem;
+        }
+        /* -------------------------------- */
 
         /* Theme Toggle */
         .theme-toggle {
