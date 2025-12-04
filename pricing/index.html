@@ -48,7 +48,7 @@
         /* Header & Navigation */
         header {
             background-color: var(--bg-secondary);
-            /* REMOVED: padding: 1rem 2rem; (This was causing the difference) */
+            /* REMOVED PADDING FROM HERE TO MATCH INDEX 8 */
             box-shadow: 0 2px 10px var(--shadow);
             position: sticky;
             top: 0;
@@ -58,11 +58,12 @@
         nav {
             max-width: 1200px;
             margin: 0 auto;
-            /* ADDED: These lines make it match Index 8 exactly */
+            /* MOVED PADDING HERE TO MATCH INDEX 8 */
             padding: 1rem 2rem; 
             display: flex;
             justify-content: space-between;
             align-items: center;
+            /* ADDED GAP AND WRAP TO MATCH INDEX 8 */
             flex-wrap: wrap;
             gap: 1rem;
         }
@@ -107,6 +108,8 @@
         .logo h1 {
             font-size: 1.5rem;
             color: var(--accent);
+            /* ADDED FONT WEIGHT TO MATCH INDEX 8 */
+            font-weight: 700;
         }
 
         .mobile-menu-btn {
@@ -154,6 +157,7 @@
             z-index: 1000;
         }
 
+        /* CHANGED: Replaced :hover with .active class for click functionality */
         .dropdown-content.active {
             display: block;
         }
