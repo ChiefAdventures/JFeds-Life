@@ -71,7 +71,6 @@
             color: var(--text-primary);
         }
 
-        /* --- UPDATED LOGO STYLES TO MATCH OTHER PAGES --- */
         .logo-container {
             position: relative;
             width: 60px;
@@ -100,7 +99,6 @@
                 0 0 0 6px #2a2a2a,
                 0 2px 8px rgba(0,0,0,0.6);
         }
-        /* ----------------------------------------------- */
 
         .logo h1 {
             font-size: 1.5rem;
@@ -149,10 +147,11 @@
             border-radius: 8px;
             padding: 0.5rem 0;
             margin-top: 0.5rem;
-            z-index: 1000; /* Added z-index to match index 8 */
+            z-index: 1000;
         }
 
-        .dropdown:hover .dropdown-content {
+        /* CHANGED: Replaced :hover with .active class */
+        .dropdown-content.active {
             display: block;
         }
 
@@ -169,12 +168,10 @@
             color: var(--accent);
         }
         
-        /* --- ADDED DROPDOWN ARROW CSS --- */
         .dropdown > a::after {
             content: ' ▾';
             font-size: 0.8rem;
         }
-        /* -------------------------------- */
 
         /* Theme Toggle */
         .theme-toggle {
@@ -329,7 +326,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            flex-grow: 1; /* Added to push price to the right */
+            flex-grow: 1;
         }
 
         .radio-circle {
@@ -357,8 +354,8 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--accent);
-            margin-right: 1rem; /* Added spacing from arrow */
-            white-space: nowrap; /* Prevents price wrapping */
+            margin-right: 1rem;
+            white-space: nowrap;
         }
 
         .package-header.active .package-price {
@@ -1156,6 +1153,33 @@
             header.classList.toggle('active');
             details.classList.toggle('active');
         }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+
+        // Toggle dropdowns on click
+        document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+            dropdownLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close other dropdowns
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    if (dropdown !== this.nextElementSibling) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+                
+                // Toggle this dropdown
+                const dropdownContent = this.nextElementSibling;
+                dropdownContent.classList.toggle('active');
+            });
+        });
 
         // Theme System
         function setTheme(theme) {
