@@ -192,14 +192,15 @@
         }
 
         .theme-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 20px;
             background: none;
-            color: var(--text-secondary);
+            border: none;
+            padding: 0.4rem 0.8rem;
             cursor: pointer;
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
             transition: all 0.3s ease;
-            font-weight: 500;
+            min-width: 40px;
         }
 
         .theme-btn.active {
@@ -660,13 +661,13 @@
             </ul>
 
             <div class="theme-toggle">
-                <button class="theme-btn" onclick="setTheme('light')" id="lightBtn">
+                <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
                     Light
                 </button>
-                <button class="theme-btn active" onclick="setTheme('dark')" id="darkBtn">
+                <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
                     Dark
                 </button>
-                <button class="theme-btn" onclick="setTheme('system')" id="systemBtn">
+                <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
                     System
                 </button>
             </div>
