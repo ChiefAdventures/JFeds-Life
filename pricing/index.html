@@ -71,7 +71,6 @@
             color: var(--text-primary);
         }
 
-        /* --- UPDATED LOGO STYLES TO MATCH OTHER PAGES --- */
         .logo-container {
             position: relative;
             width: 60px;
@@ -100,7 +99,6 @@
                 0 0 0 6px #2a2a2a,
                 0 2px 8px rgba(0,0,0,0.6);
         }
-        /* ----------------------------------------------- */
 
         .logo h1 {
             font-size: 1.5rem;
@@ -321,6 +319,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            flex-grow: 1; /* Added to push price to the right */
         }
 
         .radio-circle {
@@ -348,6 +347,8 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--accent);
+            margin-right: 1rem; /* Added spacing from arrow */
+            white-space: nowrap; /* Prevents price wrapping */
         }
 
         .package-header.active .package-price {
@@ -1124,14 +1125,7 @@
     </footer>
 
     <script>
-        // Track current open package for each service
-        const currentPackages = {
-            wedding: null,
-            sports: null,
-            advertising: null,
-            websites: null
-        };
-
+        // Updated to support multiple open packages independently
         function togglePackage(serviceType, index) {
             const serviceBoxes = document.querySelectorAll('.service-box');
             let serviceBox;
@@ -1147,25 +1141,10 @@
             const header = clickedPackage.querySelector('.package-header');
             const details = clickedPackage.querySelector('.package-details');
 
-            // If clicking the same package, close it
-            if (currentPackages[serviceType] === index) {
-                header.classList.remove('active');
-                details.classList.remove('active');
-                currentPackages[serviceType] = null;
-                return;
-            }
-
-            // Close previously open package in this service
-            if (currentPackages[serviceType] !== null) {
-                const prevPackage = packages[currentPackages[serviceType]];
-                prevPackage.querySelector('.package-header').classList.remove('active');
-                prevPackage.querySelector('.package-details').classList.remove('active');
-            }
-
-            // Open clicked package
-            header.classList.add('active');
-            details.classList.add('active');
-            currentPackages[serviceType] = index;
+            // Simply toggle classes on the clicked package
+            // This removes the logic that forces others to close
+            header.classList.toggle('active');
+            details.classList.toggle('active');
         }
 
         // Theme System
