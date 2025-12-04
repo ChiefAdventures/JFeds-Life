@@ -71,18 +71,36 @@
             color: var(--text-primary);
         }
 
+        /* --- UPDATED LOGO STYLES TO MATCH OTHER PAGES --- */
         .logo-container {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
+            position: relative;
+            width: 60px;
+            height: 60px;
         }
 
         .logo-img {
-            width: 100%;
-            height: 100%;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             object-fit: cover;
+            object-position: center;
+            border: 4px solid #1a1a1a;
+            box-shadow: 
+                0 0 0 2px #444,
+                0 0 0 6px #1a1a1a,
+                0 2px 8px rgba(0,0,0,0.4);
+            position: relative;
+            display: block;
         }
+
+        [data-theme="dark"] .logo-img {
+            border: 4px solid #2a2a2a;
+            box-shadow: 
+                0 0 0 2px #555,
+                0 0 0 6px #2a2a2a,
+                0 2px 8px rgba(0,0,0,0.6);
+        }
+        /* ----------------------------------------------- */
 
         .logo h1 {
             font-size: 1.5rem;
@@ -656,7 +674,7 @@
                         <div class="service-price-range">USD $1,500 - USD $4,250</div>
                     </div>
                     
-                    <p class="service-description">Looking forward to capture all the joy of your wedding day! Fully booked with deposit & contract. Payment plans available. 3 free revisions.</p>
+                    <p class="service-description">Looking forward to capture all the joy of your wedding day! Fully booked with deposit & contract. Payment plans available.</p>
                     
                     <div class="pricing-package">
                         <div class="package-header" onclick="togglePackage('wedding', 0)">
@@ -670,12 +688,13 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">Up to 8 Hours Coverage</div>
+                                    <div class="feature-item">Up to 6 Hours Coverage</div>
                                     <div class="feature-item">1 Videographer</div>
-                                    <div class="feature-item">Highlight Video (3-5 minutes)</div>
+                                    <div class="feature-item">Highlight Video (5-6 minutes)</div>
                                     <div class="feature-item">Full Ceremony Edit</div>
                                     <div class="feature-item">Online Gallery</div>
                                     <div class="feature-item">Music Licensing</div>
+                                    <div class="feature-item">2 Free Revisions</div>
                                 </div>
                             </div>
                         </div>
@@ -693,14 +712,15 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">Up to 10 Hours Coverage</div>
-                                    <div class="feature-item">2 Videographers</div>
-                                    <div class="feature-item">Highlight Video (5-7 minutes)</div>
-                                    <div class="feature-item">Full Ceremony & Reception Edit</div>
-                                    <div class="feature-item">Wedding Trailer (60 seconds)</div>
+                                    <div class="feature-item">8 Hours Coverage</div>
+                                    <div class="feature-item">1 Videographers</div>
+                                    <div class="feature-item">Wedding Film (8 minutes)</div>
+                                    <div class="feature-item">Full Ceremony & Toasts Edit</div>
+                                    <div class="feature-item">Wedding Trailer (60 seconds or less)</div>
                                     <div class="feature-item">Online Gallery</div>
                                     <div class="feature-item">Music Licensing</div>
-                                    <div class="feature-item">USB Drive with All Footage</div>
+                                    <div class="feature-item">Custom USB Drive & Box</div>
+                                    <div class="feature-item">3 Free Revisions</div>
                                 </div>
                             </div>
                         </div>
@@ -712,24 +732,22 @@
                                 <div class="radio-circle"></div>
                                 <h3>The Legacy</h3>
                             </div>
-                            <div class="package-price">$4,250</div>
+                            <div class="package-price">$5,000</div>
                             <div class="package-icon">▼</div>
                         </div>
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">Unlimited Hours Coverage</div>
-                                    <div class="feature-item">2 Videographers + Drone Pilot</div>
-                                    <div class="feature-item">Cinematic Highlight Film (8-10 minutes)</div>
-                                    <div class="feature-item">Full Ceremony & Reception Edit</div>
-                                    <div class="feature-item">Wedding Trailer (90 seconds)</div>
-                                    <div class="feature-item">Drone Footage</div>
-                                    <div class="feature-item">Engagement Session Video</div>
-                                    <div class="feature-item">Same-Day Edit Preview</div>
+                                    <div class="feature-item">10 Hours Coverage</div>
+                                    <div class="feature-item">2 Videographers</div>
+                                    <div class="feature-item">Wedding Film (8-10 minutes)</div>
+                                    <div class="feature-item">Full Ceremony & Toasts Edit</div>
+                                    <div class="feature-item">Wedding Trailer x2 (60 seconds or less)</div>
                                     <div class="feature-item">Online Gallery</div>
                                     <div class="feature-item">Music Licensing</div>
                                     <div class="feature-item">Custom USB Drive & Box</div>
                                     <div class="feature-item">All Raw Footage Included</div>
+                                    <div class="feature-item">5 Free Revisions</div>
                                 </div>
                             </div>
                         </div>
@@ -743,24 +761,20 @@
                                 <span class="addon-price">+$150/hr</span>
                             </div>
                             <div class="addon-item">
-                                <span class="addon-name">Engagement Session</span>
-                                <span class="addon-price">+$400</span>
+                                <span class="addon-name">Same Day Edit for Wedding Film</span>
+                                <span class="addon-price">+$1500</span>
                             </div>
                             <div class="addon-item">
-                                <span class="addon-name">Drone Footage</span>
-                                <span class="addon-price">+$300</span>
+                                <span class="addon-name">Priority Delivery (3 weeks)</span>
+                                <span class="addon-price">+$1000</span>
                             </div>
                             <div class="addon-item">
-                                <span class="addon-name">Second Videographer</span>
-                                <span class="addon-price">+$600</span>
+                                <span class="addon-name">Love Story</span>
+                                <span class="addon-price">+$1500</span>
                             </div>
                             <div class="addon-item">
-                                <span class="addon-name">Same-Day Edit</span>
+                                <span class="addon-name">Raw Footage Delivery</span>
                                 <span class="addon-price">+$500</span>
-                            </div>
-                            <div class="addon-item">
-                                <span class="addon-name">Extra Album Copy</span>
-                                <span class="addon-price">+$200</span>
                             </div>
                         </div>
                     </div>
@@ -770,7 +784,7 @@
 
         <div class="service-box reverse">
             <div class="service-content">
-                <div class="service-image" style="background-image: url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/DSC04884.jpg'); background-position: center top;"></div>
+                <div class="service-image" style="background-image: url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/DSC04884.jpg'); background-position: center 20%;"></div>
                 
                 <div class="service-details">
                     <div class="service-header">
@@ -778,7 +792,7 @@
                         <div class="service-price-range">USD $300 - USD $2,500</div>
                     </div>
                     
-                    <p class="service-description">Sports coverage for tournaments, games, and athletic events. Fully booked with deposit and contract. Payment plans available for larger projects. 3 free revisions. (10% off for teams booking multiple events)</p>
+                    <p class="service-description">Sports coverage for tournaments, games, and athletic events. Fully booked with deposit and contract. Payment plans available for larger projects. (10% off for teams booking multiple events)</p>
                     
                     <div class="pricing-package">
                         <div class="package-header" onclick="togglePackage('sports', 0)">
@@ -792,12 +806,12 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">Up to 2 Hours Coverage</div>
+                                    <div class="feature-item">Up to 3 Hours Coverage</div>
+                                    <div class="feature-item">30-40 Edited Photos</div>
                                     <div class="feature-item">1 Photographer</div>
-                                    <div class="feature-item">Minimum 100 Edited Photos</div>
                                     <div class="feature-item">Online Gallery</div>
-                                    <div class="feature-item">Digital Download</div>
-                                    <div class="feature-item">2-Week Delivery</div>
+                                    <div class="feature-item">High-Resolution Downloads</div>
+                                    <div class="feature-item">2-Day Delivery</div>
                                 </div>
                             </div>
                         </div>
@@ -815,12 +829,12 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">Up to 2 Hours Coverage</div>
+                                    <div class="feature-item">Up to 3 Hours Coverage</div>
+                                    <div class="feature-item">Recap Video (1-2 minutes)</div>
+                                    <div class="feature-item">Highlight Video (30 seconds or less)</div>
                                     <div class="feature-item">1 Videographer</div>
-                                    <div class="feature-item">Highlight Video (3-5 minutes)</div>
-                                    <div class="feature-item">Full Game Recording Available</div>
-                                    <div class="feature-item">Online Delivery</div>
-                                    <div class="feature-item">2-Week Delivery</div>
+                                    <div class="feature-item">Online Gallery</div>
+                                    <div class="feature-item">2-Day Delivery</div>
                                 </div>
                             </div>
                         </div>
@@ -838,14 +852,14 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">Full Tournament Coverage (Multi-Day)</div>
-                                    <div class="feature-item">Photo & Video Combo</div>
-                                    <div class="feature-item">Minimum 300 Edited Photos</div>
-                                    <div class="feature-item">Tournament Highlight Video (5-8 minutes)</div>
-                                    <div class="feature-item">Individual Team/Player Highlights</div>
-                                    <div class="feature-item">Online Gallery</div>
-                                    <div class="feature-item">Digital Download</div>
-                                    <div class="feature-item">3-Week Delivery</div>
+                                    <div class="feature-item">8 Hours of Coverage</div>
+                                    <div class="feature-item">200+ Edited Photos</div>
+                                    <div class="feature-item">Recap Video (3-5 minutes)</div>
+                                    <div class="feature-item">Highlight Video (30 seconds or less)</div>
+                                    <div class="feature-item">Team & Individual Shots</div>
+                                    <div class="feature-item">Online Gallery with Download</div>
+                                    <div class="feature-item">Social Media Optimized Files</div>
+                                    <div class="feature-item">5-Day Delivery</div>
                                 </div>
                             </div>
                         </div>
@@ -863,16 +877,15 @@
                         <div class="package-details">
                             <div class="package-content">
                                 <div class="features-list">
-                                    <div class="feature-item">Full Season Coverage (8-12 Events)</div>
+                                    <div class="feature-item">Full Season Coverage (6 Events)</div>
                                     <div class="feature-item">Photo & Video at Each Event</div>
-                                    <div class="feature-item">500+ Edited Photos</div>
-                                    <div class="feature-item">Season Highlight Video (8-12 minutes)</div>
-                                    <div class="feature-item">Individual Player Highlight Reels</div>
-                                    <div class="feature-item">Team Photo Shoot</div>
-                                    <div class="feature-item">Social Media Content Package</div>
-                                    <div class="feature-item">Online Gallery (Updated Weekly)</div>
+                                    <div class="feature-item">750+ Edited Photos</div>
+                                    <div class="feature-item">Season Recap Video (8-10 minutes)</div>
+                                    <div class="feature-item">Highlight Video Per Event (45 seconds or less)</div>
+                                    <div class="feature-item">Team and Individual Photos</div>
+                                    <div class="feature-item">Online Gallery (Updated Per Event)</div>
                                     <div class="feature-item">Priority Scheduling</div>
-                                    <div class="feature-item">End of Season Recap Video</div>
+                                    <div class="feature-item">Photos Delivered 2 days after event, Highlight Video after 3 days, Season Recap 7 days after last event)</div>
                                 </div>
                             </div>
                         </div>
@@ -887,19 +900,11 @@
                             </div>
                             <div class="addon-item">
                                 <span class="addon-name">Rush Delivery (24hrs)</span>
-                                <span class="addon-price">+$200</span>
+                                <span class="addon-price">+$200 per deliverable</span>
                             </div>
                             <div class="addon-item">
                                 <span class="addon-name">4K Video Upgrade</span>
                                 <span class="addon-price">+$150</span>
-                            </div>
-                            <div class="addon-item">
-                                <span class="addon-name">Drone Coverage</span>
-                                <span class="addon-price">+$250</span>
-                            </div>
-                            <div class="addon-item">
-                                <span class="addon-name">Second Photographer</span>
-                                <span class="addon-price">+$400</span>
                             </div>
                             <div class="addon-item">
                                 <span class="addon-name">Social Media Clips (10 clips)</span>
@@ -937,10 +942,11 @@
                                 <div class="features-list">
                                     <div class="feature-item">Half Day Shoot (4 hours)</div>
                                     <div class="feature-item">1 Videographer</div>
+                                    <div class="feature-item">1 Longer Form Video 2-3 Minutes</div>
                                     <div class="feature-item">1 Promotional Video (30-60 seconds)</div>
                                     <div class="feature-item">Music Licensing</div>
                                     <div class="feature-item">Color Grading</div>
-                                    <div class="feature-item">2-Week Turnaround</div>
+                                    <div class="feature-item">5 Day Turnaround</div>
                                 </div>
                             </div>
                         </div>
@@ -959,13 +965,13 @@
                             <div class="package-content">
                                 <div class="features-list">
                                     <div class="feature-item">Full Day Shoot (8 hours)</div>
-                                    <div class="feature-item">2 Videographers</div>
-                                    <div class="feature-item">2 Promotional Videos (30-90 seconds each)</div>
+                                    <div class="feature-item">1 Videographers</div>
+                                    <div class="feature-item">1 Longer Form Video 3-5 Minutes</div>
+                                    <div class="feature-item">3 Promotional Videos (30-90 seconds each)</div>
                                     <div class="feature-item">Behind-the-Scenes Content</div>
                                     <div class="feature-item">Music Licensing</div>
                                     <div class="feature-item">Professional Color Grading</div>
-                                    <div class="feature-item">Motion Graphics & Text Overlays</div>
-                                    <div class="feature-item">2-Week Turnaround</div>
+                                    <div class="feature-item">10 Day Turnaround</div>
                                 </div>
                             </div>
                         </div>
@@ -987,12 +993,8 @@
                                 <span class="addon-price">+$300</span>
                             </div>
                             <div class="addon-item">
-                                <span class="addon-name">Expedited Delivery (3 days)</span>
+                                <span class="addon-name">Expedited Delivery (4 days)</span>
                                 <span class="addon-price">+$600</span>
-                            </div>
-                            <div class="addon-item">
-                                <span class="addon-name">Professional Talent</span>
-                                <span class="addon-price">Contact for pricing</span>
                             </div>
                             <div class="addon-item">
                                 <span class="addon-name">Additional Location</span>
@@ -1006,7 +1008,7 @@
 
         <div class="service-box reverse">
             <div class="service-content">
-                <div class="service-image" style="background-image: url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4778.jpg'); background-position: center top;"></div>
+                <div class="service-image" style="background-image: url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4778.jpg'); background-position: center 20%;"></div>
                 
                 <div class="service-details">
                     <div class="service-header">
@@ -1090,7 +1092,7 @@
 
     <div class="contact-section">
         <h2>Ready to Get Started?</h2>
-        <p>Let's bring your vision to life</p>
+        <p>Let's bring your vision to life!</p>
         <a href="/contact" class="contact-btn">Contact Me Now</a>
     </div>
 
