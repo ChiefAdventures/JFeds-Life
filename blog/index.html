@@ -622,6 +622,14 @@
         // Blog posts data - ADD YOUR ARTICLES HERE
         const blogPosts = [
             {
+                id: 2,
+                title: "6 Line Tournament",
+                category: "sports",
+                date: "December 6, 2025",
+                excerpt: "Man, I definitely have some things to learn from tournament bowling. Sometimes I think I tell myself the same stuff every tournament, maybe one day I'll listen lol.",
+                url: "/blog/6-line-tournament.html"
+            },
+            {
                 id: 1,
                 title: "Seasons",
                 category: "faith",
@@ -632,7 +640,7 @@
             // Add more posts here as you create them
             // Example:
             // {
-            //     id: 2,
+            //     id: 3,
             //     title: "Starting Your Photography Business",
             //     category: "business",
             //     date: "December 1, 2025",
@@ -795,22 +803,6 @@
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'system';
             setTheme(savedTheme);
-            
-            // Check for category parameter in URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const categoryParam = urlParams.get('category');
-            
-            if (categoryParam && ['business', 'faith', 'sports'].includes(categoryParam)) {
-                currentCategory = categoryParam;
-                // Update active filter button
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.textContent.toLowerCase() === categoryParam) {
-                        btn.classList.add('active');
-                    }
-                });
-            }
-            
             renderPosts();
         });
 
