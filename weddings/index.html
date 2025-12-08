@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Videography - JFed's Life</title>
+    <title>Wedding Videography Services | Nebraska | JFed's Life</title>
+    <meta name="description" content="Professional wedding videography in Nebraska. Cinematic films capturing your special day. Packages from $1,500-$5,000. View our wedding films and trailers.">
+    <meta name="keywords" content="wedding videography Nebraska, wedding filmmaker, cinematic wedding videos, Nebraska wedding videographer, wedding films">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -389,16 +391,23 @@
         }
 
         .social-links a {
-            color: var(--text-primary);
-            font-size: 1.1rem;
-            font-weight: 500;
             text-decoration: none;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--accent);
             transform: scale(1.2);
+        }
+
+        .social-links a:hover .social-icon {
+            opacity: 0.8;
         }
 
         .contact-btn {
@@ -590,12 +599,18 @@
 
         <section class="cta-section">
             <h2>Ready to Tell Your Story?</h2>
-            <p>Let's create a beautiful wedding film that you'll treasure for a lifetime. Visit Chief Adventures to learn more about packages, pricing, and availability.</p>
+            <p>Let's create a beautiful wedding film that you'll treasure for a lifetime. View our portfolio and explore packages to find the perfect fit for your day.</p>
             <div class="cta-buttons">
-                <a href="https://www.chiefadventures.org/portfolio/engagement" class="cta-button" target="_blank">
-                    View Full Portfolio
+                <a href="https://vimeo.com/user/242698607/folder/27519849" class="cta-button" target="_blank">
+                    View Wedding Films
                 </a>
-                <a href="https://www.chiefadventures.org/contact" class="cta-button secondary">
+                <a href="https://vimeo.com/user/242698607/folder/27519899" class="cta-button" target="_blank">
+                    View Wedding Trailers
+                </a>
+                <a href="/pricing" class="cta-button">
+                    View Pricing
+                </a>
+                <a href="/contact" class="cta-button secondary">
                     Book Your Date
                 </a>
             </div>
@@ -606,23 +621,23 @@
         <div class="footer-content">
             <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
-                    Facebook
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/FB_Icon.png" alt="Facebook" class="social-icon">
                 </a>
                 <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
-                    Instagram
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/IG_Icon.png" alt="Instagram" class="social-icon">
                 </a>
                 <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
-                    TikTok
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/TikTok_Icon.png" alt="TikTok" class="social-icon">
                 </a>
                 <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
-                    YouTube
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/YT_Icon.png" alt="YouTube" class="social-icon">
                 </a>
                 <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
-                    Vimeo
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/Vimeo_Icon.png" alt="Vimeo" class="social-icon">
                 </a>
             </div>
             
-            <a href="https://www.chiefadventures.org/contact" class="contact-btn">
+            <a href="/contact" class="contact-btn">
                 Contact Me
             </a>
             
