@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,20 +85,20 @@
             object-fit: cover;
             object-position: center;
             border: 4px solid #1a1a1a;
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px #444,
                 0 0 0 6px #1a1a1a,
-                0 2px 8px rgba(0,0,0,0.4);
+                0 2px 8px rgba(0, 0, 0, 0.4);
             position: relative;
             display: block;
         }
 
         [data-theme="dark"] .logo-img {
             border: 4px solid #2a2a2a;
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px #555,
                 0 0 0 6px #2a2a2a,
-                0 2px 8px rgba(0,0,0,0.6);
+                0 2px 8px rgba(0, 0, 0, 0.6);
         }
 
         .logo h1 {
@@ -130,40 +131,40 @@
         }
 
         .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--bg-secondary);
-    min-width: 200px;
-    box-shadow: 0 4px 12px var(--shadow);
-    border-radius: 8px;
-    margin-top: 0.5rem;
-    overflow: hidden;
-    z-index: 1000;
-}
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-secondary);
+            min-width: 200px;
+            box-shadow: 0 4px 12px var(--shadow);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+            z-index: 1000;
+        }
 
-.dropdown-content.active {
-    display: block;
-}
+        .dropdown-content.active {
+            display: block;
+        }
 
-.dropdown-content a {
-    display: block;
-    padding: 0.75rem 1.5rem;
-    color: var(--text-primary) !important;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-primary) !important;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
 
-.dropdown-content a:hover {
-    background-color: var(--accent);
-    color: white !important;
-}
+        .dropdown-content a:hover {
+            background-color: var(--accent);
+            color: white !important;
+        }
 
-        .dropdown > a::after {
+        .dropdown>a::after {
             content: ' ▾';
             font-size: 0.8rem;
         }
@@ -429,247 +430,267 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
             <a href="/" class="logo">
                 <div class="logo-container">
-                   <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg" alt="JFed's Life Logo" class="logo-img" id="logoImage">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg"
+                        alt="JFed's Life Logo" class="logo-img" id="logoImage">
                 </div>
                 <h1>JFed's Life</h1>
             </a>
-            
+
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                 ☰
             </button>
 
             <ul class="nav-links" id="navLinks">
-    <li><a href="/">Home</a></li>
-    <li><a href="/aboutme">About Me</a></li>
-    <li class="dropdown">
-        <a href="#business">Business</a>
-        <div class="dropdown-content">
-            <a href="/weddings">Weddings</a>
-            <a href="/sports_photo_video">Sports Photo & Video</a>
-            <a href="/gear">Gear</a>
-        </div>
-    </li>
-    <li class="dropdown">
-        <a href="#personal">Personal</a>
-        <div class="dropdown-content">
-            <a href="/content">Content Creation</a>
-            <a href="/faith_life">Faith & Life</a>
-            <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
-        </div>
-    </li>
-    <li><a href="/pricing">Pricing</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/faq">FAQ</a></li>
-    <li><a href="/contact">Contact</a></li>
-</ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutme">About Me</a></li>
+                <li class="dropdown">
+                    <a href="#business">Business</a>
+                    <div class="dropdown-content">
+                        <a href="/weddings">Weddings</a>
+                        <a href="/sports_photo_video">Sports Photo & Video</a>
+                        <a href="/gear">Gear</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#personal">Personal</a>
+                    <div class="dropdown-content">
+                        <a href="/content">Content Creation</a>
+                        <a href="/faith_life">Faith & Life</a>
+                        <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
+                    </div>
+                </li>
+                <li><a href="/pricing">Pricing</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
 
-    <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
-    <div class="theme-toggle">
-        <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
-            Light
-        </button>
-        <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
-            Dark
-        </button>
-        <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
-            System
-        </button>
-    </div>
-</nav>
-
-    <main>
-        <section class="page-hero">
-            <h1>Content Creation</h1>
-            <p>Sharing my journey and experiences through photo, video, and social media</p>
-        </section>
-
-        <section class="content-section journey-section">
-            <h2 class="section-title">My Content Creation Journey</h2>
-            <div class="intro-text">
-                <p>Creating content has become an important part of how I share my experiences and connect with others. What started as a way to document my work has evolved into something I'm genuinely passionate about.</p>
-                <p>I create content across multiple platforms, each serving a different purpose. YouTube is where I share longer-form videos. Instagram and TikTok are perfect for shorter, more dynamic content that captures quick moments and highlights.</p>
-                <p>Whether it's sharing wedding footage, sports photography tips, insights from my bowling journey, or just everyday moments, I'm always looking for new ways to tell stories and engage with the community.</p>
+            <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
+            <div class="theme-toggle">
+                <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
+                    Light
+                </button>
+                <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
+                    Dark
+                </button>
+                <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
+                    System
+                </button>
             </div>
+        </nav>
 
-            <h3 style="font-size: 1.5rem; color: var(--accent); margin: 3rem 0 1.5rem;">Where I Create</h3>
-            <div class="platform-grid">
-                <div class="platform-card">
-                    <h3>YouTube</h3>
-                    <p>Long-form videos including possibly some podcasts, wedding films, and I do post YouTube shorts as well.</p>
-                    <a href="https://youtube.com/@1chiefadventures1" target="_blank" class="platform-link">Visit Channel →</a>
+        <main>
+            <section class="page-hero">
+                <h1>Content Creation</h1>
+                <p>Sharing my journey and experiences through photo, video, and social media</p>
+            </section>
+
+            <section class="content-section journey-section">
+                <h2 class="section-title">My Content Creation Journey</h2>
+                <div class="intro-text">
+                    <p>Creating content has become an important part of how I share my experiences and connect with
+                        others. What started as a way to document my work has evolved into something I'm genuinely
+                        passionate about.</p>
+                    <p>I create content across multiple platforms, each serving a different purpose. YouTube is where I
+                        share longer-form videos. Instagram and TikTok are perfect for shorter, more dynamic content
+                        that captures quick moments and highlights.</p>
+                    <p>Whether it's sharing wedding footage, sports photography tips, insights from my bowling journey,
+                        or just everyday moments, I'm always looking for new ways to tell stories and engage with the
+                        community.</p>
                 </div>
-                <div class="platform-card">
-                    <h3>Instagram</h3>
-                    <p>Shorter videos and reels showcasing my work, daily moments, and quick tips. Great for staying connected and sharing highlights.</p>
-                    <a href="https://www.instagram.com/1chief_adventures1" target="_blank" class="platform-link">Follow on Instagram →</a>
+
+                <h3 style="font-size: 1.5rem; color: var(--accent); margin: 3rem 0 1.5rem;">Where I Create</h3>
+                <div class="platform-grid">
+                    <div class="platform-card">
+                        <h3>YouTube</h3>
+                        <p>Long-form videos including possibly some podcasts, wedding films, and I do post YouTube
+                            shorts as well.</p>
+                        <a href="https://youtube.com/@1chiefadventures1" target="_blank" class="platform-link">Visit
+                            Channel →</a>
+                    </div>
+                    <div class="platform-card">
+                        <h3>Instagram</h3>
+                        <p>Shorter videos and reels showcasing my work, daily moments, and quick tips. Great for staying
+                            connected and sharing highlights.</p>
+                        <a href="https://www.instagram.com/1chief_adventures1" target="_blank"
+                            class="platform-link">Follow on Instagram →</a>
+                    </div>
+                    <div class="platform-card">
+                        <h3>TikTok</h3>
+                        <p>Engaging short-form videos covering everything from talking about Jesus to sports hobbies to
+                            solving rubik's cubes.</p>
+                        <a href="https://www.tiktok.com/@chiefadventures" target="_blank" class="platform-link">Follow
+                            on TikTok →</a>
+                    </div>
                 </div>
-                <div class="platform-card">
-                    <h3>TikTok</h3>
-                    <p>Engaging short-form videos covering everything from talking about Jesus to sports hobbies to solving rubik's cubes.</p>
-                    <a href="https://www.tiktok.com/@chiefadventures" target="_blank" class="platform-link">Follow on TikTok →</a>
+            </section>
+
+            <section class="content-section recent-content">
+                <h2 class="section-title">Recent Content</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Check out some of my
+                    latest videos and posts across platforms</p>
+
+                <div class="content-grid">
+                    <p
+                        style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); font-size: 1.1rem; padding: 3rem;">
+                        No content featured yet. Follow me on YouTube, Instagram, and TikTok to see my latest posts!</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank"
+                        aria-label="Facebook">
+                        Facebook
+                    </a>
+                    <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
+                        Instagram
+                    </a>
+                    <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
+                        TikTok
+                    </a>
+                    <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
+                        YouTube
+                    </a>
+                    <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
+                        Vimeo
+                    </a>
+                </div>
+
+                <a href="/contact" class="contact-btn">
+                    Contact Me
+                </a>
+
+                <div class="copyright">
+                    <p>&copy; 2025 JFed's Life. All rights reserved.</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner
+                    </p>
                 </div>
             </div>
-        </section>
+        </footer>
 
-        <section class="content-section recent-content">
-            <h2 class="section-title">Recent Content</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Check out some of my latest videos and posts across platforms</p>
-            
-            <div class="content-grid">
-                <p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); font-size: 1.1rem; padding: 3rem;">No content featured yet. Follow me on YouTube, Instagram, and TikTok to see my latest posts!</p>
-            </div>
-        </section>
-    </main>
+        <script>
+            function setTheme(theme) {
+                const html = document.documentElement;
+                const lightBtn = document.getElementById('lightBtn');
+                const systemBtn = document.getElementById('systemBtn');
+                const darkBtn = document.getElementById('darkBtn');
 
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
-                    Facebook
-                </a>
-                <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
-                    Instagram
-                </a>
-                <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
-                    TikTok
-                </a>
-                <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
-                    YouTube
-                </a>
-                <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
-                    Vimeo
-                </a>
-            </div>
-            
-            <a href="https://www.chiefadventures.org/contact" class="contact-btn">
-                Contact Me
-            </a>
-            
-            <div class="copyright">
-                <p>&copy; 2025 JFed's Life. All rights reserved.</p>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner</p>
-            </div>
-        </div>
-    </footer>
+                [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
 
-    <script>
-        function setTheme(theme) {
-            const html = document.documentElement;
-            const lightBtn = document.getElementById('lightBtn');
-            const systemBtn = document.getElementById('systemBtn');
-            const darkBtn = document.getElementById('darkBtn');
-            
-            [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
-            
-            if (theme === 'system') {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-                systemBtn.classList.add('active');
-                localStorage.setItem('theme', 'system');
-            } else {
-                html.setAttribute('data-theme', theme);
-                if (theme === 'light') lightBtn.classList.add('active');
-                else darkBtn.classList.add('active');
-                localStorage.setItem('theme', theme);
+                if (theme === 'system') {
+                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+                    systemBtn.classList.add('active');
+                    localStorage.setItem('theme', 'system');
+                } else {
+                    html.setAttribute('data-theme', theme);
+                    if (theme === 'light') lightBtn.classList.add('active');
+                    else darkBtn.classList.add('active');
+                    localStorage.setItem('theme', theme);
+                }
             }
-        }
 
-        function toggleMobileMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'system';
-            setTheme(savedTheme);
-        });
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (localStorage.getItem('theme') === 'system') {
-                setTheme('system');
+            function toggleMobileMenu() {
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.toggle('active');
             }
-        });
-        // Close dropdowns when clicking outside
-document.addEventListener('click', function(event) {
-    if (!event.target.closest('.dropdown')) {
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            dropdown.classList.remove('active');
-        });
-    }
-});
 
-// Toggle dropdowns on click
-document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
-    dropdownLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Close other dropdowns
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            if (dropdown !== this.nextElementSibling) {
-                dropdown.classList.remove('active');
+            window.addEventListener('DOMContentLoaded', () => {
+                const savedTheme = localStorage.getItem('theme') || 'system';
+                setTheme(savedTheme);
+            });
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (localStorage.getItem('theme') === 'system') {
+                    setTheme('system');
+                }
+            });
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!event.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+
+            // Toggle dropdowns on click
+            document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+                dropdownLink.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Close other dropdowns
+                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                        if (dropdown !== this.nextElementSibling) {
+                            dropdown.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle this dropdown
+                    const dropdownContent = this.nextElementSibling;
+                    dropdownContent.classList.toggle('active');
+                });
+            });
+
+            // Seasonal Cursor Script
+            function setSeasonalCursor() {
+                const today = new Date();
+                const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
+                const day = today.getDate();
+
+                let cursorUrl;
+
+                // New Year (January 1-15)
+                if (month === 0 && day <= 7) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
+                }
+                // Valentine's Day (February 7-14)
+                else if (month === 1 && day >= 7 && day <= 14) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
+                }
+                // St. Patrick's Day (March 10-17)
+                else if (month === 2 && day >= 10 && day <= 17) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
+                }
+                // Easter (March 29 - April 7) - adjust dates yearly
+                else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
+                }
+                // 4th of July (July 1-7)
+                else if (month === 6 && day <= 7) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
+                }
+                // Halloween (October 24-31)
+                else if (month === 9 && day >= 24) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
+                }
+                // Thanksgiving (November 15-30)
+                else if (month === 10 && day >= 15) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
+                }
+                // Christmas (December 10-26)
+                else if (month === 11 && day >= 10 && day <= 26) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
+                }
+                // Default - no custom cursor for rest of year
+                else {
+                    return;
+                }
+
+                document.body.style.cursor = `url('${cursorUrl}'), auto`;
             }
-        });
-        
-        // Toggle this dropdown
-        const dropdownContent = this.nextElementSibling;
-        dropdownContent.classList.toggle('active');
-    });
-});
 
-// Seasonal Cursor Script
-function setSeasonalCursor() {
-    const today = new Date();
-    const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
-    const day = today.getDate();
-    
-    let cursorUrl;
-    
-    // New Year (January 1-15)
-    if (month === 0 && day <= 7) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
-    }
-    // Valentine's Day (February 7-14)
-    else if (month === 1 && day >= 7 && day <= 14) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
-    }
-    // St. Patrick's Day (March 10-17)
-    else if (month === 2 && day >= 10 && day <= 17) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
-    }
-    // Easter (March 29 - April 7) - adjust dates yearly
-    else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
-    }
-    // 4th of July (July 1-7)
-    else if (month === 6 && day <= 7) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
-    }
-    // Halloween (October 24-31)
-    else if (month === 9 && day >= 24) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
-    }
-    // Thanksgiving (November 15-30)
-    else if (month === 10 && day >= 15) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
-    }
-    // Christmas (December 10-26)
-    else if (month === 11 && day >= 10 && day <= 26) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
-    }
-    // Default - no custom cursor for rest of year
-    else {
-        return;
-    }
-    
-    document.body.style.cursor = `url('${cursorUrl}'), auto`;
-}
-
-window.addEventListener('DOMContentLoaded', setSeasonalCursor);
-    </script>
+            window.addEventListener('DOMContentLoaded', setSeasonalCursor);
+        </script>
 </body>
+
 </html>

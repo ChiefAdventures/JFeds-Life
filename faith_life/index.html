@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,20 +86,20 @@
             object-fit: cover;
             object-position: center;
             border: 4px solid #1a1a1a;
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px #444,
                 0 0 0 6px #1a1a1a,
-                0 2px 8px rgba(0,0,0,0.4);
+                0 2px 8px rgba(0, 0, 0, 0.4);
             position: relative;
             display: block;
         }
 
         [data-theme="dark"] .logo-img {
             border: 4px solid #2a2a2a;
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px #555,
                 0 0 0 6px #2a2a2a,
-                0 2px 8px rgba(0,0,0,0.6);
+                0 2px 8px rgba(0, 0, 0, 0.6);
         }
 
         .logo h1 {
@@ -132,40 +133,40 @@
         }
 
         .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--bg-secondary);
-    min-width: 200px;
-    box-shadow: 0 4px 12px var(--shadow);
-    border-radius: 8px;
-    margin-top: 0.5rem;
-    overflow: hidden;
-    z-index: 1000;
-}
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-secondary);
+            min-width: 200px;
+            box-shadow: 0 4px 12px var(--shadow);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+            z-index: 1000;
+        }
 
-.dropdown-content.active {
-    display: block;
-}
+        .dropdown-content.active {
+            display: block;
+        }
 
-.dropdown-content a {
-    display: block;
-    padding: 0.75rem 1.5rem;
-    color: var(--text-primary) !important;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-primary) !important;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
 
-.dropdown-content a:hover {
-    background-color: var(--accent);
-    color: white !important;
-}
+        .dropdown-content a:hover {
+            background-color: var(--accent);
+            color: white !important;
+        }
 
-        .dropdown > a::after {
+        .dropdown>a::after {
             content: ' ▾';
             font-size: 0.8rem;
         }
@@ -648,297 +649,307 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
             <a href="/" class="logo">
                 <div class="logo-container">
-                   <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg" alt="JFed's Life Logo" class="logo-img" id="logoImage">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg"
+                        alt="JFed's Life Logo" class="logo-img" id="logoImage">
                 </div>
                 <h1>JFed's Life</h1>
             </a>
-            
+
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                 ☰
             </button>
 
             <ul class="nav-links" id="navLinks">
-    <li><a href="/">Home</a></li>
-    <li><a href="/aboutme">About Me</a></li>
-    <li class="dropdown">
-        <a href="#business">Business</a>
-        <div class="dropdown-content">
-            <a href="/weddings">Weddings</a>
-            <a href="/sports_photo_video">Sports Photo & Video</a>
-            <a href="/gear">Gear</a>
-        </div>
-    </li>
-    <li class="dropdown">
-        <a href="#personal">Personal</a>
-        <div class="dropdown-content">
-            <a href="/content">Content Creation</a>
-            <a href="/faith_life">Faith & Life</a>
-            <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
-        </div>
-    </li>
-    <li><a href="/pricing">Pricing</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/faq">FAQ</a></li>
-    <li><a href="/contact">Contact</a></li>
-</ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutme">About Me</a></li>
+                <li class="dropdown">
+                    <a href="#business">Business</a>
+                    <div class="dropdown-content">
+                        <a href="/weddings">Weddings</a>
+                        <a href="/sports_photo_video">Sports Photo & Video</a>
+                        <a href="/gear">Gear</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#personal">Personal</a>
+                    <div class="dropdown-content">
+                        <a href="/content">Content Creation</a>
+                        <a href="/faith_life">Faith & Life</a>
+                        <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
+                    </div>
+                </li>
+                <li><a href="/pricing">Pricing</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
 
-    <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
-    <div class="theme-toggle">
-        <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
-            Light
-        </button>
-        <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
-            Dark
-        </button>
-        <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
-            System
-        </button>
-    </div>
-</nav>
+            <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
+            <div class="theme-toggle">
+                <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
+                    Light
+                </button>
+                <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
+                    Dark
+                </button>
+                <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
+                    System
+                </button>
+            </div>
+        </nav>
 
-    <main>
-        <section class="page-hero">
-            <h1>Faith & Life</h1>
-            <p>Reflections, insights, and stories about living with purpose and intention</p>
-        </section>
+        <main>
+            <section class="page-hero">
+                <h1>Faith & Life</h1>
+                <p>Reflections, insights, and stories about living with purpose and intention</p>
+            </section>
 
-        <section class="content-section">
-            <h2 class="section-title">Topics I Write About</h2>
-            <div class="topics-grid">
-                <div class="topic-card">
-                    <h3>Faith Journey</h3>
-                    <p>Personal reflections on faith, spirituality, and walking with God</p>
+            <section class="content-section">
+                <h2 class="section-title">Topics I Write About</h2>
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <h3>Faith Journey</h3>
+                        <p>Personal reflections on faith, spirituality, and walking with God</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Life Lessons</h3>
+                        <p>Insights gained from experiences, challenges, and everyday moments</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Purpose & Calling</h3>
+                        <p>Finding and pursuing what you're meant to do in this world</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Personal Growth</h3>
+                        <p>Becoming the best version of yourself through intentional living</p>
+                    </div>
                 </div>
-                <div class="topic-card">
-                    <h3>Life Lessons</h3>
-                    <p>Insights gained from experiences, challenges, and everyday moments</p>
+            </section>
+
+            <section class="content-section about-section">
+                <h2 class="section-title">About This Space</h2>
+                <div class="about-content">
+                    <p>This is where I share my thoughts, experiences, and reflections on faith and life. It's a space
+                        for honest conversations about what it means to live with purpose, navigate challenges, and grow
+                        in faith.</p>
+                    <p>My journey hasn't always been straightforward, and I don't claim to have all the answers. But I
+                        believe in the power of sharing our stories, learning from one another, and walking together
+                        through this thing called life.</p>
+                    <p>Whether you're in a season of questioning, growing, or simply exploring, I hope you'll find
+                        something here that resonates with you.</p>
                 </div>
-                <div class="topic-card">
-                    <h3>Purpose & Calling</h3>
-                    <p>Finding and pursuing what you're meant to do in this world</p>
+            </section>
+
+            <section class="content-section">
+                <h2 class="section-title">Featured Articles</h2>
+
+                <div class="featured-articles">
+                    <ul class="featured-list">
+                        <li class="featured-item">
+                            <a href="/blog/seasons.html" class="featured-link">
+                                <div class="featured-info">
+                                    <h3>Seasons</h3>
+                                    <span class="featured-date">November 14, 2025</span>
+                                </div>
+                                <span class="featured-arrow">→</span>
+                            </a>
+                        </li>
+                        <li class="featured-item">
+                            <a href="#" class="featured-link">
+                                <div class="featured-info">
+                                    <h3>[Your Next Article Title]</h3>
+                                    <span class="featured-date">Coming Soon</span>
+                                </div>
+                                <span class="featured-arrow">→</span>
+                            </a>
+                        </li>
+                        <li class="featured-item">
+                            <a href="#" class="featured-link">
+                                <div class="featured-info">
+                                    <h3>[Your Third Article Title]</h3>
+                                    <span class="featured-date">Coming Soon</span>
+                                </div>
+                                <span class="featured-arrow">→</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="topic-card">
-                    <h3>Personal Growth</h3>
-                    <p>Becoming the best version of yourself through intentional living</p>
+
+                <div class="btn-container">
+                    <a href="/blog?category=faith" class="view-all-btn">View All Faith Articles</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank"
+                        aria-label="Facebook">
+                        Facebook
+                    </a>
+                    <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
+                        Instagram
+                    </a>
+                    <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
+                        TikTok
+                    </a>
+                    <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
+                        YouTube
+                    </a>
+                    <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
+                        Vimeo
+                    </a>
+                </div>
+
+                <a href="/contact" class="contact-btn">
+                    Contact Me
+                </a>
+
+                <div class="copyright">
+                    <p>&copy; 2025 JFed's Life. All rights reserved.</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner
+                    </p>
                 </div>
             </div>
-        </section>
+        </footer>
 
-        <section class="content-section about-section">
-            <h2 class="section-title">About This Space</h2>
-            <div class="about-content">
-                <p>This is where I share my thoughts, experiences, and reflections on faith and life. It's a space for honest conversations about what it means to live with purpose, navigate challenges, and grow in faith.</p>
-                <p>My journey hasn't always been straightforward, and I don't claim to have all the answers. But I believe in the power of sharing our stories, learning from one another, and walking together through this thing called life.</p>
-                <p>Whether you're in a season of questioning, growing, or simply exploring, I hope you'll find something here that resonates with you.</p>
-            </div>
-        </section>
+        <script>
+            function setTheme(theme) {
+                const html = document.documentElement;
+                const lightBtn = document.getElementById('lightBtn');
+                const systemBtn = document.getElementById('systemBtn');
+                const darkBtn = document.getElementById('darkBtn');
 
-        <section class="content-section">
-            <h2 class="section-title">Featured Articles</h2>
-            
-            <div class="featured-articles">
-                <ul class="featured-list">
-                    <li class="featured-item">
-                        <a href="/blog/seasons.html" class="featured-link">
-                            <div class="featured-info">
-                                <h3>Seasons</h3>
-                                <span class="featured-date">November 14, 2025</span>
-                            </div>
-                            <span class="featured-arrow">→</span>
-                        </a>
-                    </li>
-                    <li class="featured-item">
-                        <a href="#" class="featured-link">
-                            <div class="featured-info">
-                                <h3>[Your Next Article Title]</h3>
-                                <span class="featured-date">Coming Soon</span>
-                            </div>
-                            <span class="featured-arrow">→</span>
-                        </a>
-                    </li>
-                    <li class="featured-item">
-                        <a href="#" class="featured-link">
-                            <div class="featured-info">
-                                <h3>[Your Third Article Title]</h3>
-                                <span class="featured-date">Coming Soon</span>
-                            </div>
-                            <span class="featured-arrow">→</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
 
-            <div class="btn-container">
-                <a href="/blog?category=faith" class="view-all-btn">View All Faith Articles</a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
-                    Facebook
-                </a>
-                <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
-                    Instagram
-                </a>
-                <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
-                    TikTok
-                </a>
-                <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
-                    YouTube
-                </a>
-                <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
-                    Vimeo
-                </a>
-            </div>
-            
-            <a href="https://www.chiefadventures.org/contact" class="contact-btn">
-                Contact Me
-            </a>
-            
-            <div class="copyright">
-                <p>&copy; 2025 JFed's Life. All rights reserved.</p>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        function setTheme(theme) {
-            const html = document.documentElement;
-            const lightBtn = document.getElementById('lightBtn');
-            const systemBtn = document.getElementById('systemBtn');
-            const darkBtn = document.getElementById('darkBtn');
-            
-            [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
-            
-            if (theme === 'system') {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-                systemBtn.classList.add('active');
-                localStorage.setItem('theme', 'system');
-            } else {
-                html.setAttribute('data-theme', theme);
-                if (theme === 'light') lightBtn.classList.add('active');
-                else darkBtn.classList.add('active');
-                localStorage.setItem('theme', theme);
+                if (theme === 'system') {
+                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+                    systemBtn.classList.add('active');
+                    localStorage.setItem('theme', 'system');
+                } else {
+                    html.setAttribute('data-theme', theme);
+                    if (theme === 'light') lightBtn.classList.add('active');
+                    else darkBtn.classList.add('active');
+                    localStorage.setItem('theme', theme);
+                }
             }
-        }
 
-        function toggleMobileMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'system';
-            setTheme(savedTheme);
-        });
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (localStorage.getItem('theme') === 'system') {
-                setTheme('system');
+            function toggleMobileMenu() {
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.toggle('active');
             }
-        });
 
-        function switchTab(tabName) {
-            // Hide all tab contents
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => content.classList.remove('active'));
+            window.addEventListener('DOMContentLoaded', () => {
+                const savedTheme = localStorage.getItem('theme') || 'system';
+                setTheme(savedTheme);
+            });
 
-            // Remove active class from all buttons
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            tabBtns.forEach(btn => btn.classList.remove('active'));
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (localStorage.getItem('theme') === 'system') {
+                    setTheme('system');
+                }
+            });
 
-            // Show selected tab content
-            document.getElementById(tabName).classList.add('active');
+            function switchTab(tabName) {
+                // Hide all tab contents
+                const tabContents = document.querySelectorAll('.tab-content');
+                tabContents.forEach(content => content.classList.remove('active'));
 
-            // Add active class to clicked button
-            event.target.classList.add('active');
-        }
-// Close dropdowns when clicking outside
-document.addEventListener('click', function(event) {
-    if (!event.target.closest('.dropdown')) {
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            dropdown.classList.remove('active');
-        });
-    }
-});
+                // Remove active class from all buttons
+                const tabBtns = document.querySelectorAll('.tab-btn');
+                tabBtns.forEach(btn => btn.classList.remove('active'));
 
-// Toggle dropdowns on click
-document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
-    dropdownLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Close other dropdowns
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            if (dropdown !== this.nextElementSibling) {
-                dropdown.classList.remove('active');
+                // Show selected tab content
+                document.getElementById(tabName).classList.add('active');
+
+                // Add active class to clicked button
+                event.target.classList.add('active');
             }
-        });
-        
-        // Toggle this dropdown
-        const dropdownContent = this.nextElementSibling;
-        dropdownContent.classList.toggle('active');
-    });
-});
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!event.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
 
-// Seasonal Cursor Script
-function setSeasonalCursor() {
-    const today = new Date();
-    const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
-    const day = today.getDate();
-    
-    let cursorUrl;
-    
-    // New Year (January 1-15)
-    if (month === 0 && day <= 7) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
-    }
-    // Valentine's Day (February 7-14)
-    else if (month === 1 && day >= 7 && day <= 14) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
-    }
-    // St. Patrick's Day (March 10-17)
-    else if (month === 2 && day >= 10 && day <= 17) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
-    }
-    // Easter (March 29 - April 7) - adjust dates yearly
-    else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
-    }
-    // 4th of July (July 1-7)
-    else if (month === 6 && day <= 7) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
-    }
-    // Halloween (October 24-31)
-    else if (month === 9 && day >= 24) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
-    }
-    // Thanksgiving (November 15-30)
-    else if (month === 10 && day >= 15) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
-    }
-    // Christmas (December 10-26)
-    else if (month === 11 && day >= 10 && day <= 26) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
-    }
-    // Default - no custom cursor for rest of year
-    else {
-        return;
-    }
-    
-    document.body.style.cursor = `url('${cursorUrl}'), auto`;
-}
+            // Toggle dropdowns on click
+            document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+                dropdownLink.addEventListener('click', function (e) {
+                    e.preventDefault();
 
-window.addEventListener('DOMContentLoaded', setSeasonalCursor);
-    </script>
+                    // Close other dropdowns
+                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                        if (dropdown !== this.nextElementSibling) {
+                            dropdown.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle this dropdown
+                    const dropdownContent = this.nextElementSibling;
+                    dropdownContent.classList.toggle('active');
+                });
+            });
+
+            // Seasonal Cursor Script
+            function setSeasonalCursor() {
+                const today = new Date();
+                const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
+                const day = today.getDate();
+
+                let cursorUrl;
+
+                // New Year (January 1-15)
+                if (month === 0 && day <= 7) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
+                }
+                // Valentine's Day (February 7-14)
+                else if (month === 1 && day >= 7 && day <= 14) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
+                }
+                // St. Patrick's Day (March 10-17)
+                else if (month === 2 && day >= 10 && day <= 17) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
+                }
+                // Easter (March 29 - April 7) - adjust dates yearly
+                else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
+                }
+                // 4th of July (July 1-7)
+                else if (month === 6 && day <= 7) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
+                }
+                // Halloween (October 24-31)
+                else if (month === 9 && day >= 24) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
+                }
+                // Thanksgiving (November 15-30)
+                else if (month === 10 && day >= 15) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
+                }
+                // Christmas (December 10-26)
+                else if (month === 11 && day >= 10 && day <= 26) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
+                }
+                // Default - no custom cursor for rest of year
+                else {
+                    return;
+                }
+
+                document.body.style.cursor = `url('${cursorUrl}'), auto`;
+            }
+
+            window.addEventListener('DOMContentLoaded', setSeasonalCursor);
+        </script>
 </body>
+
 </html>

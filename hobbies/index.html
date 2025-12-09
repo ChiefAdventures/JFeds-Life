@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,20 +86,20 @@
             object-fit: cover;
             object-position: center;
             border: 4px solid #1a1a1a;
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px #444,
                 0 0 0 6px #1a1a1a,
-                0 2px 8px rgba(0,0,0,0.4);
+                0 2px 8px rgba(0, 0, 0, 0.4);
             position: relative;
             display: block;
         }
 
         [data-theme="dark"] .logo-img {
             border: 4px solid #2a2a2a;
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px #555,
                 0 0 0 6px #2a2a2a,
-                0 2px 8px rgba(0,0,0,0.6);
+                0 2px 8px rgba(0, 0, 0, 0.6);
         }
 
         .logo h1 {
@@ -131,41 +132,41 @@
             position: relative;
         }
 
-       .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--bg-secondary);
-    min-width: 200px;
-    box-shadow: 0 4px 12px var(--shadow);
-    border-radius: 8px;
-    margin-top: 0.5rem;
-    overflow: hidden;
-    z-index: 1000;
-}
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-secondary);
+            min-width: 200px;
+            box-shadow: 0 4px 12px var(--shadow);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+            z-index: 1000;
+        }
 
-.dropdown-content.active {
-    display: block;
-}
+        .dropdown-content.active {
+            display: block;
+        }
 
-.dropdown-content a {
-    display: block;
-    padding: 0.75rem 1.5rem;
-    color: var(--text-primary) !important;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-primary) !important;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
 
-.dropdown-content a:hover {
-    background-color: var(--accent);
-    color: white !important;
-}
+        .dropdown-content a:hover {
+            background-color: var(--accent);
+            color: white !important;
+        }
 
-        .dropdown > a::after {
+        .dropdown>a::after {
             content: ' ▾';
             font-size: 0.8rem;
         }
@@ -667,417 +668,445 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
             <a href="/" class="logo">
                 <div class="logo-container">
-                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg" alt="JFed's Life Logo" class="logo-img" id="logoImage">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg"
+                        alt="JFed's Life Logo" class="logo-img" id="logoImage">
                 </div>
                 <h1>JFed's Life</h1>
             </a>
-            
+
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                 ☰
             </button>
 
             <ul class="nav-links" id="navLinks">
-    <li><a href="/">Home</a></li>
-    <li><a href="/aboutme">About Me</a></li>
-    <li class="dropdown">
-        <a href="#business">Business</a>
-        <div class="dropdown-content">
-            <a href="/weddings">Weddings</a>
-            <a href="/sports_photo_video">Sports Photo & Video</a>
-            <a href="/gear">Gear</a>
-        </div>
-    </li>
-    <li class="dropdown">
-        <a href="#personal">Personal</a>
-        <div class="dropdown-content">
-            <a href="/content">Content Creation</a>
-            <a href="/faith_life">Faith & Life</a>
-            <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
-        </div>
-    </li>
-    <li><a href="/pricing">Pricing</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/faq">FAQ</a></li>
-    <li><a href="/contact">Contact</a></li>
-</ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutme">About Me</a></li>
+                <li class="dropdown">
+                    <a href="#business">Business</a>
+                    <div class="dropdown-content">
+                        <a href="/weddings">Weddings</a>
+                        <a href="/sports_photo_video">Sports Photo & Video</a>
+                        <a href="/gear">Gear</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#personal">Personal</a>
+                    <div class="dropdown-content">
+                        <a href="/content">Content Creation</a>
+                        <a href="/faith_life">Faith & Life</a>
+                        <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
+                    </div>
+                </li>
+                <li><a href="/pricing">Pricing</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
 
-    <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
-    <div class="theme-toggle">
-        <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
-            Light
-        </button>
-        <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
-            Dark
-        </button>
-        <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
-            System
-        </button>
-    </div>
-</nav>
-    <main>
-        <section class="page-hero">
-            <h1>Bowling & Ultimate Frisbee / Disc Golf</h1>
-            <p>Competitive passion meets recreational fun in the sports I love</p>
-        </section>
+            <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
+            <div class="theme-toggle">
+                <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
+                    Light
+                </button>
+                <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
+                    Dark
+                </button>
+                <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
+                    System
+                </button>
+            </div>
+        </nav>
+        <main>
+            <section class="page-hero">
+                <h1>Bowling & Ultimate Frisbee / Disc Golf</h1>
+                <p>Competitive passion meets recreational fun in the sports I love</p>
+            </section>
 
-        <!-- Bowling Section -->
-        <section class="content-section">
-            <h2 class="section-title">Bowling</h2>
-            <p class="intro-text">Bowling has been a passion of mine for years. Whether it's competitive league play or casual games with friends, there's something special about the precision and strategy involved in the sport.</p>
-            
-            <div class="stats-box">
-                <h3 style="color: var(--accent); margin-bottom: 1rem;">Current League Stats 25-26</h3>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-label">Average</div>
-                        <div class="stat-value">220<br>(39 games)</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">High Game</div>
-                        <div class="stat-value">259</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">High Series</div>
-                        <div class="stat-value">749</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Low Game</div>
-                        <div class="stat-value">170</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-label">Low Series</div>
-                        <div class="stat-value">597</div>
-                    </div>
+            <!-- Bowling Section -->
+            <section class="content-section">
+                <h2 class="section-title">Bowling</h2>
+                <p class="intro-text">Bowling has been a passion of mine for years. Whether it's competitive league play
+                    or casual games with friends, there's something special about the precision and strategy involved in
+                    the sport.</p>
+
+                <div class="stats-box">
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Current League Stats 25-26</h3>
+                    <div class="stats-grid">
                         <div class="stat-item">
-                        <div class="stat-label">All Time High Game</div>
-                        <div class="stat-value">290</div>
-                    </div>
+                            <div class="stat-label">Average</div>
+                            <div class="stat-value">220<br>(39 games)</div>
+                        </div>
                         <div class="stat-item">
-                        <div class="stat-label">All Time High Series</div>
-                        <div class="stat-value">749</div>
+                            <div class="stat-label">High Game</div>
+                            <div class="stat-value">259</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">High Series</div>
+                            <div class="stat-value">749</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Low Game</div>
+                            <div class="stat-value">170</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Low Series</div>
+                            <div class="stat-value">597</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">All Time High Game</div>
+                            <div class="stat-value">290</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">All Time High Series</div>
+                            <div class="stat-value">749</div>
+                        </div>
+                    </div>
+
+                    <h4 style="color: var(--accent); margin-top: 2rem; margin-bottom: 1rem;">Spare Conversion by Pin
+                    </h4>
+                    <div class="spare-percentages">
+                        <div class="spare-item">
+                            <div class="pin-number">1 Pin</div>
+                            <div class="percentage">N/A</div>
+                        </div>
+                        <div class="spare-item">
+                            <div class="pin-number">2 Pin</div>
+                            <div class="percentage">100% 1/1</div>
+                        </div>
+                        <div class="spare-item">
+                            <div class="pin-number">3 Pin</div>
+                            <div class="percentage">100% 2/2</div>
+                        </div>
+                        <div class="spare-item">
+                            <div class="pin-number">4 Pin</div>
+                            <div class="percentage">85% 17/20</div>
+                        </div>
+                        <div class="spare-item">
+                            <div class="pin-number">5 Pin</div>
+                            <div class="percentage">100% 2/2</div>
+                        </div>
+                        <div class="spare-item">
+                            <div class="pin-number">6 Pin</div>
+                            <div class="percentage">100% 2/2</div>
+                        </div>
+                        <div class="spare-item">
+                            <div class="pin-number">7 Pin</div>
+                            <div class="percentage">100% 9/9</div>
+                        </div>
+                        <div class="spare-item">
+                            <div class="pin-number">8 Pin</div>
+                            <div class="percentage">100% 5/5</div>
+                        </div>
+                        <div class="spare-item">
+                            <div class="pin-number">9 Pin</div>
+                            <div class="percentage">100% 6/6</div>
+                        </div>
+                        <div class="spare-item">
+                            <div class="pin-number">10 Pin</div>
+                            <div class="percentage">80% 24/30</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ultimate Frisbee Section -->
+            <section class="content-section">
+                <h2 class="section-title">Ultimate Frisbee</h2>
+                <p class="intro-text">Ultimate is the perfect blend of athleticism, strategy, and team spirit. It's
+                    fast-paced, demanding, and incredibly rewarding.</p>
+
+                <h3 style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1.5rem; margin-top: 2rem;">Tips for
+                    Beginners</h3>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <h3>Master the Basics First</h3>
+                        <p>Focus on learning proper throwing technique and catching fundamentals before worrying about
+                            advanced moves. A solid foundation will serve you throughout your ultimate career.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h3>Communication is Key</h3>
+                        <p>Ultimate is a team sport that requires constant communication. Call for the disc, signal
+                            cuts, and talk on defense. Your voice is just as important as your physical skills.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h3>Understand Positioning</h3>
+                        <p>Learn how to create and use space on the field. Good positioning makes everything easier -
+                            from getting open to making throws to playing effective defense.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h3>Build Your Endurance</h3>
+                        <p>Ultimate demands sustained sprinting and quick recovery. Work on cardiovascular fitness and
+                            explosive speed to keep up with the pace of the game.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Disc Golf Section -->
+            <section class="content-section"
+                style="background-color: var(--bg-secondary); padding: 3rem 2rem; border-radius: 12px;">
+                <h2 class="section-title">Disc Golf</h2>
+                <p class="intro-text">Disc golf combines the precision of golf with the accessibility of frisbee. It's a
+                    great way to enjoy the outdoors while challenging yourself.</p>
+
+                <h3 style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1.5rem; margin-top: 2rem;">In The Bag
+                </h3>
+                <div class="disc-list">
+                    <div class="disc-item">
+                        <h4>MVP Fission Dimension</h4>
+                        <div class="disc-type">Driver</div>
+                        <p>My go to distance bomber, because I have a noodle arm lol. 14 speed, but it's lightweight and
+                            the fission plastic makes it less stable. So it's perfect for amateur arms like me.</p>
+                    </div>
+                    <div class="disc-item">
+                        <h4>Axiom Hex</h4>
+                        <div class="disc-type">Midrange</div>
+                        <p>I love the versatility of this disc, perfect for forehands and backhands. Very reliable fade
+                            for me.</p>
+                    </div>
+                    <div class="disc-item">
+                        <h4>Simon Line Pixel</h4>
+                        <div class="disc-type">Putter</div>
+                        <p>Love the glide this putter has, feels good in my hand. I'm not the best putter, but love
+                            using this disc, even for short upshots as well.</p>
                     </div>
                 </div>
 
-                <h4 style="color: var(--accent); margin-top: 2rem; margin-bottom: 1rem;">Spare Conversion by Pin</h4>
-                <div class="spare-percentages">
-                    <div class="spare-item">
-                        <div class="pin-number">1 Pin</div>
-                        <div class="percentage">N/A</div>
+                <h3 style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1.5rem; margin-top: 3rem;">Tips for
+                    Beginners</h3>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <h3>Start with Putters</h3>
+                        <p>Learn proper form with slower, more controllable putters before moving to drivers. Bad habits
+                            are harder to break once ingrained.</p>
                     </div>
-                    <div class="spare-item">
-                        <div class="pin-number">2 Pin</div>
-                        <div class="percentage">100% 1/1</div>
+                    <div class="tip-card">
+                        <h3>Focus on Accuracy Over Distance</h3>
+                        <p>A disc in the fairway at 200 feet is better than one in the woods at 300 feet. Control comes
+                            before power.</p>
                     </div>
-                    <div class="spare-item">
-                        <div class="pin-number">3 Pin</div>
-                        <div class="percentage">100% 2/2</div>
-                    </div>
-                    <div class="spare-item">
-                        <div class="pin-number">4 Pin</div>
-                        <div class="percentage">85% 17/20</div>
-                    </div>
-                    <div class="spare-item">
-                        <div class="pin-number">5 Pin</div>
-                        <div class="percentage">100% 2/2</div>
-                    </div>
-                    <div class="spare-item">
-                        <div class="pin-number">6 Pin</div>
-                        <div class="percentage">100% 2/2</div>
-                    </div>
-                    <div class="spare-item">
-                        <div class="pin-number">7 Pin</div>
-                        <div class="percentage">100% 9/9</div>
-                    </div>
-                    <div class="spare-item">
-                        <div class="pin-number">8 Pin</div>
-                        <div class="percentage">100% 5/5</div>
-                    </div>
-                    <div class="spare-item">
-                        <div class="pin-number">9 Pin</div>
-                        <div class="percentage">100% 6/6</div>
-                    </div>
-                    <div class="spare-item">
-                        <div class="pin-number">10 Pin</div>
-                        <div class="percentage">80% 24/30</div>
+                    <div class="tip-card">
+                        <h3>Learn Course Etiquette</h3>
+                        <p>Respect other players, take care of the course, and understand the pace of play. Good
+                            etiquette makes the sport enjoyable for everyone.</p>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Ultimate Frisbee Section -->
-        <section class="content-section">
-            <h2 class="section-title">Ultimate Frisbee</h2>
-            <p class="intro-text">Ultimate is the perfect blend of athleticism, strategy, and team spirit. It's fast-paced, demanding, and incredibly rewarding.</p>
-            
-            <h3 style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1.5rem; margin-top: 2rem;">Tips for Beginners</h3>
-            <div class="tips-grid">
-                <div class="tip-card">
-                    <h3>Master the Basics First</h3>
-                    <p>Focus on learning proper throwing technique and catching fundamentals before worrying about advanced moves. A solid foundation will serve you throughout your ultimate career.</p>
-                </div>
-                <div class="tip-card">
-                    <h3>Communication is Key</h3>
-                    <p>Ultimate is a team sport that requires constant communication. Call for the disc, signal cuts, and talk on defense. Your voice is just as important as your physical skills.</p>
-                </div>
-                <div class="tip-card">
-                    <h3>Understand Positioning</h3>
-                    <p>Learn how to create and use space on the field. Good positioning makes everything easier - from getting open to making throws to playing effective defense.</p>
-                </div>
-                <div class="tip-card">
-                    <h3>Build Your Endurance</h3>
-                    <p>Ultimate demands sustained sprinting and quick recovery. Work on cardiovascular fitness and explosive speed to keep up with the pace of the game.</p>
-                </div>
-            </div>
-        </section>
+            <!-- Tournament Section -->
+            <section class="content-section tournament-section">
+                <h2 class="section-title">Tournaments & Results</h2>
+                <p class="intro-text">Here are some recent tournaments and competitions I've participated in across
+                    bowling, ultimate frisbee, and disc golf.</p>
 
-        <!-- Disc Golf Section -->
-        <section class="content-section" style="background-color: var(--bg-secondary); padding: 3rem 2rem; border-radius: 12px;">
-            <h2 class="section-title">Disc Golf</h2>
-            <p class="intro-text">Disc golf combines the precision of golf with the accessibility of frisbee. It's a great way to enjoy the outdoors while challenging yourself.</p>
-            
-            <h3 style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1.5rem; margin-top: 2rem;">In The Bag</h3>
-            <div class="disc-list">
-                <div class="disc-item">
-                    <h4>MVP Fission Dimension</h4>
-                    <div class="disc-type">Driver</div>
-                    <p>My go to distance bomber, because I have a noodle arm lol. 14 speed, but it's lightweight and the fission plastic makes it less stable. So it's perfect for amateur arms like me.</p>
+                <div class="tournament-grid">
+                    <div class="tournament-card">
+                        <h3>Shot of the Week - Non Series</h3>
+                        <p class="tournament-date">November 8th</p>
+                        <p class="tournament-result">Result TBD</p>
+                    </div>
+                    <div class="tournament-card">
+                        <h3>Shot of the Week - Series 2</h3>
+                        <p class="tournament-date">November 29th</p>
+                        <p class="tournament-result">Result TBD</p>
+                    </div>
+                    <div class="tournament-card">
+                        <h3>Tournament Name</h3>
+                        <p class="tournament-date">Date TBD</p>
+                        <p class="tournament-result">Result TBD</p>
+                    </div>
                 </div>
-                <div class="disc-item">
-                    <h4>Axiom Hex</h4>
-                    <div class="disc-type">Midrange</div>
-                    <p>I love the versatility of this disc, perfect for forehands and backhands. Very reliable fade for me.</p>
-                </div>
-                <div class="disc-item">
-                    <h4>Simon Line Pixel</h4>
-                    <div class="disc-type">Putter</div>
-                    <p>Love the glide this putter has, feels good in my hand. I'm not the best putter, but love using this disc, even for short upshots as well.</p>
-                </div>
-            </div>
+            </section>
 
-            <h3 style="font-size: 1.5rem; color: var(--accent); margin-bottom: 1.5rem; margin-top: 3rem;">Tips for Beginners</h3>
-            <div class="tips-grid">
-                <div class="tip-card">
-                    <h3>Start with Putters</h3>
-                    <p>Learn proper form with slower, more controllable putters before moving to drivers. Bad habits are harder to break once ingrained.</p>
-                </div>
-                <div class="tip-card">
-                    <h3>Focus on Accuracy Over Distance</h3>
-                    <p>A disc in the fairway at 200 feet is better than one in the woods at 300 feet. Control comes before power.</p>
-                </div>
-                <div class="tip-card">
-                    <h3>Learn Course Etiquette</h3>
-                    <p>Respect other players, take care of the course, and understand the pace of play. Good etiquette makes the sport enjoyable for everyone.</p>
-                </div>
-            </div>
-        </section>
+            <!-- Articles Section -->
+            <section class="content-section">
+                <h2 class="section-title">Articles</h2>
 
-        <!-- Tournament Section -->
-        <section class="content-section tournament-section">
-            <h2 class="section-title">Tournaments & Results</h2>
-            <p class="intro-text">Here are some recent tournaments and competitions I've participated in across bowling, ultimate frisbee, and disc golf.</p>
-            
-            <div class="tournament-grid">
-                <div class="tournament-card">
-                    <h3>Shot of the Week - Non Series</h3>
-                    <p class="tournament-date">November 8th</p>
-                    <p class="tournament-result">Result TBD</p>
+                <div class="tab-navigation">
+                    <button class="tab-btn active" onclick="switchTab('recent')">Recent Posts</button>
+                    <button class="tab-btn" onclick="switchTab('archive')">Archive</button>
                 </div>
-                <div class="tournament-card">
-                    <h3>Shot of the Week - Series 2</h3>
-                    <p class="tournament-date">November 29th</p>
-                    <p class="tournament-result">Result TBD</p>
-                </div>
-                <div class="tournament-card">
-                    <h3>Tournament Name</h3>
-                    <p class="tournament-date">Date TBD</p>
-                    <p class="tournament-result">Result TBD</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- Articles Section -->
-        <section class="content-section">
-            <h2 class="section-title">Articles</h2>
-            
-            <div class="tab-navigation">
-                <button class="tab-btn active" onclick="switchTab('recent')">Recent Posts</button>
-                <button class="tab-btn" onclick="switchTab('archive')">Archive</button>
-            </div>
-
-            <div id="recent" class="tab-content active">
-                <div class="articles-grid">
-                    <p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); font-size: 1.1rem; padding: 3rem;">No recent posts yet. Check back soon for new content!</p>
+                <div id="recent" class="tab-content active">
+                    <div class="articles-grid">
+                        <p
+                            style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); font-size: 1.1rem; padding: 3rem;">
+                            No recent posts yet. Check back soon for new content!</p>
+                    </div>
                 </div>
-            </div>
 
-            <div id="archive" class="tab-content">
-                <div class="archive-list">
-                    <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; padding: 3rem;">No archived posts yet.</p>
+                <div id="archive" class="tab-content">
+                    <div class="archive-list">
+                        <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; padding: 3rem;">
+                            No archived posts yet.</p>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
-                    Facebook
+        <footer>
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank"
+                        aria-label="Facebook">
+                        Facebook
+                    </a>
+                    <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
+                        Instagram
+                    </a>
+                    <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
+                        TikTok
+                    </a>
+                    <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
+                        YouTube
+                    </a>
+                    <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
+                        Vimeo
+                    </a>
+                </div>
+
+                <a href="/contact" class="contact-btn">
+                    Contact Me
                 </a>
-                <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
-                    Instagram
-                </a>
-                <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
-                    TikTok
-                </a>
-                <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
-                    YouTube
-                </a>
-                <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
-                    Vimeo
-                </a>
-            </div>
-            
-            <a href="https://www.chiefadventures.org/contact" class="contact-btn">
-                Contact Me
-            </a>
-            
-            <div class="copyright">
-                <p>&copy; 2025 JFed's Life. All rights reserved.</p>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner</p>
-            </div>
-        </div>
-    </footer>
 
-    <script>
-        function setTheme(theme) {
-            const html = document.documentElement;
-            const lightBtn = document.getElementById('lightBtn');
-            const systemBtn = document.getElementById('systemBtn');
-            const darkBtn = document.getElementById('darkBtn');
-            
-            [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
-            
-            if (theme === 'system') {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-                systemBtn.classList.add('active');
-                localStorage.setItem('theme', 'system');
-            } else {
-                html.setAttribute('data-theme', theme);
-                if (theme === 'light') lightBtn.classList.add('active');
-                else darkBtn.classList.add('active');
-                localStorage.setItem('theme', theme);
+                <div class="copyright">
+                    <p>&copy; 2025 JFed's Life. All rights reserved.</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            function setTheme(theme) {
+                const html = document.documentElement;
+                const lightBtn = document.getElementById('lightBtn');
+                const systemBtn = document.getElementById('systemBtn');
+                const darkBtn = document.getElementById('darkBtn');
+
+                [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
+
+                if (theme === 'system') {
+                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+                    systemBtn.classList.add('active');
+                    localStorage.setItem('theme', 'system');
+                } else {
+                    html.setAttribute('data-theme', theme);
+                    if (theme === 'light') lightBtn.classList.add('active');
+                    else darkBtn.classList.add('active');
+                    localStorage.setItem('theme', theme);
+                }
             }
-        }
 
-        function toggleMobileMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-
-        function switchTab(tabName) {
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => content.classList.remove('active'));
-
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            tabBtns.forEach(btn => btn.classList.remove('active'));
-
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'system';
-            setTheme(savedTheme);
-        });
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (localStorage.getItem('theme') === 'system') {
-                setTheme('system');
+            function toggleMobileMenu() {
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.toggle('active');
             }
-        });
-        // Close dropdowns when clicking outside
-document.addEventListener('click', function(event) {
-    if (!event.target.closest('.dropdown')) {
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            dropdown.classList.remove('active');
-        });
-    }
-});
 
-// Toggle dropdowns on click
-document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
-    dropdownLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Close other dropdowns
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            if (dropdown !== this.nextElementSibling) {
-                dropdown.classList.remove('active');
+            function switchTab(tabName) {
+                const tabContents = document.querySelectorAll('.tab-content');
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                const tabBtns = document.querySelectorAll('.tab-btn');
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+
+                document.getElementById(tabName).classList.add('active');
+                event.target.classList.add('active');
             }
-        });
-        
-        // Toggle this dropdown
-        const dropdownContent = this.nextElementSibling;
-        dropdownContent.classList.toggle('active');
-    });
-});
 
-// Seasonal Cursor Script
-function setSeasonalCursor() {
-    const today = new Date();
-    const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
-    const day = today.getDate();
-    
-    let cursorUrl;
-    
-    // New Year (January 1-15)
-    if (month === 0 && day <= 7) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
-    }
-    // Valentine's Day (February 7-14)
-    else if (month === 1 && day >= 7 && day <= 14) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
-    }
-    // St. Patrick's Day (March 10-17)
-    else if (month === 2 && day >= 10 && day <= 17) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
-    }
-    // Easter (March 29 - April 7) - adjust dates yearly
-    else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
-    }
-    // 4th of July (July 1-7)
-    else if (month === 6 && day <= 7) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
-    }
-    // Halloween (October 24-31)
-    else if (month === 9 && day >= 24) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
-    }
-    // Thanksgiving (November 15-30)
-    else if (month === 10 && day >= 15) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
-    }
-    // Christmas (December 10-26)
-    else if (month === 11 && day >= 10 && day <= 26) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
-    }
-    // Default - no custom cursor for rest of year
-    else {
-        return;
-    }
-    
-    document.body.style.cursor = `url('${cursorUrl}'), auto`;
-}
+            window.addEventListener('DOMContentLoaded', () => {
+                const savedTheme = localStorage.getItem('theme') || 'system';
+                setTheme(savedTheme);
+            });
 
-window.addEventListener('DOMContentLoaded', setSeasonalCursor);
-    </script>
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (localStorage.getItem('theme') === 'system') {
+                    setTheme('system');
+                }
+            });
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!event.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+
+            // Toggle dropdowns on click
+            document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+                dropdownLink.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Close other dropdowns
+                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                        if (dropdown !== this.nextElementSibling) {
+                            dropdown.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle this dropdown
+                    const dropdownContent = this.nextElementSibling;
+                    dropdownContent.classList.toggle('active');
+                });
+            });
+
+            // Seasonal Cursor Script
+            function setSeasonalCursor() {
+                const today = new Date();
+                const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
+                const day = today.getDate();
+
+                let cursorUrl;
+
+                // New Year (January 1-15)
+                if (month === 0 && day <= 7) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
+                }
+                // Valentine's Day (February 7-14)
+                else if (month === 1 && day >= 7 && day <= 14) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
+                }
+                // St. Patrick's Day (March 10-17)
+                else if (month === 2 && day >= 10 && day <= 17) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
+                }
+                // Easter (March 29 - April 7) - adjust dates yearly
+                else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
+                }
+                // 4th of July (July 1-7)
+                else if (month === 6 && day <= 7) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
+                }
+                // Halloween (October 24-31)
+                else if (month === 9 && day >= 24) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
+                }
+                // Thanksgiving (November 15-30)
+                else if (month === 10 && day >= 15) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
+                }
+                // Christmas (December 10-26)
+                else if (month === 11 && day >= 10 && day <= 26) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
+                }
+                // Default - no custom cursor for rest of year
+                else {
+                    return;
+                }
+
+                document.body.style.cursor = `url('${cursorUrl}'), auto`;
+            }
+
+            window.addEventListener('DOMContentLoaded', setSeasonalCursor);
+        </script>
 </body>
+
 </html>

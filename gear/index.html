@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,20 +85,20 @@
             object-fit: cover;
             object-position: center;
             border: 4px solid #1a1a1a;
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px #444,
                 0 0 0 6px #1a1a1a,
-                0 2px 8px rgba(0,0,0,0.4);
+                0 2px 8px rgba(0, 0, 0, 0.4);
             position: relative;
             display: block;
         }
 
         [data-theme="dark"] .logo-img {
             border: 4px solid #2a2a2a;
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px #555,
                 0 0 0 6px #2a2a2a,
-                0 2px 8px rgba(0,0,0,0.6);
+                0 2px 8px rgba(0, 0, 0, 0.6);
         }
 
         .logo h1 {
@@ -130,40 +131,40 @@
         }
 
         .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--bg-secondary);
-    min-width: 200px;
-    box-shadow: 0 4px 12px var(--shadow);
-    border-radius: 8px;
-    margin-top: 0.5rem;
-    overflow: hidden;
-    z-index: 1000;
-}
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-secondary);
+            min-width: 200px;
+            box-shadow: 0 4px 12px var(--shadow);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+            z-index: 1000;
+        }
 
-.dropdown-content.active {
-    display: block;
-}
+        .dropdown-content.active {
+            display: block;
+        }
 
-.dropdown-content a {
-    display: block;
-    padding: 0.75rem 1.5rem;
-    color: var(--text-primary) !important;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-primary) !important;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
 
-.dropdown-content a:hover {
-    background-color: var(--accent);
-    color: white !important;
-}
+        .dropdown-content a:hover {
+            background-color: var(--accent);
+            color: white !important;
+        }
 
-        .dropdown > a::after {
+        .dropdown>a::after {
             content: ' ▾';
             font-size: 0.8rem;
         }
@@ -439,332 +440,357 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
             <a href="/" class="logo">
                 <div class="logo-container">
-                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg" alt="JFed's Life Logo" class="logo-img" id="logoImage">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg"
+                        alt="JFed's Life Logo" class="logo-img" id="logoImage">
                 </div>
                 <h1>JFed's Life</h1>
             </a>
-            
+
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                 ☰
             </button>
 
             <ul class="nav-links" id="navLinks">
-    <li><a href="/">Home</a></li>
-    <li><a href="/aboutme">About Me</a></li>
-    <li class="dropdown">
-        <a href="#business">Business</a>
-        <div class="dropdown-content">
-            <a href="/weddings">Weddings</a>
-            <a href="/sports_photo_video">Sports Photo & Video</a>
-            <a href="/gear">Gear</a>
-        </div>
-    </li>
-    <li class="dropdown">
-        <a href="#personal">Personal</a>
-        <div class="dropdown-content">
-            <a href="/content">Content Creation</a>
-            <a href="/faith_life">Faith & Life</a>
-            <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
-        </div>
-    </li>
-    <li><a href="/pricing">Pricing</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/faq">FAQ</a></li>
-    <li><a href="/contact">Contact</a></li>
-</ul>
-
-    <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
-    <div class="theme-toggle">
-        <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
-            Light
-        </button>
-        <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
-            Dark
-        </button>
-        <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
-            System
-        </button>
-    </div>
-</nav>
-
-    <main>
-        <section class="page-hero">
-            <h1>My Gear</h1>
-            <p>The tools and equipment I use to capture professional-quality content</p>
-        </section>
-
-        <section class="content-section">
-            <h2 class="section-title">Equipment Overview</h2>
-            <p class="intro-text">Quality gear is essential for delivering professional results, but it's only as good as the person using it. Here's a look at the equipment I rely on for weddings, sports, and content creation.</p>
-
-            <div class="gear-category">
-                <h3 class="category-title">Cameras</h3>
-                <div class="gear-list">
-                    <div class="gear-item">
-                        <h3>Sony A7III x2</h3>
-                        <p>Primary camera body for video and photography. Excellent low-light performance, reliable autofocus, and outstanding image quality make this my go-to for most shoots.</p>
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutme">About Me</a></li>
+                <li class="dropdown">
+                    <a href="#business">Business</a>
+                    <div class="dropdown-content">
+                        <a href="/weddings">Weddings</a>
+                        <a href="/sports_photo_video">Sports Photo & Video</a>
+                        <a href="/gear">Gear</a>
                     </div>
-                </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#personal">Personal</a>
+                    <div class="dropdown-content">
+                        <a href="/content">Content Creation</a>
+                        <a href="/faith_life">Faith & Life</a>
+                        <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
+                    </div>
+                </li>
+                <li><a href="/pricing">Pricing</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+
+            <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
+            <div class="theme-toggle">
+                <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
+                    Light
+                </button>
+                <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
+                    Dark
+                </button>
+                <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
+                    System
+                </button>
             </div>
+        </nav>
 
-            <div class="gear-category">
-                <h3 class="category-title">Lenses</h3>
-                <div class="gear-list">
-                    <div class="gear-item">
-                        <h3>Sony FE 70-300mm F4.5-5.6</h3>
-                        <p>Zoom lens that covers mostly sports outdoors.</p>
-                    </div>
-                    <div class="gear-item">
-                        <h3>Brightin Star AF 85mm F1.8 & Sony FE 50mm F1.8</h3>
-                        <p>Prime lenses for bokeh and low-light situations. Great for portraits and creating cinematic depth of field.</p>
-                    </div>
-                    <div class="gear-item">
-                        <h3>Rokinon AF 24mm F1.8</h3>
-                        <p>Wide-angle prime lens for establishing shots and tight spaces. Essential for capturing the full scope of venues and large group shots.</p>
-                    </div>
-                </div>
-            </div>
+        <main>
+            <section class="page-hero">
+                <h1>My Gear</h1>
+                <p>The tools and equipment I use to capture professional-quality content</p>
+            </section>
 
-            <div class="gear-category">
-                <h3 class="category-title">Stabilization</h3>
-                <div class="gear-list">
-                    <div class="gear-item">
-                        <h3>DJI RS 4</h3>
-                        <p>Three-axis gimbal for smooth, cinematic camera movements. Critical for creating professional-looking video with fluid motion.</p>
-                    </div>
-                    <div class="gear-item">
-                        <h3>NEEWER 72 IN Tripod x2</h3>
-                        <p>Sturdy tripod for static shots and long-form interviews. Reliable and stable in various conditions.</p>
-                    </div>
-                </div>
-            </div>
+            <section class="content-section">
+                <h2 class="section-title">Equipment Overview</h2>
+                <p class="intro-text">Quality gear is essential for delivering professional results, but it's only as
+                    good as the person using it. Here's a look at the equipment I rely on for weddings, sports, and
+                    content creation.</p>
 
-            <div class="gear-category">
-                <h3 class="category-title">Audio Equipment</h3>
-                <div class="gear-list">
-                    <div class="gear-item">
-                        <h3>DJI Mic Wireless</h3>
-                        <p>Wireless lavalier system for crystal-clear audio during vows and speeches. Essential for capturing clean dialogue without distracting cables.</p>
-                    </div>
-                    <div class="gear-item">
-                        <h3>Rode VideoMic NTG</h3>
-                        <p>Shotgun microphone for on-camera audio. Great directional pickup for interviews and general event coverage.</p>
+                <div class="gear-category">
+                    <h3 class="category-title">Cameras</h3>
+                    <div class="gear-list">
+                        <div class="gear-item">
+                            <h3>Sony A7III x2</h3>
+                            <p>Primary camera body for video and photography. Excellent low-light performance, reliable
+                                autofocus, and outstanding image quality make this my go-to for most shoots.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="gear-category">
-                <h3 class="category-title">Lighting</h3>
-                <div class="gear-list">
-                    <div class="gear-item">
-                        <h3>[LED Light Panel]</h3>
-                        <p>Portable LED panel for fill light and interviews. Battery-powered and adjustable color temperature make it incredibly versatile.</p>
+                <div class="gear-category">
+                    <h3 class="category-title">Lenses</h3>
+                    <div class="gear-list">
+                        <div class="gear-item">
+                            <h3>Sony FE 70-300mm F4.5-5.6</h3>
+                            <p>Zoom lens that covers mostly sports outdoors.</p>
+                        </div>
+                        <div class="gear-item">
+                            <h3>Brightin Star AF 85mm F1.8 & Sony FE 50mm F1.8</h3>
+                            <p>Prime lenses for bokeh and low-light situations. Great for portraits and creating
+                                cinematic depth of field.</p>
+                        </div>
+                        <div class="gear-item">
+                            <h3>Rokinon AF 24mm F1.8</h3>
+                            <p>Wide-angle prime lens for establishing shots and tight spaces. Essential for capturing
+                                the full scope of venues and large group shots.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="gear-category">
-                <h3 class="category-title">Accessories & Support</h3>
-                <div class="gear-list">
-                    <div class="gear-item">
-                        <h3>[Memory Cards]</h3>
-                        <p>High-speed SD cards for reliable recording without dropped frames. Always carry multiple backups.</p>
-                    </div>
-                    <div class="gear-item">
-                        <h3>[Batteries]</h3>
-                        <p>Extended battery packs and multiple spares to ensure I never miss a moment due to power loss.</p>
-                    </div>
-                    <div class="gear-item">
-                        <h3>[Camera Bag]</h3>
-                        <p>Protective camera backpack that keeps all equipment organized and safe during transport.</p>
+                <div class="gear-category">
+                    <h3 class="category-title">Stabilization</h3>
+                    <div class="gear-list">
+                        <div class="gear-item">
+                            <h3>DJI RS 4</h3>
+                            <p>Three-axis gimbal for smooth, cinematic camera movements. Critical for creating
+                                professional-looking video with fluid motion.</p>
+                        </div>
+                        <div class="gear-item">
+                            <h3>NEEWER 72 IN Tripod x2</h3>
+                            <p>Sturdy tripod for static shots and long-form interviews. Reliable and stable in various
+                                conditions.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <section class="content-section workflow-section">
-            <h2 class="section-title">My Workflow</h2>
-            <p class="intro-text">Having the right gear is just the start. Here's how I use this equipment to deliver exceptional results from shoot to final delivery.</p>
-            
-            <div class="workflow-steps">
-                <div class="workflow-step">
-                    <span class="step-number">1</span>
-                    <h3>Pre-Production</h3>
-                    <p>Scout locations (if I'm around the area, otherwise will research online), plan shots, and prepare all equipment the night before. Check batteries, format cards, and ensure backup gear is ready.</p>
+                <div class="gear-category">
+                    <h3 class="category-title">Audio Equipment</h3>
+                    <div class="gear-list">
+                        <div class="gear-item">
+                            <h3>DJI Mic Wireless</h3>
+                            <p>Wireless lavalier system for crystal-clear audio during vows and speeches. Essential for
+                                capturing clean dialogue without distracting cables.</p>
+                        </div>
+                        <div class="gear-item">
+                            <h3>Rode VideoMic NTG</h3>
+                            <p>Shotgun microphone for on-camera audio. Great directional pickup for interviews and
+                                general event coverage.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="workflow-step">
-                    <span class="step-number">2</span>
-                    <h3>Shoot Day</h3>
-                    <p>Arrive early to set up and test all equipment. Use a couple cameras and angles to capture comprehensive coverage throughout the event.</p>
-                </div>
-                <div class="workflow-step">
-                    <span class="step-number">3</span>
-                    <h3>Backup & Organization</h3>
-                    <p>Immediately backup all footage to a drive. Organize files by date and project for easy retrieval during editing.</p>
-                </div>
-                <div class="workflow-step">
-                    <span class="step-number">4</span>
-                    <h3>Post-Production</h3>
-                    <p>Edit footage using Adobe, color grade for consistency, mix audio, add music, and transitions to create the final product.</p>
-                </div>
-                <div class="workflow-step">
-                    <span class="step-number">5</span>
-                    <h3>Delivery</h3>
-                    <p>Export in multiple formats and deliver via online gallery or physical media, ensuring clients receive high-quality files they can treasure forever.</p>
-                </div>
-            </div>
-        </section>
-    </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
-                    Facebook
+                <div class="gear-category">
+                    <h3 class="category-title">Lighting</h3>
+                    <div class="gear-list">
+                        <div class="gear-item">
+                            <h3>[LED Light Panel]</h3>
+                            <p>Portable LED panel for fill light and interviews. Battery-powered and adjustable color
+                                temperature make it incredibly versatile.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gear-category">
+                    <h3 class="category-title">Accessories & Support</h3>
+                    <div class="gear-list">
+                        <div class="gear-item">
+                            <h3>[Memory Cards]</h3>
+                            <p>High-speed SD cards for reliable recording without dropped frames. Always carry multiple
+                                backups.</p>
+                        </div>
+                        <div class="gear-item">
+                            <h3>[Batteries]</h3>
+                            <p>Extended battery packs and multiple spares to ensure I never miss a moment due to power
+                                loss.</p>
+                        </div>
+                        <div class="gear-item">
+                            <h3>[Camera Bag]</h3>
+                            <p>Protective camera backpack that keeps all equipment organized and safe during transport.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section workflow-section">
+                <h2 class="section-title">My Workflow</h2>
+                <p class="intro-text">Having the right gear is just the start. Here's how I use this equipment to
+                    deliver exceptional results from shoot to final delivery.</p>
+
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <span class="step-number">1</span>
+                        <h3>Pre-Production</h3>
+                        <p>Scout locations (if I'm around the area, otherwise will research online), plan shots, and
+                            prepare all equipment the night before. Check batteries, format cards, and ensure backup
+                            gear is ready.</p>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="step-number">2</span>
+                        <h3>Shoot Day</h3>
+                        <p>Arrive early to set up and test all equipment. Use a couple cameras and angles to capture
+                            comprehensive coverage throughout the event.</p>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="step-number">3</span>
+                        <h3>Backup & Organization</h3>
+                        <p>Immediately backup all footage to a drive. Organize files by date and project for easy
+                            retrieval during editing.</p>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="step-number">4</span>
+                        <h3>Post-Production</h3>
+                        <p>Edit footage using Adobe, color grade for consistency, mix audio, add music, and transitions
+                            to create the final product.</p>
+                    </div>
+                    <div class="workflow-step">
+                        <span class="step-number">5</span>
+                        <h3>Delivery</h3>
+                        <p>Export in multiple formats and deliver via online gallery or physical media, ensuring clients
+                            receive high-quality files they can treasure forever.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank"
+                        aria-label="Facebook">
+                        Facebook
+                    </a>
+                    <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
+                        Instagram
+                    </a>
+                    <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
+                        TikTok
+                    </a>
+                    <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
+                        YouTube
+                    </a>
+                    <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
+                        Vimeo
+                    </a>
+                </div>
+
+                <a href="/contact" class="contact-btn">
+                    Contact Me
                 </a>
-                <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
-                    Instagram
-                </a>
-                <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
-                    TikTok
-                </a>
-                <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
-                    YouTube
-                </a>
-                <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
-                    Vimeo
-                </a>
-            </div>
-            
-            <a href="https://www.chiefadventures.org/contact" class="contact-btn">
-                Contact Me
-            </a>
-            
-            <div class="copyright">
-                <p>&copy; 2025 JFed's Life. All rights reserved.</p>
-                <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner</p>
-            </div>
-        </div>
-    </footer>
 
-    <script>
-        function setTheme(theme) {
-            const html = document.documentElement;
-            const lightBtn = document.getElementById('lightBtn');
-            const systemBtn = document.getElementById('systemBtn');
-            const darkBtn = document.getElementById('darkBtn');
-            
-            [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
-            
-            if (theme === 'system') {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-                systemBtn.classList.add('active');
-                localStorage.setItem('theme', 'system');
-            } else {
-                html.setAttribute('data-theme', theme);
-                if (theme === 'light') lightBtn.classList.add('active');
-                else darkBtn.classList.add('active');
-                localStorage.setItem('theme', theme);
+                <div class="copyright">
+                    <p>&copy; 2025 JFed's Life. All rights reserved.</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            function setTheme(theme) {
+                const html = document.documentElement;
+                const lightBtn = document.getElementById('lightBtn');
+                const systemBtn = document.getElementById('systemBtn');
+                const darkBtn = document.getElementById('darkBtn');
+
+                [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
+
+                if (theme === 'system') {
+                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+                    systemBtn.classList.add('active');
+                    localStorage.setItem('theme', 'system');
+                } else {
+                    html.setAttribute('data-theme', theme);
+                    if (theme === 'light') lightBtn.classList.add('active');
+                    else darkBtn.classList.add('active');
+                    localStorage.setItem('theme', theme);
+                }
             }
-        }
 
-        function toggleMobileMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'system';
-            setTheme(savedTheme);
-        });
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (localStorage.getItem('theme') === 'system') {
-                setTheme('system');
+            function toggleMobileMenu() {
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.toggle('active');
             }
-        });
-        // Close dropdowns when clicking outside
-document.addEventListener('click', function(event) {
-    if (!event.target.closest('.dropdown')) {
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            dropdown.classList.remove('active');
-        });
-    }
-});
 
-// Toggle dropdowns on click
-document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
-    dropdownLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Close other dropdowns
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            if (dropdown !== this.nextElementSibling) {
-                dropdown.classList.remove('active');
+            window.addEventListener('DOMContentLoaded', () => {
+                const savedTheme = localStorage.getItem('theme') || 'system';
+                setTheme(savedTheme);
+            });
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (localStorage.getItem('theme') === 'system') {
+                    setTheme('system');
+                }
+            });
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function (event) {
+                if (!event.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+
+            // Toggle dropdowns on click
+            document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+                dropdownLink.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Close other dropdowns
+                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                        if (dropdown !== this.nextElementSibling) {
+                            dropdown.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle this dropdown
+                    const dropdownContent = this.nextElementSibling;
+                    dropdownContent.classList.toggle('active');
+                });
+            });
+
+            // Seasonal Cursor Script
+            function setSeasonalCursor() {
+                const today = new Date();
+                const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
+                const day = today.getDate();
+
+                let cursorUrl;
+
+                // New Year (January 1-15)
+                if (month === 0 && day <= 7) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
+                }
+                // Valentine's Day (February 7-14)
+                else if (month === 1 && day >= 7 && day <= 14) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
+                }
+                // St. Patrick's Day (March 10-17)
+                else if (month === 2 && day >= 10 && day <= 17) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
+                }
+                // Easter (March 29 - April 7) - adjust dates yearly
+                else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
+                }
+                // 4th of July (July 1-7)
+                else if (month === 6 && day <= 7) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
+                }
+                // Halloween (October 24-31)
+                else if (month === 9 && day >= 24) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
+                }
+                // Thanksgiving (November 15-30)
+                else if (month === 10 && day >= 15) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
+                }
+                // Christmas (December 10-26)
+                else if (month === 11 && day >= 10 && day <= 26) {
+                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
+                }
+                // Default - no custom cursor for rest of year
+                else {
+                    return;
+                }
+
+                document.body.style.cursor = `url('${cursorUrl}'), auto`;
             }
-        });
-        
-        // Toggle this dropdown
-        const dropdownContent = this.nextElementSibling;
-        dropdownContent.classList.toggle('active');
-    });
-});
 
-// Seasonal Cursor Script
-function setSeasonalCursor() {
-    const today = new Date();
-    const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
-    const day = today.getDate();
-    
-    let cursorUrl;
-    
-    // New Year (January 1-15)
-    if (month === 0 && day <= 7) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
-    }
-    // Valentine's Day (February 7-14)
-    else if (month === 1 && day >= 7 && day <= 14) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
-    }
-    // St. Patrick's Day (March 10-17)
-    else if (month === 2 && day >= 10 && day <= 17) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
-    }
-    // Easter (March 29 - April 7) - adjust dates yearly
-    else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
-    }
-    // 4th of July (July 1-7)
-    else if (month === 6 && day <= 7) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
-    }
-    // Halloween (October 24-31)
-    else if (month === 9 && day >= 24) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
-    }
-    // Thanksgiving (November 15-30)
-    else if (month === 10 && day >= 15) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
-    }
-    // Christmas (December 10-26)
-    else if (month === 11 && day >= 10 && day <= 26) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
-    }
-    // Default - no custom cursor for rest of year
-    else {
-        return;
-    }
-    
-    document.body.style.cursor = `url('${cursorUrl}'), auto`;
-}
-
-window.addEventListener('DOMContentLoaded', setSeasonalCursor);
-    </script>
+            window.addEventListener('DOMContentLoaded', setSeasonalCursor);
+        </script>
 </body>
+
 </html>
