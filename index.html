@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,20 +86,20 @@
             object-fit: cover;
             object-position: center;
             border: 4px solid #1a1a1a;
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px #444,
                 0 0 0 6px #1a1a1a,
-                0 2px 8px rgba(0,0,0,0.4);
+                0 2px 8px rgba(0, 0, 0, 0.4);
             position: relative;
             display: block;
         }
 
         [data-theme="dark"] .logo-img {
             border: 4px solid #2a2a2a;
-            box-shadow: 
+            box-shadow:
                 0 0 0 2px #555,
                 0 0 0 6px #2a2a2a,
-                0 2px 8px rgba(0,0,0,0.6);
+                0 2px 8px rgba(0, 0, 0, 0.6);
         }
 
         .logo h1 {
@@ -132,40 +133,40 @@
         }
 
         .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--bg-secondary);
-    min-width: 200px;
-    box-shadow: 0 4px 12px var(--shadow);
-    border-radius: 8px;
-    margin-top: 0.5rem;
-    overflow: hidden;
-    z-index: 1000;
-}
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--bg-secondary);
+            min-width: 200px;
+            box-shadow: 0 4px 12px var(--shadow);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+            z-index: 1000;
+        }
 
-.dropdown-content.active {
-    display: block;
-}
+        .dropdown-content.active {
+            display: block;
+        }
 
-.dropdown-content a {
-    display: block;
-    padding: 0.75rem 1.5rem;
-    color: var(--text-primary) !important;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-primary) !important;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
 
-.dropdown-content a:hover {
-    background-color: var(--accent);
-    color: white !important;
-}
+        .dropdown-content a:hover {
+            background-color: var(--accent);
+            color: white !important;
+        }
 
-        .dropdown > a::after {
+        .dropdown>a::after {
             content: ' ▾';
             font-size: 0.8rem;
         }
@@ -211,34 +212,37 @@
             cursor: pointer;
         }
 
-      /* Hero Section */
-.hero {
-    max-width: 1200px;
-    margin: 4rem auto;
-    padding: 4rem 2rem;
-    text-align: center;
-   background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), 
-            url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4789.jpg') center 20%/cover no-repeat;
-    border-radius: 12px;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-.hero h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: white;
-}
-.hero p {
-    font-size: 1.25rem;
-    color: white;
-    margin-bottom: 2rem;
-}
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+                url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4789.jpg') center 20%/cover no-repeat;
+            border-radius: 12px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: 2rem;
+        }
 
         /* Content Sections */
         .content-section {
@@ -482,59 +486,61 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
             <a href="/" class="logo">
                 <div class="logo-container">
-                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg" alt="JFed's Life Logo" class="logo-img" id="logoImage">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg"
+                        alt="JFed's Life Logo" class="logo-img" id="logoImage">
                 </div>
                 <h1>JFed's Life</h1>
             </a>
-            
+
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                 ☰
             </button>
 
             <ul class="nav-links" id="navLinks">
-    <li><a href="/">Home</a></li>
-    <li><a href="/aboutme">About Me</a></li>
-    <li class="dropdown">
-        <a href="#business">Business</a>
-        <div class="dropdown-content">
-            <a href="/weddings">Weddings</a>
-            <a href="/sports_photo_video">Sports Photo & Video</a>
-            <a href="/gear">Gear</a>
-        </div>
-    </li>
-    <li class="dropdown">
-        <a href="#personal">Personal</a>
-        <div class="dropdown-content">
-            <a href="/content">Content Creation</a>
-            <a href="/faith_life">Faith & Life</a>
-            <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
-        </div>
-    </li>
-    <li><a href="/pricing">Pricing</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/faq">FAQ</a></li>
-    <li><a href="/contact">Contact</a></li>
-</ul>
-
-    <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
-    <div class="theme-toggle">
-        <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
-            Light
-        </button>
-        <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
-            Dark
-        </button>
-        <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
-            System
-        </button>
-    </div>
-</nav>
+                <li><a href="/">Home</a></li>
+                <li><a href="/aboutme">About Me</a></li>
+                <li class="dropdown">
+                    <a href="#business">Business</a>
+                    <div class="dropdown-content">
+                        <a href="/weddings">Weddings</a>
+                        <a href="/sports_photo_video">Sports Photo & Video</a>
+                        <a href="/gear">Gear</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#personal">Personal</a>
+                    <div class="dropdown-content">
+                        <a href="/content">Content Creation</a>
+                        <a href="/faith_life">Faith & Life</a>
+                        <a href="/hobbies">Bowling & Ultimate Frisbee / Disc Golf</a>
+                    </div>
+                </li>
+                <li><a href="/pricing">Pricing</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
+
+            <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
+            <div class="theme-toggle">
+                <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
+                    Light
+                </button>
+                <button class="theme-btn" onclick="setTheme('dark')" id="darkBtn" title="Dark Mode">
+                    Dark
+                </button>
+                <button class="theme-btn active" onclick="setTheme('system')" id="systemBtn" title="System">
+                    System
+                </button>
+            </div>
+        </nav>
+        </ul>
         </nav>
     </header>
 
@@ -542,7 +548,8 @@
         <section class="hero" id="home">
             <div class="hero-content">
                 <h2>Welcome to JFed's Life</h2>
-                <p>Capturing moments, creating content, and sharing experiences through the lens of adventure, faith, and passion.</p>
+                <p>Capturing moments, creating content, and sharing experiences through the lens of adventure, faith,
+                    and passion.</p>
             </div>
         </section>
 
@@ -552,19 +559,22 @@
                 <a href="/weddings" style="text-decoration: none; color: inherit;">
                     <div class="card">
                         <h3>Photography & Videography</h3>
-                        <p>From weddings to sports events, I capture the moments that matter. I'm here to tell your story.</p>
+                        <p>From weddings to sports events, I capture the moments that matter. I'm here to tell your
+                            story.</p>
                     </div>
                 </a>
                 <a href="/faith_life" style="text-decoration: none; color: inherit;">
                     <div class="card">
                         <h3>Faith & Life</h3>
-                        <p>Sharing insights and reflections on faith, purpose, and living intentionally in today's world.</p>
+                        <p>Sharing insights and reflections on faith, purpose, and living intentionally in today's
+                            world.</p>
                     </div>
                 </a>
                 <a href="/hobbies" style="text-decoration: none; color: inherit;">
                     <div class="card">
                         <h3>Sports & Adventure</h3>
-                        <p>Passionate about bowling, ultimate frisbee, and disc golf. Join me as I explore the competitive and recreational sides of these sports.</p>
+                        <p>Passionate about bowling, ultimate frisbee, and disc golf. Join me as I explore the
+                            competitive and recreational sides of these sports.</p>
                     </div>
                 </a>
             </div>
@@ -574,13 +584,17 @@
         <section class="reviews-section">
             <h2>What People Are Saying</h2>
             <p class="subtitle">Hear from couples, athletes, and clients I've had the honor of working with</p>
-            
+
             <div class="reviews-grid">
                 <!-- Review Card 1 -->
                 <div class="review-card">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/65638274_2364562433761428_7410253521288691712_n copy.jpg" alt="Customer Photo" class="reviewer-photo">
-                    <p class="review-quote">"Jason made our wedding video for us which allowed us to share our special day with family who weren't able to make it to the wedding. We weren't initially planning on filming our wedding, but I'm glad we did so we can look back and remember the day. We definitely recommend Jason to be your wedding videographer!"</p>
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/65638274_2364562433761428_7410253521288691712_n copy.jpg"
+                        alt="Customer Photo" class="reviewer-photo">
+                    <p class="review-quote">"Jason made our wedding video for us which allowed us to share our special
+                        day with family who weren't able to make it to the wedding. We weren't initially planning on
+                        filming our wedding, but I'm glad we did so we can look back and remember the day. We definitely
+                        recommend Jason to be your wedding videographer!"</p>
                     <div class="reviewer-name">- Rachel S.</div>
                     <div class="review-date">Wedding • June 2018</div>
                 </div>
@@ -588,7 +602,8 @@
                 <!-- Review Card 2 -->
                 <div class="review-card">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <img src="https://via.placeholder.com/80/d97742/ffffff?text=AL" alt="Customer Photo" class="reviewer-photo">
+                    <img src="https://via.placeholder.com/80/d97742/ffffff?text=AL" alt="Customer Photo"
+                        class="reviewer-photo">
                     <p class="review-quote"></p>
                     <div class="reviewer-name"></div>
                     <div class="review-date"></div>
@@ -597,7 +612,8 @@
                 <!-- Review Card 3 -->
                 <div class="review-card">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <img src="https://via.placeholder.com/80/b8546d/ffffff?text=EM" alt="Customer Photo" class="reviewer-photo">
+                    <img src="https://via.placeholder.com/80/b8546d/ffffff?text=EM" alt="Customer Photo"
+                        class="reviewer-photo">
                     <p class="review-quote"></p>
                     <div class="reviewer-name"></div>
                     <div class="review-date"></div>
@@ -605,19 +621,22 @@
             </div>
         </section>
 
-        <section class="content-section" style="background-color: var(--bg-secondary); padding: 3rem 2rem; border-radius: 12px;">
+        <section class="content-section"
+            style="background-color: var(--bg-secondary); padding: 3rem 2rem; border-radius: 12px;">
             <h2 class="section-title">Featured Content</h2>
             <div class="card-grid">
                 <a href="/aboutme" style="text-decoration: none; color: inherit;">
                     <div class="card">
                         <h3>Latest Projects</h3>
-                        <p>Explore my recent work in wedding videography, sports coverage, and content creation for business and myself.</p>
+                        <p>Explore my recent work in wedding videography, sports coverage, and content creation for
+                            business and myself.</p>
                     </div>
                 </a>
                 <a href="/faith_life" style="text-decoration: none; color: inherit;">
                     <div class="card">
                         <h3>Blog Articles</h3>
-                        <p>Read my thoughts on faith, life lessons, and tips for photography, videography, and my hobbies.</p>
+                        <p>Read my thoughts on faith, life lessons, and tips for photography, videography, and my
+                            hobbies.</p>
                     </div>
                 </a>
                 <a href="/gear" style="text-decoration: none; color: inherit;">
@@ -634,26 +653,31 @@
         <div class="footer-content">
             <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
-                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/FB_Icon.png" alt="Facebook" class="social-icon">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/FB_Icon.png"
+                        alt="Facebook" class="social-icon">
                 </a>
                 <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
-                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/IG_Icon.png" alt="Instagram" class="social-icon">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/IG_Icon.png"
+                        alt="Instagram" class="social-icon">
                 </a>
                 <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
-                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/TikTok_Icon.png" alt="TikTok" class="social-icon">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/TikTok_Icon.png"
+                        alt="TikTok" class="social-icon">
                 </a>
                 <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
-                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/YT_Icon.png" alt="YouTube" class="social-icon">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/YT_Icon.png"
+                        alt="YouTube" class="social-icon">
                 </a>
                 <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
-                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/Vimeo_Icon.png" alt="Vimeo" class="social-icon">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/Vimeo_Icon.png"
+                        alt="Vimeo" class="social-icon">
                 </a>
             </div>
-            
-            <a href="https://www.chiefadventures.org/contact" class="contact-btn">
+
+            <a href="/contact" class="contact-btn">
                 Contact Me
             </a>
-            
+
             <div class="copyright">
                 <p>&copy; 2025 JFed's Life. All rights reserved.</p>
                 <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner</p>
@@ -667,9 +691,9 @@
             const lightBtn = document.getElementById('lightBtn');
             const systemBtn = document.getElementById('systemBtn');
             const darkBtn = document.getElementById('darkBtn');
-            
+
             [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
-            
+
             if (theme === 'system') {
                 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
@@ -693,7 +717,7 @@
             try {
                 let imageData;
                 const filenames = ['image (2).jpg', 'image.jpg', 'logo.jpg'];
-                
+
                 for (const filename of filenames) {
                     try {
                         imageData = await window.fs.readFile(filename);
@@ -702,7 +726,7 @@
                         continue;
                     }
                 }
-                
+
                 if (imageData) {
                     const blob = new Blob([imageData], { type: 'image/jpeg' });
                     const url = URL.createObjectURL(blob);
@@ -726,81 +750,82 @@
             }
         });
         // Close dropdowns when clicking outside
-document.addEventListener('click', function(event) {
-    if (!event.target.closest('.dropdown')) {
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            dropdown.classList.remove('active');
-        });
-    }
-});
-
-// Toggle dropdowns on click
-document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
-    dropdownLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Close other dropdowns
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            if (dropdown !== this.nextElementSibling) {
-                dropdown.classList.remove('active');
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
             }
         });
-        
-        // Toggle this dropdown
-        const dropdownContent = this.nextElementSibling;
-        dropdownContent.classList.toggle('active');
-    });
-});
 
-// Seasonal Cursor Script
-function setSeasonalCursor() {
-    const today = new Date();
-    const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
-    const day = today.getDate();
-    
-    let cursorUrl;
-    
-    // New Year (January 1-7)
-    if (month === 0 && day <= 7) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
-    }
-    // Valentine's Day (February 7-14)
-    else if (month === 1 && day >= 7 && day <= 14) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
-    }
-    // St. Patrick's Day (March 10-17)
-    else if (month === 2 && day >= 10 && day <= 17) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
-    }
-    // Easter (March 29 - April 7) - adjust dates yearly
-    else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
-    }
-    // 4th of July (July 1-7)
-    else if (month === 6 && day <= 7) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
-    }
-    // Halloween (October 24-31)
-    else if (month === 9 && day >= 24) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
-    }
-    // Thanksgiving (November 15-30)
-    else if (month === 10 && day >= 15) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
-    }
-    // Christmas (December 10-26)
-    else if (month === 11 && day >= 10 && day <= 26) {
-        cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
-    }
-    // Default - no custom cursor for rest of year
-    else {
-        return;
-    }
-    
-    document.body.style.cursor = `url('${cursorUrl}'), auto`;
-}
+        // Toggle dropdowns on click
+        document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+            dropdownLink.addEventListener('click', function (e) {
+                e.preventDefault();
 
-window.addEventListener('DOMContentLoaded', setSeasonalCursor);
+                // Close other dropdowns
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    if (dropdown !== this.nextElementSibling) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+
+                // Toggle this dropdown
+                const dropdownContent = this.nextElementSibling;
+                dropdownContent.classList.toggle('active');
+            });
+        });
+
+        // Seasonal Cursor Script
+        function setSeasonalCursor() {
+            const today = new Date();
+            const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
+            const day = today.getDate();
+
+            let cursorUrl;
+
+            // New Year (January 1-7)
+            if (month === 0 && day <= 7) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
+            }
+            // Valentine's Day (February 7-14)
+            else if (month === 1 && day >= 7 && day <= 14) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
+            }
+            // St. Patrick's Day (March 10-17)
+            else if (month === 2 && day >= 10 && day <= 17) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
+            }
+            // Easter (March 29 - April 7) - adjust dates yearly
+            else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
+            }
+            // 4th of July (July 1-7)
+            else if (month === 6 && day <= 7) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
+            }
+            // Halloween (October 24-31)
+            else if (month === 9 && day >= 24) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
+            }
+            // Thanksgiving (November 15-30)
+            else if (month === 10 && day >= 15) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
+            }
+            // Christmas (December 10-26)
+            else if (month === 11 && day >= 10 && day <= 26) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
+            }
+            // Default - no custom cursor for rest of year
+            else {
+                return;
+            }
+
+            document.body.style.cursor = `url('${cursorUrl}'), auto`;
+        }
+
+        window.addEventListener('DOMContentLoaded', setSeasonalCursor);
     </script>
 </body>
+
 </html>
