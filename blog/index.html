@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - JFed's Life</title>
+    <title>Blog - Faith, Business & Sports Insights | Nebraska | JFed's Life</title>
+    <meta name="description" content="Read JFed's thoughts on faith, business, and sports. Personal reflections, devotionals, and lessons learned from photography, videography, and competitive bowling in Nebraska.">
+    <meta name="keywords" content="faith blog, business insights, sports blog, Nebraska blogger, photography business, bowling insights, Christian devotionals">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -570,7 +572,7 @@
         <div class="category-filters">
             <button class="filter-btn active" onclick="filterPosts('all')">All</button>
             <button class="filter-btn" onclick="filterPosts('business')">Business</button>
-            <button class="filter-btn" onclick="filterPosts('faith')">Faith</button>
+            <button class="filter-btn" onclick="filterPosts('faith')">Faith & Life</button>
             <button class="filter-btn" onclick="filterPosts('sports')">Sports</button>
         </div>
 
@@ -622,6 +624,14 @@
         // Blog posts data - ADD YOUR ARTICLES HERE
         const blogPosts = [
             {
+                id: 3,
+                title: "Dec 22nd, 2025 Devo",
+                category: "faith",
+                date: "December 22, 2025",
+                excerpt: "Image of God vs Child of God: What's the difference?",
+                url: "/blog/dec-22nd-devo.html"
+            },
+            {
                 id: 2,
                 title: "6 Line Tournament",
                 category: "sports",
@@ -640,7 +650,7 @@
             // Add more posts here as you create them
             // Example:
             // {
-            //     id: 3,
+            //     id: 4,
             //     title: "Starting Your Photography Business",
             //     category: "business",
             //     date: "December 1, 2025",
@@ -668,7 +678,7 @@
 
         function getCategoryDisplayName(category) {
             const names = {
-                'faith': 'Faith',
+                'faith': 'Faith & Life',
                 'business': 'Business',
                 'sports': 'Sports'
             };
