@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - JFed's Life</title>
+    <title>FAQ | Nebraska | JFed's Life</title>
+    <meta name="description" content="Frequently asked questions about JFed's Life services including wedding videography, sports photography, advertising content, and website design in Nebraska.">
+    <meta name="keywords" content="wedding videographer FAQ Nebraska, sports photographer questions, JFed's Life FAQ, photography videography questions Nebraska">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -44,7 +46,6 @@
             line-height: 1.6;
         }
 
-        /* Header & Navigation */
         header {
             background-color: var(--bg-secondary);
             box-shadow: 0 2px 10px var(--shadow);
@@ -127,7 +128,6 @@
             color: var(--accent);
         }
 
-        /* Dropdown Menu */
         .dropdown {
             position: relative;
         }
@@ -171,7 +171,6 @@
             font-size: 0.8rem;
         }
 
-        /* Theme Toggle */
         .theme-toggle {
             display: flex;
             gap: 0.5rem;
@@ -202,7 +201,6 @@
             color: white;
         }
 
-        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -212,7 +210,6 @@
             cursor: pointer;
         }
 
-        /* Page Hero */
         .page-hero {
             background: linear-gradient(135deg, #b8546d 0%, #d97742 100%);
             color: white;
@@ -232,7 +229,6 @@
             opacity: 0.95;
         }
 
-        /* Content Sections */
         .content-section {
             max-width: 1000px;
             margin: 4rem auto;
@@ -255,7 +251,6 @@
             text-align: center;
         }
 
-        /* FAQ Category */
         .faq-category {
             margin-bottom: 3rem;
         }
@@ -267,7 +262,6 @@
             font-weight: 600;
         }
 
-        /* FAQ Item */
         .faq-item {
             background-color: var(--bg-secondary);
             border-radius: 8px;
@@ -335,7 +329,6 @@
             margin-bottom: 0;
         }
 
-        /* Contact CTA */
         .contact-cta {
             background-color: var(--bg-secondary);
             padding: 3rem 2rem;
@@ -373,7 +366,6 @@
             transform: translateY(-2px);
         }
 
-        /* Footer */
         footer {
             background-color: var(--bg-secondary);
             padding: 3rem 2rem 2rem;
@@ -394,36 +386,27 @@
             gap: 1.5rem;
             flex-wrap: wrap;
             justify-content: center;
+            align-items: center;
         }
 
         .social-links a {
-            color: var(--text-primary);
-            font-size: 1.1rem;
-            font-weight: 500;
             text-decoration: none;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--accent);
-            transform: scale(1.2);
-        }
-
-        .contact-btn {
-            background-color: var(--accent);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
             display: inline-block;
         }
 
-        .contact-btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-links a:hover .social-icon {
+            opacity: 0.8;
         }
 
         .copyright {
@@ -490,7 +473,7 @@
             <a href="/" class="logo">
                 <div class="logo-container">
                     <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4830.jpg"
-                        alt="JFed's Life Logo" class="logo-img" id="logoImage">
+                        alt="JFed's Life Logo" class="logo-img">
                 </div>
                 <h1>JFed's Life</h1>
             </a>
@@ -536,288 +519,285 @@
                 </button>
             </div>
         </nav>
+    </header>
 
-        <main>
-            <section class="page-hero">
-                <h1>Frequently Asked Questions</h1>
-                <p>Find answers to common questions about my services, hobbies, and more</p>
-            </section>
+    <main>
+        <section class="page-hero">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about my services, hobbies, and more</p>
+        </section>
 
-            <section class="content-section">
-                <p class="intro-text">Have a question? Browse through the categories below or reach out directly if you
-                    don't see what you're looking for.</p>
+        <section class="content-section">
+            <p class="intro-text">Have a question? Browse through the categories below or reach out directly if you
+                don't see what you're looking for.</p>
 
-                <div class="faq-category">
-                    <h2 class="category-title">Business & Services</h2>
+            <div class="faq-category">
+                <h2 class="category-title">Business & Services</h2>
 
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            What services do you offer?
-                        </button>
-                        <div class="faq-answer">
-                            <p>I specialize in wedding videography, sports photography, and content creation. I cover
-                                everything from intimate ceremonies to large sporting events, delivering high-quality
-                                visual content tailored to your needs.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            How do I book you for an event?
-                        </button>
-                        <div class="faq-answer">
-                            <p>The easiest way to book is through the contact form on my Chief Adventures website. I'll
-                                respond within 24-48 hours to discuss availability, packages, and your specific needs.
-                                Early booking is recommended, especially for weddings and major events.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            What's your turnaround time for delivering content?
-                        </button>
-                        <div class="faq-answer">
-                            <p>For wedding films, I typically deliver the final video within 10-12 weeks. Sports
-                                photography and content creation projects usually have a 2-3 week turnaround. Rush
-                                delivery options are available for an additional fee if needed.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            Do you travel for shoots?
-                        </button>
-                        <div class="faq-answer">
-                            <p>Absolutely! I'm based in Ellendale, North Dakota, but I'm available to travel anywhere
-                                for the right project. Travel fees may apply depending on the location and duration of
-                                the shoot.</p>
-                        </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What services do you offer?
+                    </button>
+                    <div class="faq-answer">
+                        <p>I specialize in wedding videography, sports photography, and content creation. I cover
+                            everything from intimate ceremonies to large sporting events, delivering high-quality
+                            visual content tailored to your needs.</p>
                     </div>
                 </div>
 
-                <div class="faq-category">
-                    <h2 class="category-title">Personal & Hobbies</h2>
-
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            How did you get into bowling?
-                        </button>
-                        <div class="faq-answer">
-                            <p>I've been bowling from a young age. I started more casually with my family, and the
-                                passion grew for it, because my dad is a bowler. Over time, the passion became my own,
-                                and I love talking bowling with anyone that will listen. The challenge, strategy, and
-                                mental game of bowling keeps me coming back.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            What's your favorite sport to play?
-                        </button>
-                        <div class="faq-answer">
-                            <p>It's very tough to choose. For longevity and the longest passion, I'd have to say
-                                bowling. Ultimate frisbee is a close second though, because of the team dynamics and
-                                athleticism and strategy required for it. Disc golf for me is a great way to get
-                                outdoors and spend time with friends. I also enjoy collecting discs.</p>
-                        </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How do I book you for an event?
+                    </button>
+                    <div class="faq-answer">
+                        <p>The easiest way to book is through the contact form on my website. I'll respond within
+                            24-48 hours to discuss availability, packages, and your specific needs. Early booking
+                            is recommended, especially for weddings and major events.</p>
                     </div>
                 </div>
 
-                <div class="faq-category">
-                    <h2 class="category-title">Technical & Gear</h2>
-
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            What camera gear do you use?
-                        </button>
-                        <div class="faq-answer">
-                            <p>I have two Sony a7 III's with a variety of lenses for different events. For more detailed
-                                information about my setup, check out the Gear page where I break down all the equipment
-                                I use.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            What editing software do you use?
-                        </button>
-                        <div class="faq-answer">
-                            <p>For editing, I primarily use the Adobe software. I always try to watch YouTube videos or
-                                read articles to make myself better. I prioritize wanting to deliver the highest quality
-                                final product.</p>
-                        </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What's your turnaround time for delivering content?
+                    </button>
+                    <div class="faq-answer">
+                        <p>For wedding films, I typically deliver the final video within 10-12 weeks. Sports
+                            photography and content creation projects usually have a 2-3 week turnaround. Rush
+                            delivery options are available for an additional fee if needed.</p>
                     </div>
                 </div>
 
-                <div class="contact-cta">
-                    <h2>Still Have Questions?</h2>
-                    <p>Don't see your question answered here? Feel free to reach out directly and I'll be happy to help.
-                    </p>
-                    <a href="/contact" class="cta-button">Contact Me</a>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <div class="footer-content">
-                <div class="social-links">
-                    <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank"
-                        aria-label="Facebook">
-                        Facebook
-                    </a>
-                    <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
-                        Instagram
-                    </a>
-                    <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
-                        TikTok
-                    </a>
-                    <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
-                        YouTube
-                    </a>
-                    <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
-                        Vimeo
-                    </a>
-                </div>
-
-                <div class="copyright">
-                    <p>&copy; 2025 JFed's Life. All rights reserved.</p>
-                    <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner
-                    </p>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do you travel for shoots?
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely! I'm based in Nebraska but I'm available to travel anywhere for the right
+                            project. Travel fees may apply depending on the location and duration of the shoot.</p>
+                    </div>
                 </div>
             </div>
-        </footer>
 
-        <script>
-            function setTheme(theme) {
-                const html = document.documentElement;
-                const lightBtn = document.getElementById('lightBtn');
-                const systemBtn = document.getElementById('systemBtn');
-                const darkBtn = document.getElementById('darkBtn');
+            <div class="faq-category">
+                <h2 class="category-title">Personal & Hobbies</h2>
 
-                [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How did you get into bowling?
+                    </button>
+                    <div class="faq-answer">
+                        <p>I've been bowling from a young age. I started more casually with my family, and the
+                            passion grew for it, because my dad is a bowler. Over time, the passion became my own,
+                            and I love talking bowling with anyone that will listen. The challenge, strategy, and
+                            mental game of bowling keeps me coming back.</p>
+                    </div>
+                </div>
 
-                if (theme === 'system') {
-                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-                    systemBtn.classList.add('active');
-                    localStorage.setItem('theme', 'system');
-                } else {
-                    html.setAttribute('data-theme', theme);
-                    if (theme === 'light') lightBtn.classList.add('active');
-                    else darkBtn.classList.add('active');
-                    localStorage.setItem('theme', theme);
-                }
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What's your favorite sport to play?
+                    </button>
+                    <div class="faq-answer">
+                        <p>It's very tough to choose. For longevity and the longest passion, I'd have to say
+                            bowling. Ultimate frisbee is a close second though, because of the team dynamics and
+                            athleticism and strategy required for it. Disc golf for me is a great way to get
+                            outdoors and spend time with friends. I also enjoy collecting discs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-category">
+                <h2 class="category-title">Technical & Gear</h2>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What camera gear do you use?
+                    </button>
+                    <div class="faq-answer">
+                        <p>I have two Sony a7 III's with a variety of lenses for different events. For more detailed
+                            information about my setup, check out the Gear page where I break down all the equipment
+                            I use.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What editing software do you use?
+                    </button>
+                    <div class="faq-answer">
+                        <p>For editing, I primarily use the Adobe software. I always try to watch YouTube videos or
+                            read articles to make myself better. I prioritize wanting to deliver the highest quality
+                            final product.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-cta">
+                <h2>Still Have Questions?</h2>
+                <p>Don't see your question answered here? Feel free to reach out directly and I'll be happy to help.</p>
+                <a href="/contact" class="cta-button">Contact Me</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/FB_Icon.png"
+                        alt="Facebook" class="social-icon">
+                </a>
+                <a href="https://www.instagram.com/jfeds_life/" target="_blank" aria-label="Instagram">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/IG_Icon.png"
+                        alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://www.tiktok.com/@jfedslife" target="_blank" aria-label="TikTok">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/TikTok_Icon.png"
+                        alt="TikTok" class="social-icon">
+                </a>
+                <a href="https://www.youtube.com/@jfedslife" target="_blank" aria-label="YouTube">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/YT_Icon.png"
+                        alt="YouTube" class="social-icon">
+                </a>
+                <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/Vimeo_Icon.png"
+                        alt="Vimeo" class="social-icon">
+                </a>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 JFed's Life. All rights reserved.</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function setTheme(theme) {
+            const html = document.documentElement;
+            const lightBtn = document.getElementById('lightBtn');
+            const systemBtn = document.getElementById('systemBtn');
+            const darkBtn = document.getElementById('darkBtn');
+
+            [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
+
+            if (theme === 'system') {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+                systemBtn.classList.add('active');
+                localStorage.setItem('theme', 'system');
+            } else {
+                html.setAttribute('data-theme', theme);
+                if (theme === 'light') lightBtn.classList.add('active');
+                else darkBtn.classList.add('active');
+                localStorage.setItem('theme', theme);
             }
+        }
 
-            function toggleMobileMenu() {
-                const navLinks = document.getElementById('navLinks');
-                navLinks.classList.toggle('active');
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function toggleFaq(button) {
+            const answer = button.nextElementSibling;
+            const isActive = button.classList.contains('active');
+
+            // Close all other FAQs
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.classList.remove('active');
+                q.nextElementSibling.classList.remove('active');
+            });
+
+            // Toggle current FAQ
+            if (!isActive) {
+                button.classList.add('active');
+                answer.classList.add('active');
             }
+        }
 
-            function toggleFaq(button) {
-                const answer = button.nextElementSibling;
-                const isActive = button.classList.contains('active');
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'system';
+            setTheme(savedTheme);
+        });
 
-                // Close all other FAQs
-                document.querySelectorAll('.faq-question').forEach(q => {
-                    q.classList.remove('active');
-                    q.nextElementSibling.classList.remove('active');
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (localStorage.getItem('theme') === 'system') {
+                setTheme('system');
+            }
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    dropdown.classList.remove('active');
                 });
-
-                // Toggle current FAQ
-                if (!isActive) {
-                    button.classList.add('active');
-                    answer.classList.add('active');
-                }
             }
+        });
 
-            window.addEventListener('DOMContentLoaded', () => {
-                const savedTheme = localStorage.getItem('theme') || 'system';
-                setTheme(savedTheme);
-            });
-
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                if (localStorage.getItem('theme') === 'system') {
-                    setTheme('system');
-                }
-            });
-            // Close dropdowns when clicking outside
-            document.addEventListener('click', function (event) {
-                if (!event.target.closest('.dropdown')) {
-                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+        document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+            dropdownLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    if (dropdown !== this.nextElementSibling) {
                         dropdown.classList.remove('active');
-                    });
-                }
-            });
-
-            // Toggle dropdowns on click
-            document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
-                dropdownLink.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    // Close other dropdowns
-                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-                        if (dropdown !== this.nextElementSibling) {
-                            dropdown.classList.remove('active');
-                        }
-                    });
-
-                    // Toggle this dropdown
-                    const dropdownContent = this.nextElementSibling;
-                    dropdownContent.classList.toggle('active');
+                    }
                 });
+                const dropdownContent = this.nextElementSibling;
+                dropdownContent.classList.toggle('active');
             });
+        });
 
-            // Seasonal Cursor Script
-            function setSeasonalCursor() {
-                const today = new Date();
-                const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
-                const day = today.getDate();
+        // Seasonal Cursor Script
+        function setSeasonalCursor() {
+            const today = new Date();
+            const month = today.getMonth();
+            const day = today.getDate();
 
-                let cursorUrl;
+            let cursorUrl;
 
-                // New Year (January 1-15)
-                if (month === 0 && day <= 7) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
-                }
-                // Valentine's Day (February 7-14)
-                else if (month === 1 && day >= 7 && day <= 14) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
-                }
-                // St. Patrick's Day (March 10-17)
-                else if (month === 2 && day >= 10 && day <= 17) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
-                }
-                // Easter (March 29 - April 7) - adjust dates yearly
-                else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
-                }
-                // 4th of July (July 1-7)
-                else if (month === 6 && day <= 7) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
-                }
-                // Halloween (October 24-31)
-                else if (month === 9 && day >= 24) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
-                }
-                // Thanksgiving (November 15-30)
-                else if (month === 10 && day >= 15) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
-                }
-                // Christmas (December 10-26)
-                else if (month === 11 && day >= 10 && day <= 26) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
-                }
-                // Default - no custom cursor for rest of year
-                else {
-                    return;
-                }
-
-                document.body.style.cursor = `url('${cursorUrl}'), auto`;
+            // New Year (January 1-7)
+            if (month === 0 && day <= 7) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
+            }
+            // Valentine's Day (February 7-14)
+            else if (month === 1 && day >= 7 && day <= 14) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
+            }
+            // St. Patrick's Day (March 10-17)
+            else if (month === 2 && day >= 10 && day <= 17) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
+            }
+            // Easter (March 29 - April 7) - adjust dates yearly
+            else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
+            }
+            // 4th of July (July 1-7)
+            else if (month === 6 && day <= 7) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
+            }
+            // Halloween (October 24-31)
+            else if (month === 9 && day >= 24) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
+            }
+            // Thanksgiving (November 15-30)
+            else if (month === 10 && day >= 15) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
+            }
+            // Christmas (December 10-26)
+            else if (month === 11 && day >= 10 && day <= 26) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
+            }
+            // Default - no custom cursor for rest of year
+            else {
+                return;
             }
 
-            window.addEventListener('DOMContentLoaded', setSeasonalCursor);
-        </script>
+            document.body.style.cursor = `url('${cursorUrl}'), auto`;
+        }
+
+        window.addEventListener('DOMContentLoaded', setSeasonalCursor);
+    </script>
 </body>
 
 </html>
