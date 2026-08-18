@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JFed's Life - Personal Portfolio</title>
+    <title>Home | Nebraska | JFed's Life</title>
+    <meta name="description" content="JFed's Life - Wedding videography, sports photography, advertising content, and website design services in Nebraska. Capturing moments, creating content, and sharing experiences through faith and adventure.">
+    <meta name="keywords" content="wedding videographer Nebraska, sports photographer Nebraska, JFed's Life, photography videography Nebraska, faith lifestyle blog">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -44,7 +46,6 @@
             line-height: 1.6;
         }
 
-        /* Header & Navigation */
         header {
             background-color: var(--bg-secondary);
             box-shadow: 0 2px 10px var(--shadow);
@@ -127,7 +128,6 @@
             color: var(--accent);
         }
 
-        /* Dropdown Menu */
         .dropdown {
             position: relative;
         }
@@ -171,7 +171,6 @@
             font-size: 0.8rem;
         }
 
-        /* Theme Toggle */
         .theme-toggle {
             display: flex;
             gap: 0.5rem;
@@ -202,7 +201,6 @@
             color: white;
         }
 
-        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -212,7 +210,6 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
         .hero {
             max-width: 1200px;
             margin: 4rem auto;
@@ -244,7 +241,6 @@
             margin-bottom: 2rem;
         }
 
-        /* Content Sections */
         .content-section {
             max-width: 1200px;
             margin: 4rem auto;
@@ -291,77 +287,7 @@
             line-height: 1.8;
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--bg-secondary);
-            padding: 3rem 2rem 2rem;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .social-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            display: inline-block;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
-        .social-links a:hover {
-            transform: scale(1.2);
-        }
-
-        .social-links a:hover .social-icon {
-            opacity: 0.8;
-        }
-
-        .contact-btn {
-            background-color: var(--accent);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            display: inline-block;
-        }
-
-        .contact-btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-        }
-
-        .copyright {
-            text-align: center;
-            color: var(--text-secondary);
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            width: 100%;
-        }
-
-        /* Reviews Section */
+        /* Reviews Section - kept for when needed */
         .reviews-section {
             max-width: 1200px;
             margin: 4rem auto;
@@ -437,6 +363,75 @@
         .review-date {
             font-size: 0.85rem;
             color: var(--text-secondary);
+        }
+
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-links a:hover .social-icon {
+            opacity: 0.8;
+        }
+
+        .contact-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
         }
 
         @media (max-width: 768px) {
@@ -527,7 +522,6 @@
                 <li><a href="/contact">Contact</a></li>
             </ul>
 
-            <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
             <div class="theme-toggle">
                 <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
                     Light
@@ -539,8 +533,6 @@
                     System
                 </button>
             </div>
-        </nav>
-        </ul>
         </nav>
     </header>
 
@@ -580,13 +572,12 @@
             </div>
         </section>
 
-        <!-- Reviews Section -->
+        <!-- REVIEWS HIDDEN TEMPORARILY - REBRANDING IN PROGRESS
         <section class="reviews-section">
             <h2>What People Are Saying</h2>
             <p class="subtitle">Hear from couples, athletes, and clients I've had the honor of working with</p>
 
             <div class="reviews-grid">
-                <!-- Review Card 1 -->
                 <div class="review-card">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
                     <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/65638274_2364562433761428_7410253521288691712_n copy.jpg"
@@ -599,7 +590,6 @@
                     <div class="review-date">Wedding • June 2018</div>
                 </div>
 
-                <!-- Review Card 2 -->
                 <div class="review-card">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
                     <img src="https://via.placeholder.com/80/d97742/ffffff?text=AL" alt="Customer Photo"
@@ -609,7 +599,6 @@
                     <div class="review-date"></div>
                 </div>
 
-                <!-- Review Card 3 -->
                 <div class="review-card">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
                     <img src="https://via.placeholder.com/80/b8546d/ffffff?text=EM" alt="Customer Photo"
@@ -620,6 +609,7 @@
                 </div>
             </div>
         </section>
+        -->
 
         <section class="content-section"
             style="background-color: var(--bg-secondary); padding: 3rem 2rem; border-radius: 12px;">
@@ -712,36 +702,9 @@
             navLinks.classList.toggle('active');
         }
 
-        // Load logo image
-        async function loadLogoImage() {
-            try {
-                let imageData;
-                const filenames = ['image (2).jpg', 'image.jpg', 'logo.jpg'];
-
-                for (const filename of filenames) {
-                    try {
-                        imageData = await window.fs.readFile(filename);
-                        break;
-                    } catch (e) {
-                        continue;
-                    }
-                }
-
-                if (imageData) {
-                    const blob = new Blob([imageData], { type: 'image/jpeg' });
-                    const url = URL.createObjectURL(blob);
-                    document.getElementById('logoImage').src = url;
-                }
-            } catch (error) {
-                console.log('Using default logo');
-            }
-        }
-
-        // Initialize theme on page load
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'system';
             setTheme(savedTheme);
-            loadLogoImage();
         });
 
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
@@ -749,7 +712,7 @@
                 setTheme('system');
             }
         });
-        // Close dropdowns when clicking outside
+
         document.addEventListener('click', function (event) {
             if (!event.target.closest('.dropdown')) {
                 document.querySelectorAll('.dropdown-content').forEach(dropdown => {
@@ -758,19 +721,14 @@
             }
         });
 
-        // Toggle dropdowns on click
         document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
             dropdownLink.addEventListener('click', function (e) {
                 e.preventDefault();
-
-                // Close other dropdowns
                 document.querySelectorAll('.dropdown-content').forEach(dropdown => {
                     if (dropdown !== this.nextElementSibling) {
                         dropdown.classList.remove('active');
                     }
                 });
-
-                // Toggle this dropdown
                 const dropdownContent = this.nextElementSibling;
                 dropdownContent.classList.toggle('active');
             });
@@ -779,7 +737,7 @@
         // Seasonal Cursor Script
         function setSeasonalCursor() {
             const today = new Date();
-            const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
+            const month = today.getMonth();
             const day = today.getDate();
 
             let cursorUrl;
