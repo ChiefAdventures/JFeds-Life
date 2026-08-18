@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - JFed's Life</title>
+    <title>Contact | Nebraska | JFed's Life</title>
+    <meta name="description" content="Get in touch with JFed's Life for wedding videography, sports photography, advertising content, and website design services in Nebraska. Free consultations available.">
+    <meta name="keywords" content="contact wedding videographer Nebraska, hire sports photographer Nebraska, JFed's Life contact, photography videography inquiry Nebraska">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -43,7 +45,6 @@
             line-height: 1.6;
         }
 
-        /* Header & Navigation */
         header {
             background-color: var(--bg-secondary);
             box-shadow: 0 2px 10px var(--shadow);
@@ -126,7 +127,6 @@
             color: var(--accent);
         }
 
-        /* Dropdown Menu */
         .dropdown {
             position: relative;
         }
@@ -155,8 +155,6 @@
             color: var(--text-primary) !important;
             text-decoration: none;
             transition: background-color 0.3s ease;
-            opacity: 1 !important;
-            pointer-events: auto !important;
             cursor: pointer !important;
         }
 
@@ -170,7 +168,6 @@
             font-size: 0.8rem;
         }
 
-        /* Theme Toggle */
         .theme-toggle {
             display: flex;
             gap: 0.5rem;
@@ -201,7 +198,6 @@
             color: white;
         }
 
-        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -211,7 +207,6 @@
             cursor: pointer;
         }
 
-        /* Hero section - NO BACKGROUND IMAGE */
         .hero {
             background: linear-gradient(135deg, #b8546d 0%, #d97742 100%);
             color: white;
@@ -231,7 +226,6 @@
             opacity: 0.95;
         }
 
-        /* Form container */
         .form-container {
             max-width: 900px;
             margin: 4rem auto;
@@ -310,52 +304,7 @@
             transform: translateY(-2px);
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--bg-secondary);
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .social-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--accent);
-            transform: scale(1.2);
-        }
-
-        .copyright {
-            text-align: center;
-            color: var(--text-secondary);
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            width: 100%;
-        }
-
-        /* Reviews Carousel */
+        /* Reviews Carousel - kept for when needed */
         .reviews-carousel {
             max-width: 900px;
             margin: 3rem auto 0;
@@ -456,13 +405,8 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        .carousel-arrow-left {
-            left: -20px;
-        }
-
-        .carousel-arrow-right {
-            right: -20px;
-        }
+        .carousel-arrow-left { left: -20px; }
+        .carousel-arrow-right { right: -20px; }
 
         .carousel-dots {
             display: flex;
@@ -487,6 +431,56 @@
 
         .carousel-dot:hover {
             background-color: var(--accent-hover);
+        }
+
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-links a:hover .social-icon {
+            opacity: 0.8;
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
         }
 
         @media (max-width: 768px) {
@@ -524,13 +518,8 @@
                 font-size: 1.2rem;
             }
 
-            .carousel-arrow-left {
-                left: -10px;
-            }
-
-            .carousel-arrow-right {
-                right: -10px;
-            }
+            .carousel-arrow-left { left: -10px; }
+            .carousel-arrow-right { right: -10px; }
 
             .carousel-quote {
                 font-size: 1rem;
@@ -617,10 +606,10 @@
 
     <section class="hero">
         <h1>Ready to start planning??</h1>
-        <p>I can't wait to hear about your special day, project, or event! Fill out the form below and I'll get back to you as soon as possible.</p>
+        <p>I can't wait to hear about your project or event! Fill out the form below and I'll get back to you as soon as possible.</p>
     </section>
 
-    <!-- Reviews Carousel -->
+    <!-- REVIEWS HIDDEN TEMPORARILY - REBRANDING IN PROGRESS
     <section class="reviews-carousel">
         <h2>Trusted by Amazing Clients</h2>
         
@@ -628,7 +617,6 @@
             <button class="carousel-arrow carousel-arrow-left" onclick="moveCarousel(-1)">‹</button>
             
             <div class="carousel-track" id="carouselTrack">
-                <!-- Slide 1 -->
                 <div class="carousel-slide">
                     <div class="carousel-review-card">
                         <div class="carousel-stars">⭐⭐⭐⭐⭐</div>
@@ -639,7 +627,6 @@
                     </div>
                 </div>
 
-                <!-- Slide 2 -->
                 <div class="carousel-slide">
                     <div class="carousel-review-card">
                         <div class="carousel-stars"></div>
@@ -650,7 +637,6 @@
                     </div>
                 </div>
 
-                <!-- Slide 3 -->
                 <div class="carousel-slide">
                     <div class="carousel-review-card">
                         <div class="carousel-stars"></div>
@@ -665,19 +651,18 @@
             <button class="carousel-arrow carousel-arrow-right" onclick="moveCarousel(1)">›</button>
         </div>
 
-        <!-- Dots Navigation -->
         <div class="carousel-dots" id="carouselDots">
             <span class="carousel-dot active" onclick="goToSlide(0)"></span>
             <span class="carousel-dot" onclick="goToSlide(1)"></span>
             <span class="carousel-dot" onclick="goToSlide(2)"></span>
         </div>
     </section>
+    -->
 
     <div class="form-container">
         <div class="contact-form">
             <form action="https://formspree.io/f/xyzlkdza" method="POST">
                 
-                <!-- Name -->
                 <div class="form-group">
                     <label>Name <span class="required">* Required Field</span></label>
                     <div class="name-grid">
@@ -686,56 +671,46 @@
                     </div>
                 </div>
 
-                <!-- Email -->
                 <div class="form-group">
                     <label for="email">Email <span class="required">* Required Field</span></label>
                     <input type="email" id="email" name="email" required>
                 </div>
 
-                <!-- Instagram Handle -->
                 <div class="form-group">
                     <label for="instagram">Instagram Handle</label>
                     <input type="text" id="instagram" name="instagram" placeholder="@yourusername">
                 </div>
 
-                <!-- Event -->
                 <div class="form-group">
                     <label for="event">Event <span class="required">* Required Field</span></label>
                     <select id="event" name="event" required>
                         <option value="">Select an option</option>
-                        <option value="Wedding">Wedding</option>
-                        <option value="Elopement">Elopement</option>
                         <option value="Business">Business</option>
                         <option value="Sports">Sports</option>
                         <option value="Other">Other</option>
                     </select>
                 </div>
 
-                <!-- Project Date -->
                 <div class="form-group">
                     <label for="projectDate">Project Date</label>
                     <input type="date" id="projectDate" name="projectDate">
                 </div>
 
-                <!-- Location / Venue -->
                 <div class="form-group">
                     <label for="location">Location | Venue</label>
                     <input type="text" id="location" name="location">
                 </div>
 
-                <!-- Wedding Planner -->
                 <div class="form-group">
                     <label for="weddingPlanner">Wedding Planner?</label>
                     <input type="text" id="weddingPlanner" name="weddingPlanner">
                 </div>
 
-                <!-- Wedding Photographer -->
                 <div class="form-group">
                     <label for="weddingPhotographer">Wedding Photographer?</label>
                     <input type="text" id="weddingPhotographer" name="weddingPhotographer">
                 </div>
 
-                <!-- How did you hear about me -->
                 <div class="form-group">
                     <label for="hearAbout">How did you hear about me? <span class="required">* Required Field</span></label>
                     <select id="hearAbout" name="hearAbout" required>
@@ -751,13 +726,11 @@
                     </select>
                 </div>
 
-                <!-- Referral -->
                 <div class="form-group">
                     <label for="referral">If you were referred, tell me who to thank!</label>
                     <input type="text" id="referral" name="referral">
                 </div>
 
-                <!-- Booking Status -->
                 <div class="form-group">
                     <label for="bookingStatus">Where are you in the process of booking a photographer/videographer? <span class="required">* Required Field</span></label>
                     <select id="bookingStatus" name="bookingStatus" required>
@@ -768,9 +741,8 @@
                     </select>
                 </div>
 
-                <!-- Tell me more -->
                 <div class="form-group">
-                    <label for="details">Tell me more about your wedding day, project, or sports event! <span class="required">* Required Field</span></label>
+                    <label for="details">Tell me more about your project or sports event! <span class="required">* Required Field</span></label>
                     <textarea id="details" name="details" required></textarea>
                 </div>
 
@@ -783,19 +755,19 @@
         <div class="footer-content">
             <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
-                    Facebook
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/FB_Icon.png" alt="Facebook" class="social-icon">
                 </a>
                 <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
-                    Instagram
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/IG_Icon.png" alt="Instagram" class="social-icon">
                 </a>
                 <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
-                    TikTok
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/TikTok_Icon.png" alt="TikTok" class="social-icon">
                 </a>
                 <a href="https://www.youtube.com/@ChiefAdventures" target="_blank" aria-label="YouTube">
-                    YouTube
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/YT_Icon.png" alt="YouTube" class="social-icon">
                 </a>
                 <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
-                    Vimeo
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/Vimeo_Icon.png" alt="Vimeo" class="social-icon">
                 </a>
             </div>
             
@@ -844,7 +816,6 @@
             }
         });
 
-        // Close dropdowns when clicking outside
         document.addEventListener('click', function(event) {
             if (!event.target.closest('.dropdown')) {
                 document.querySelectorAll('.dropdown-content').forEach(dropdown => {
@@ -853,38 +824,27 @@
             }
         });
 
-        // Toggle dropdowns on click
         document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
             dropdownLink.addEventListener('click', function(e) {
                 e.preventDefault();
-                
-                // Close other dropdowns
                 document.querySelectorAll('.dropdown-content').forEach(dropdown => {
                     if (dropdown !== this.nextElementSibling) {
                         dropdown.classList.remove('active');
                     }
                 });
-                
-                // Toggle this dropdown
                 const dropdownContent = this.nextElementSibling;
                 dropdownContent.classList.toggle('active');
             });
         });
 
-        // Carousel functionality
+        // Carousel functionality - kept for when reviews are restored
         let currentSlide = 0;
-        const totalSlides = 3; // Change this if you add more reviews
+        const totalSlides = 3;
 
         function moveCarousel(direction) {
             currentSlide += direction;
-            
-            // Loop around
-            if (currentSlide >= totalSlides) {
-                currentSlide = 0;
-            } else if (currentSlide < 0) {
-                currentSlide = totalSlides - 1;
-            }
-            
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            else if (currentSlide < 0) currentSlide = totalSlides - 1;
             updateCarousel();
         }
 
@@ -896,43 +856,21 @@
         function updateCarousel() {
             const track = document.getElementById('carouselTrack');
             const dots = document.querySelectorAll('.carousel-dot');
-            
-            // Move the track
-            track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Update dots
+            if (track) track.style.transform = `translateX(-${currentSlide * 100}%)`;
             dots.forEach((dot, index) => {
-                if (index === currentSlide) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
+                dot.classList.toggle('active', index === currentSlide);
             });
         }
-
-        // Auto-advance carousel every 5 seconds
-        setInterval(() => {
-            moveCarousel(1);
-        }, 5000);
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                moveCarousel(-1);
-            } else if (e.key === 'ArrowRight') {
-                moveCarousel(1);
-            }
-        });
 
         // Seasonal Cursor Script
         function setSeasonalCursor() {
             const today = new Date();
-            const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
+            const month = today.getMonth();
             const day = today.getDate();
             
             let cursorUrl;
             
-            // New Year (January 1-15)
+            // New Year (January 1-7)
             if (month === 0 && day <= 7) {
                 cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
             }
