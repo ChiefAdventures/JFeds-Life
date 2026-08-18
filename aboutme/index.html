@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - JFed's Life</title>
+    <title>About Me | Nebraska | JFed's Life</title>
+    <meta name="description" content="Learn about Jason Feddersen (JFed), a photographer, videographer, and content creator based in Nebraska. Passionate about sports photography, faith, bowling, and disc golf.">
+    <meta name="keywords" content="JFed's Life about, Jason Feddersen Nebraska, sports photographer Nebraska, content creator Nebraska, faith lifestyle">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -44,7 +46,6 @@
             line-height: 1.6;
         }
 
-        /* Header & Navigation */
         header {
             background-color: var(--bg-secondary);
             box-shadow: 0 2px 10px var(--shadow);
@@ -127,7 +128,6 @@
             color: var(--accent);
         }
 
-        /* Dropdown Menu */
         .dropdown {
             position: relative;
         }
@@ -171,7 +171,6 @@
             font-size: 0.8rem;
         }
 
-        /* Theme Toggle */
         .theme-toggle {
             display: flex;
             gap: 0.5rem;
@@ -202,7 +201,6 @@
             color: white;
         }
 
-        /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -212,7 +210,6 @@
             cursor: pointer;
         }
 
-        /* Page Hero */
         .page-hero {
             background: linear-gradient(135deg, #b8546d 0%, #d97742 100%);
             color: white;
@@ -232,7 +229,6 @@
             opacity: 0.95;
         }
 
-        /* Content Sections */
         .content-section {
             max-width: 1200px;
             margin: 4rem auto;
@@ -247,7 +243,6 @@
             padding-bottom: 0.5rem;
         }
 
-        /* About Me Bio */
         .about-bio {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
                 url('https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/_JSF4823.jpg') center 30%/cover no-repeat;
@@ -273,7 +268,6 @@
             margin-bottom: 0;
         }
 
-        /* Music Section */
         .music-section {
             margin-bottom: 4rem;
         }
@@ -295,7 +289,6 @@
             box-shadow: 0 4px 12px var(--shadow);
         }
 
-        /* YouTube Section */
         .youtube-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -346,7 +339,6 @@
             color: var(--text-secondary);
         }
 
-        /* Projects Section */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -389,7 +381,6 @@
             line-height: 1.6;
         }
 
-        /* Fun Facts Section */
         .fun-facts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -428,7 +419,6 @@
             font-size: 1.05rem;
         }
 
-        /* Footer */
         footer {
             background-color: var(--bg-secondary);
             padding: 3rem 2rem 2rem;
@@ -449,19 +439,27 @@
             gap: 1.5rem;
             flex-wrap: wrap;
             justify-content: center;
+            align-items: center;
         }
 
         .social-links a {
-            color: var(--text-primary);
-            font-size: 1.1rem;
-            font-weight: 500;
             text-decoration: none;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--accent);
             transform: scale(1.2);
+        }
+
+        .social-links a:hover .social-icon {
+            opacity: 0.8;
         }
 
         .contact-btn {
@@ -571,7 +569,6 @@
                 <li class="dropdown">
                     <a href="#business">Business</a>
                     <div class="dropdown-content">
-                        <a href="/weddings">Weddings</a>
                         <a href="/sports_photo_video">Sports Photo & Video</a>
                         <a href="/gear">Gear</a>
                     </div>
@@ -590,7 +587,6 @@
                 <li><a href="/contact">Contact</a></li>
             </ul>
 
-            <!-- Theme toggle OUTSIDE the nav-links but inside nav -->
             <div class="theme-toggle">
                 <button class="theme-btn" onclick="setTheme('light')" id="lightBtn" title="Light Mode">
                     Light
@@ -603,359 +599,336 @@
                 </button>
             </div>
         </nav>
+    </header>
 
-        <main>
-            <section class="page-hero">
-                <h1>About Me</h1>
-                <p>Getting to know the person behind the lens</p>
-            </section>
+    <main>
+        <section class="page-hero">
+            <h1>About Me</h1>
+            <p>Getting to know the person behind the lens</p>
+        </section>
 
-            <!-- About Me Bio -->
-            <section class="content-section">
-                <div class="about-bio">
-                    <p>What's up, I'm Jason Feddersen, most people call me JFed. I am currently in Kearney, NE. I am 
-                        wrapping up an associates in business over the next few years.</p>
+        <section class="content-section">
+            <div class="about-bio">
+                <p>What's up, I'm Jason Feddersen, most people call me JFed. I am currently in Kearney, NE. I am
+                    wrapping up an associates in business over the next few years.</p>
 
-                    <p>I do what I do because it's where I'm most curious to learn, grow, and willing to fail in order
-                        to succeed. Photography, videography, and content creation all keep me exploring new
-                        possibilities. Lately, I've been diving deep into AI, learning how to use it from both a
-                        business and biblical perspective with <a href="https://drbenmcintosh.com" target="_blank"
-                            style="color: white;">Professor McIntosh</a>.</p>
+                <p>I do what I do because it's where I'm most curious to learn, grow, and willing to fail in order
+                    to succeed. Photography, videography, and content creation all keep me exploring new
+                    possibilities. Lately, I've been diving deep into AI, learning how to use it from both a
+                    business and biblical perspective with <a href="https://drbenmcintosh.com" target="_blank"
+                        style="color: white;">Professor McIntosh</a>.</p>
 
-                    <p>Beyond the work I do, I wanted to mention that this website was built by me with AI-assistance
-                        for coding and design scaffolding to maximize efficiency. It's been a great learning experience
-                        in web development! I'm passionate about bowling and ultimate frisbee. I also enjoy mobile
-                        gaming and chess...and let's be honest, way too much Taco Bell. It may not be great for my body,
-                        but I'll probably eat it until the day I die.</p>
+                <p>Beyond the work I do, I wanted to mention that this website was built by me with AI-assistance
+                    for coding and design scaffolding to maximize efficiency. It's been a great learning experience
+                    in web development! I'm passionate about bowling and ultimate frisbee. I also enjoy mobile
+                    gaming and chess...and let's be honest, way too much Taco Bell. It may not be great for my body,
+                    but I'll probably eat it until the day I die.</p>
 
-                    <p>It's been a roller coaster of an adventure so far, and I'm excited to see where God takes me
-                        next.</p>
-                </div>
-            </section>
+                <p>It's been a roller coaster of an adventure so far, and I'm excited to see where God takes me
+                    next.</p>
+            </div>
+        </section>
 
-            <!-- Music Section -->
-            <section class="content-section music-section">
-                <h2 class="section-title">Music I'm Listening To</h2>
+        <section class="content-section music-section">
+            <h2 class="section-title">Music I'm Listening To</h2>
 
-                <div class="playlist-container">
-                    <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1rem;">Current Playlist
-                    </h3>
-                    <!-- Replace with your Spotify playlist embed -->
-                    <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px var(--shadow);">
-                        <p
-                            style="text-align: center; padding: 3rem; background-color: var(--bg-secondary); color: var(--text-secondary);">
-                            <iframe data-testid="embed-iframe" style="border-radius:12px"
-                                src="https://open.spotify.com/embed/playlist/5qhEtCC5k5QAnqDwvlxdoV?utm_source=generator"
-                                width="100%" height="152" frameBorder="0" allowfullscreen=""
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                                loading="lazy"></iframe><br>
-                            <span style="font-size: 0.9rem;">Paste your Spotify playlist iframe code in the HTML</span>
-                        </p>
-                    </div>
-                </div>
-
-                <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-top: 3rem; margin-bottom: 1rem;">
-                    Current Favorite Tracks</h3>
-                <div class="tracks-grid">
-                    <div class="track-embed">
-                        <p
-                            style="text-align: center; padding: 5rem 2rem; background-color: var(--bg-secondary); color: var(--text-secondary);">
-                            <iframe data-testid="embed-iframe" style="border-radius:12px"
-                                src="https://open.spotify.com/embed/track/3HfKlhohNNTLIv2t9uvmzz?utm_source=generator&theme=0"
-                                width="100%" height="352" frameBorder="0" allowfullscreen=""
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                                loading="lazy"></iframe>
-                        </p>
-                    </div>
-                    <div class="track-embed">
-                        <p
-                            style="text-align: center; padding: 5rem 2rem; background-color: var(--bg-secondary); color: var(--text-secondary);">
-                            <iframe data-testid="embed-iframe" style="border-radius:12px"
-                                src="https://open.spotify.com/embed/track/1rcpl29wXMZoaAt2s13l5W?utm_source=generator"
-                                width="100%" height="352" frameBorder="0" allowfullscreen=""
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                                loading="lazy"></iframe>
-                        </p>
-                    </div>
-                    <div class="track-embed">
-                        <p
-                            style="text-align: center; padding: 5rem 2rem; background-color: var(--bg-secondary); color: var(--text-secondary);">
-                            <iframe data-testid="embed-iframe" style="border-radius:12px"
-                                src="https://open.spotify.com/embed/track/4qRGQCvqygDcfVw8REV2Fz?utm_source=generator"
-                                width="100%" height="352" frameBorder="0" allowfullscreen=""
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                                loading="lazy"></iframe>
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- YouTube Section -->
-            <section class="content-section">
-                <h2 class="section-title">YouTube Videos I'm Watching</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-
-                <div class="youtube-grid">
-                    <div class="youtube-card">
-                        <div class="video-wrapper">
-                            <p
-                                style="text-align: center; padding: 5rem 2rem; background-color: var(--bg-secondary); color: var(--text-secondary);">
-                                <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/g-7mQkBf3tU?si=kLnQ89lpgYGq9lAZ"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </p>
-                        </div>
-                        <div class="video-info">
-                            <h3>Imposter Season 2 EP 1</h3>
-                            <p>This was a fun series to watch when Foundation dropped it last year, so I'm looking
-                                foward to the new season!</p>
-                        </div>
-                    </div>
-
-                    <div class="youtube-card">
-                        <div class="video-wrapper">
-                            <p
-                                style="text-align: center; padding: 5rem 2rem; background-color: var(--bg-secondary); color: var(--text-secondary);">
-                                <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/UJ1k_PHZ5Dw?si=fvnVowUtBrvD1-TV"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </p>
-                        </div>
-                        <div class="video-info">
-                            <h3>Attempting the Lowest Scores in Bowling History!</h3>
-                            <p>Love watching the House Bowling and the challenges they do! It's fun to watch some PBA
-                                pros have fun on the lanes!</p>
-                        </div>
-                    </div>
-
-                    <div class="youtube-card">
-                        <div class="video-wrapper">
-                            <p
-                                style="text-align: center; padding: 5rem 2rem; background-color: var(--bg-secondary); color: var(--text-secondary);">
-                                <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/z5MKqT_zPbI?si=I2bpkyLFWIzNl0pc"
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </p>
-                        </div>
-                        <div class="video-info">
-                            <h3>When Self-Love is Selfish</h3>
-                            <p>I had some questions about self care and selfish from a biblical perspective and this was
-                                a really good watch!</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Current Projects Section -->
-            <section class="content-section">
-                <h2 class="section-title">What I'm Working On</h2>
-
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-status">In Progress</div>
-                        <h3>Wedding Film for the Turners</h3>
-                        <p>I'm working on about a 6 minute wedding film that captures the emotions of the day through
-                            video and audio.</p>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-status">In Progress</div>
-                        <h3>This Website</h3>
-                        <p>Still working on the website and adding in photos and changing some text that AI created.</p>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-status">In Progress</div>
-                        <h3>College</h3>
-                        <p>Working on a AA for a business admin degree. I think I just have one spring and fall semester
-                            left.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Fun Facts Section -->
-            <section class="content-section">
-                <h2 class="section-title">Fun Facts</h2>
-
-                <div class="fun-facts-grid">
-                    <div class="fact-card">
-                        <div class="fact-icon">🥏</div>
-                        <h3>Dream Disc Golf Course</h3>
-                        <p>Maple Hill - one of Simon Lizotte's home course, and it looks like a blast to play even
-                            though I'll probably lose a few discs lol.</p>
-                    </div>
-
-                    <div class="fact-card">
-                        <div class="fact-icon">🎳</div>
-                        <h3>Current Bowling Goal</h3>
-                        <p>One day, I'd love to shoot a 800 series or a 300 game. I always want to work on form and
-                            consistency as well.</p>
-                    </div>
-
-                    <div class="fact-card">
-                        <div class="fact-icon">📖</div>
-                        <h3>Current Favorite Bible Verse</h3>
-                        <p>One of my favorite Bible verses is Mark 9:24. The father of the demon possessed boy cries out
-                            to Jesus to help him overcome his unbelief. When I have doubts, I want to have the mindset
-                            of crying out to Jesus.</p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <div class="footer-content">
-                <div class="social-links">
-                    <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank"
-                        aria-label="Facebook">
-                        Facebook
-                    </a>
-                    <a href="https://www.instagram.com/1chief_adventures1" target="_blank" aria-label="Instagram">
-                        Instagram
-                    </a>
-                    <a href="https://www.tiktok.com/@chiefadventures" target="_blank" aria-label="TikTok">
-                        TikTok
-                    </a>
-                    <a href="https://youtube.com/@1chiefadventures1" target="_blank" aria-label="YouTube">
-                        YouTube
-                    </a>
-                    <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
-                        Vimeo
-                    </a>
-                </div>
-
-                <a href="/contact" class="contact-btn">
-                    Contact Me
-                </a>
-
-                <div class="copyright">
-                    <p>&copy; 2025 JFed's Life. All rights reserved.</p>
-                    <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner
+            <div class="playlist-container">
+                <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1rem;">Current Playlist</h3>
+                <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px var(--shadow);">
+                    <p style="text-align: center; padding: 3rem; background-color: var(--bg-secondary); color: var(--text-secondary);">
+                        <iframe data-testid="embed-iframe" style="border-radius:12px"
+                            src="https://open.spotify.com/embed/playlist/5qhEtCC5k5QAnqDwvlxdoV?utm_source=generator"
+                            width="100%" height="152" frameBorder="0" allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"></iframe><br>
+                        <span style="font-size: 0.9rem;">Paste your Spotify playlist iframe code in the HTML</span>
                     </p>
                 </div>
             </div>
-        </footer>
 
-        <script>
-            function setTheme(theme) {
-                const html = document.documentElement;
-                const lightBtn = document.getElementById('lightBtn');
-                const systemBtn = document.getElementById('systemBtn');
-                const darkBtn = document.getElementById('darkBtn');
+            <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-top: 3rem; margin-bottom: 1rem;">
+                Current Favorite Tracks</h3>
+            <div class="tracks-grid">
+                <div class="track-embed">
+                    <p style="text-align: center; padding: 5rem 2rem; background-color: var(--bg-secondary); color: var(--text-secondary);">
+                        <iframe data-testid="embed-iframe" style="border-radius:12px"
+                            src="https://open.spotify.com/embed/track/3HfKlhohNNTLIv2t9uvmzz?utm_source=generator&theme=0"
+                            width="100%" height="352" frameBorder="0" allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"></iframe>
+                    </p>
+                </div>
+                <div class="track-embed">
+                    <p style="text-align: center; padding: 5rem 2rem; background-color: var(--bg-secondary); color: var(--text-secondary);">
+                        <iframe data-testid="embed-iframe" style="border-radius:12px"
+                            src="https://open.spotify.com/embed/track/1rcpl29wXMZoaAt2s13l5W?utm_source=generator"
+                            width="100%" height="352" frameBorder="0" allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"></iframe>
+                    </p>
+                </div>
+                <div class="track-embed">
+                    <p style="text-align: center; padding: 5rem 2rem; background-color: var(--bg-secondary); color: var(--text-secondary);">
+                        <iframe data-testid="embed-iframe" style="border-radius:12px"
+                            src="https://open.spotify.com/embed/track/4qRGQCvqygDcfVw8REV2Fz?utm_source=generator"
+                            width="100%" height="352" frameBorder="0" allowfullscreen=""
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy"></iframe>
+                    </p>
+                </div>
+            </div>
+        </section>
 
-                [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
+        <section class="content-section">
+            <h2 class="section-title">YouTube Videos I'm Watching</h2>
 
-                if (theme === 'system') {
-                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-                    systemBtn.classList.add('active');
-                    localStorage.setItem('theme', 'system');
-                } else {
-                    html.setAttribute('data-theme', theme);
-                    if (theme === 'light') lightBtn.classList.add('active');
-                    else darkBtn.classList.add('active');
-                    localStorage.setItem('theme', theme);
-                }
+            <div class="youtube-grid">
+                <div class="youtube-card">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/g-7mQkBf3tU?si=kLnQ89lpgYGq9lAZ"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Imposter Season 2 EP 1</h3>
+                        <p>This was a fun series to watch when Foundation dropped it last year, so I'm looking
+                            forward to the new season!</p>
+                    </div>
+                </div>
+
+                <div class="youtube-card">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/UJ1k_PHZ5Dw?si=fvnVowUtBrvD1-TV"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Attempting the Lowest Scores in Bowling History!</h3>
+                        <p>Love watching the House Bowling and the challenges they do! It's fun to watch some PBA
+                            pros have fun on the lanes!</p>
+                    </div>
+                </div>
+
+                <div class="youtube-card">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/z5MKqT_zPbI?si=I2bpkyLFWIzNl0pc"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>When Self-Love is Selfish</h3>
+                        <p>I had some questions about self care and selfish from a biblical perspective and this was
+                            a really good watch!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">What I'm Working On</h2>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-status">In Progress</div>
+                    <h3>Sports Content for Players</h3>
+                    <p>I'm working on getting clips and making highlight videos for athletes.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-status">In Progress</div>
+                    <h3>This Website</h3>
+                    <p>Still working on the website and adding in photos and changing some text that AI created.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-status">In Progress</div>
+                    <h3>College</h3>
+                    <p>Working on a AA for a business admin degree. I think I just have one spring and fall semester
+                        left.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Fun Facts</h2>
+
+            <div class="fun-facts-grid">
+                <div class="fact-card">
+                    <div class="fact-icon">🥏</div>
+                    <h3>Dream Disc Golf Course</h3>
+                    <p>Maple Hill - one of Simon Lizotte's home course, and it looks like a blast to play even
+                        though I'll probably lose a few discs lol.</p>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-icon">🎳</div>
+                    <h3>Current Bowling Goal</h3>
+                    <p>One day, I'd love to shoot a 800 series or a 300 game. I always want to work on form and
+                        consistency as well.</p>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-icon">📖</div>
+                    <h3>Current Favorite Bible Verse</h3>
+                    <p>One of my favorite Bible verses is Mark 9:24. The father of the demon possessed boy cries out
+                        to Jesus to help him overcome his unbelief. When I have doubts, I want to have the mindset
+                        of crying out to Jesus.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61579684119796" target="_blank" aria-label="Facebook">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/FB_Icon.png"
+                        alt="Facebook" class="social-icon">
+                </a>
+                <a href="https://www.instagram.com/jfeds_life/" target="_blank" aria-label="Instagram">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/IG_Icon.png"
+                        alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://www.tiktok.com/@jfedslife" target="_blank" aria-label="TikTok">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/TikTok_Icon.png"
+                        alt="TikTok" class="social-icon">
+                </a>
+                <a href="https://www.youtube.com/@jfedslife" target="_blank" aria-label="YouTube">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/YT_Icon.png"
+                        alt="YouTube" class="social-icon">
+                </a>
+                <a href="https://vimeo.com/user242698607" target="_blank" aria-label="Vimeo">
+                    <img src="https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/Vimeo_Icon.png"
+                        alt="Vimeo" class="social-icon">
+                </a>
+            </div>
+
+            <a href="/contact" class="contact-btn">
+                Contact Me
+            </a>
+
+            <div class="copyright">
+                <p>&copy; 2025 JFed's Life. All rights reserved.</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem; opacity: 0.8;">*Photos of me taken by Tyler Mizner</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function setTheme(theme) {
+            const html = document.documentElement;
+            const lightBtn = document.getElementById('lightBtn');
+            const systemBtn = document.getElementById('systemBtn');
+            const darkBtn = document.getElementById('darkBtn');
+
+            [lightBtn, systemBtn, darkBtn].forEach(btn => btn.classList.remove('active'));
+
+            if (theme === 'system') {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                html.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+                systemBtn.classList.add('active');
+                localStorage.setItem('theme', 'system');
+            } else {
+                html.setAttribute('data-theme', theme);
+                if (theme === 'light') lightBtn.classList.add('active');
+                else darkBtn.classList.add('active');
+                localStorage.setItem('theme', theme);
             }
+        }
 
-            function toggleMobileMenu() {
-                const navLinks = document.getElementById('navLinks');
-                navLinks.classList.toggle('active');
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'system';
+            setTheme(savedTheme);
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (localStorage.getItem('theme') === 'system') {
+                setTheme('system');
             }
+        });
 
-            window.addEventListener('DOMContentLoaded', () => {
-                const savedTheme = localStorage.getItem('theme') || 'system';
-                setTheme(savedTheme);
-            });
-
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                if (localStorage.getItem('theme') === 'system') {
-                    setTheme('system');
-                }
-            });
-            // Close dropdowns when clicking outside
-            document.addEventListener('click', function (event) {
-                if (!event.target.closest('.dropdown')) {
-                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-                        dropdown.classList.remove('active');
-                    });
-                }
-            });
-
-            // Toggle dropdowns on click
-            document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
-                dropdownLink.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    // Close other dropdowns
-                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-                        if (dropdown !== this.nextElementSibling) {
-                            dropdown.classList.remove('active');
-                        }
-                    });
-
-                    // Toggle this dropdown
-                    const dropdownContent = this.nextElementSibling;
-                    dropdownContent.classList.toggle('active');
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    dropdown.classList.remove('active');
                 });
+            }
+        });
+
+        document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+            dropdownLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                    if (dropdown !== this.nextElementSibling) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+                const dropdownContent = this.nextElementSibling;
+                dropdownContent.classList.toggle('active');
             });
+        });
 
-            // Seasonal Cursor Script
-            function setSeasonalCursor() {
-                const today = new Date();
-                const month = today.getMonth(); // 0-11 (0=Jan, 11=Dec)
-                const day = today.getDate();
+        // Seasonal Cursor Script
+        function setSeasonalCursor() {
+            const today = new Date();
+            const month = today.getMonth();
+            const day = today.getDate();
 
-                let cursorUrl;
+            let cursorUrl;
 
-                // New Year (January 1-15)
-                if (month === 0 && day <= 7) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
-                }
-                // Valentine's Day (February 7-14)
-                else if (month === 1 && day >= 7 && day <= 14) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
-                }
-                // St. Patrick's Day (March 10-17)
-                else if (month === 2 && day >= 10 && day <= 17) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
-                }
-                // Easter (March 29 - April 7) - adjust dates yearly
-                else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
-                }
-                // 4th of July (July 1-7)
-                else if (month === 6 && day <= 7) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
-                }
-                // Halloween (October 24-31)
-                else if (month === 9 && day >= 24) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
-                }
-                // Thanksgiving (November 15-30)
-                else if (month === 10 && day >= 15) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
-                }
-                // Christmas (December 10-26)
-                else if (month === 11 && day >= 10 && day <= 26) {
-                    cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
-                }
-                // Default - no custom cursor for rest of year
-                else {
-                    return;
-                }
-
-                document.body.style.cursor = `url('${cursorUrl}'), auto`;
+            // New Year (January 1-7)
+            if (month === 0 && day <= 7) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/NewYearCursor48.png';
+            }
+            // Valentine's Day (February 7-14)
+            else if (month === 1 && day >= 7 && day <= 14) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ValentinesCursor48.png';
+            }
+            // St. Patrick's Day (March 10-17)
+            else if (month === 2 && day >= 10 && day <= 17) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/StPatricksCursor48.png';
+            }
+            // Easter (March 29 - April 7) - adjust dates yearly
+            else if ((month === 2 && day >= 29) || (month === 3 && day <= 7)) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/EasterCursor48.png';
+            }
+            // 4th of July (July 1-7)
+            else if (month === 6 && day <= 7) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/JulyCursor48.png';
+            }
+            // Halloween (October 24-31)
+            else if (month === 9 && day >= 24) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/HalloweenCursor48.png';
+            }
+            // Thanksgiving (November 15-30)
+            else if (month === 10 && day >= 15) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ThanksgivingCursor48.png';
+            }
+            // Christmas (December 10-26)
+            else if (month === 11 && day >= 10 && day <= 26) {
+                cursorUrl = 'https://raw.githubusercontent.com/ChiefAdventures/JFeds-Life/main/images/ChristmasCursor48.png';
+            }
+            // Default - no custom cursor for rest of year
+            else {
+                return;
             }
 
-            window.addEventListener('DOMContentLoaded', setSeasonalCursor);
-        </script>
+            document.body.style.cursor = `url('${cursorUrl}'), auto`;
+        }
+
+        window.addEventListener('DOMContentLoaded', setSeasonalCursor);
+    </script>
 </body>
 
 </html>
